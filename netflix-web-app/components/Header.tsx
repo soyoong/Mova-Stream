@@ -1,6 +1,7 @@
 import { SearchIcon, BellIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { logoUrl } from "../utils/constants/image";
 
 function Header() {
     const [isScrolled, setIsScrolled] = useState(false)
@@ -24,13 +25,15 @@ function Header() {
   return (
     <header className={`${isScrolled && "bg-[#141414]"}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
-        <img
-          src="https://rb.gy/ulxxee"
-          alt="logo-img"
-          width={100}
-          height={100}
-          className="cursor-pointer object-contain"
-        />
+        <Link href="/">
+          <img
+            src={logoUrl}
+            alt="logo-img"
+            width={100}
+            height={100}
+            className="cursor-pointer object-contain"
+          />
+        </Link>
 
         <ul className="hidden space-x-4 md:flex">
           <li className="headerLink">Home</li>
