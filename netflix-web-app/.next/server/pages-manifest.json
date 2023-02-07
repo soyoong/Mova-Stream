@@ -1,13 +1,6 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of c346dbb (Verification email address)
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
->>>>>>> parent of c346dbb (Verification email address)
   "/login": "pages/login.js"
 }

@@ -131,15 +131,7 @@
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-/******/ 		__webpack_require__.h = function() { return "1d9488bfe69696aa"; }
-=======
-/******/ 		__webpack_require__.h = function() { return "1778d0de03a6e3ae"; }
->>>>>>> parent of c346dbb (Verification email address)
-=======
-/******/ 		__webpack_require__.h = function() { return "1778d0de03a6e3ae"; }
->>>>>>> parent of c346dbb (Verification email address)
+/******/ 		__webpack_require__.h = function() { return "650f973a32ca16bb"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
