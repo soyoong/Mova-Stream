@@ -1,6 +1,7 @@
 import { async } from "@firebase/util";
 import {
   createUserWithEmailAndPassword,
+  sendEmailVerification,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
@@ -17,6 +18,7 @@ interface IAuth {
   logout: () => Promise<void>;
   error: string | null;
   loading: boolean;
+  message: string | null;
 }
 
 const AuthContext = createContext<IAuth>({
@@ -26,6 +28,7 @@ const AuthContext = createContext<IAuth>({
   logout: async () => {},
   error: null,
   loading: false,
+  message: null,
 });
 
 interface AuthProviderProps {
@@ -34,6 +37,7 @@ interface AuthProviderProps {
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState(null);
   const [initialLoading, setInitialLoading] = useState(true);
@@ -53,7 +57,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           setLoading(true);
           router.push("/login");
         }
-
         setInitialLoading(false);
       }),
     [auth]
@@ -64,11 +67,21 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        setUser(userCredential.user);
-        setLoading(false);
-        router.push("/");
+        let user = userCredential.user;
+        
+        sendEmailVerification(user)
+          .then(() => {
+            let msg =
+              "An email verification link has been sent to " + user.email;
+            setMessage(msg);
+          })
+          .catch((error) => {
+            setError(error.code);
+          })
+
+        setUser(user);
       })
-      // .catch((error) => console.log(error.message))
+      .catch((error) => setError(error.code))
       .finally(() => setLoading(false));
   };
 
@@ -77,11 +90,17 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        setUser(userCredential.user);
-        router.push("/");
-        setLoading(false);
+        let user = userCredential.user;
+        if (user.emailVerified) {
+          setUser(user);
+          router.push("/");
+          setMessage("User login successfully 🎉🎉🎉");
+        } else {
+          let msg = "Please verify your email address before logging in!";
+          setMessage(msg);
+        }
       })
-      // .catch((error) => console.log(error.message))
+      .catch((error) => setError(error.code))
       .finally(() => setLoading(false));
   };
 
@@ -104,8 +123,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       loading,
       logout,
       error,
+      message,
     }),
-    [user, loading]
+    [user, signUp, signIn, loading, logout, error, message]
   );
 
   return (
