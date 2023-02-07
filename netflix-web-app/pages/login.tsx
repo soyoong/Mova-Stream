@@ -98,10 +98,10 @@ function Login() {
             </label>
           </div>
           {loading ? (
-            <BiLoaderAlt className="w-full h-10 items-center animate-spin fill-[#e50914]" />
+            <BiLoaderAlt className="w-full md:w-full h-12 md:h-12 items-center animate-spin fill-[#e50914]" />
           ) : (
             <button
-              className="md:h-12 w-full rounded bg-[#e50914] py-3 font-semibold"
+              className="h-12 w-full md:h-12 md:w-full rounded bg-[#e50914] py-3 font-semibold"
               onClick={() => setLogin(true)}
             >
               Sign In

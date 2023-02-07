@@ -77,13 +77,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
         setUser(user);
       })
-      .catch((error) => setError(error.code + ""))
+      .catch((error) => setError(error.code))
       .finally(() => setLoading(false));
   };
 
   const signIn = async (email: string, password: string) => {
     setLoading(true);
-    
+
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         let user = userCredential.user;
@@ -95,7 +95,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         }
 
       })
-      .catch((error) => setError(error.code + ""))
+      .catch((error) => setError(error.code))
       .finally(() => {
         setLoading(false);
       });
