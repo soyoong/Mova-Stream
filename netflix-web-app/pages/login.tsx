@@ -14,8 +14,7 @@ interface Inputs {
 
 function Login() {
   const [login, setLogin] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const { signIn, signUp, message, error } = useAuth();
+  const { signIn, signUp, loading, success, waring, error } = useAuth();
 
   const {
     register,
@@ -24,30 +23,22 @@ function Login() {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
-    setLoading(true);
-
     if (login) {
-      await signIn(email, password)
-        .then(() => {
-          toast.success(message);
-        })
-        .catch(() => {
-          toast.error(error + " 🤦‍♂️");
-        })
-        .finally(() => {
-          setLoading(false);
-        })
+      await signIn(email, password);
     } else {
-      await signUp(email, password)
-        .then(() => {
-          toast.success(message);
-        })
-        .catch(() => {
-          toast.error(error + " 🤦‍♂️");
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+      await signUp(email, password);
+    }
+
+    if (success.length > 0) {
+      toast.success(success);
+    }
+
+    if (waring.length > 0) {
+      toast.error(waring);
+    }
+
+    if (error.length > 0) {
+      toast.error(error);
     }
   };
 

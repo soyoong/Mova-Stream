@@ -10,15 +10,16 @@ import {
 import { useRouter } from "next/router";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { auth } from "../config/firebaseConfig";
-import Toast from "react-hot-toast";
 
 interface IAuth {
   user: User | null;
   signUp: (email: string, password: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
-  error: string | null;
-  message: string | null;
+  loading: boolean;
+  error: string;
+  success: string;
+  waring: string;
 }
 
 const AuthContext = createContext<IAuth>({
@@ -26,8 +27,10 @@ const AuthContext = createContext<IAuth>({
   signUp: async () => {},
   signIn: async () => {},
   logout: async () => {},
-  error: null,
-  message: null,
+  loading: false,
+  error: "",
+  success: "",
+  waring: "",
 });
 
 interface AuthProviderProps {
@@ -35,9 +38,11 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [message, setMessage] = useState("");
   const [user, setUser] = useState<User | null>(null);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [waring, setWaring] = useState("");
+  const [error, setError] = useState("");
   const [initialLoading, setInitialLoading] = useState(true);
   const router = useRouter();
 
@@ -59,50 +64,49 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   );
 
   const signUp = async (email: string, password: string) => {
+    setLoading(true);
 
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         let user = userCredential.user;
 
-        sendEmailVerification(user)
-          .catch((error) => {
-            setError(error.code);
-          })
-          .finally(() => {
-            let msg =
-              "An email verification link has been sent to " + user.email;
-            setMessage(msg);
-          });
+        sendEmailVerification(user).then(() => {
+          let msg = "An email verification link has been sent to " + user.email;
+          setSuccess(msg);
+        });
 
         setUser(user);
       })
-      .catch((error) => setError(error.code))
+      .catch((error) => setError(error.code + ""))
+      .finally(() => setLoading(false));
   };
 
   const signIn = async (email: string, password: string) => {
-
+    setLoading(true);
+    
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         let user = userCredential.user;
+
         if (user.emailVerified) {
-          setMessage("User login successful 🎉");
+          setSuccess("User login successful 🎉");
           setUser(user);
           router.push("/");
-        } else {
-          let msg = "Please confirm the email address in your mailbox!";
-          setMessage(msg);
         }
+
       })
-      .catch((error) => setError(error.code));
+      .catch((error) => setError(error.code + ""))
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const logout = async () => {
-
     signOut(auth)
       .then(() => {
         setUser(null);
       })
-      .catch((error) => alert(error.message))
+      .catch((error) => alert(error.message));
   };
 
   const memoedValue = useMemo(
@@ -111,10 +115,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       signUp,
       signIn,
       logout,
+      loading,
       error,
-      message,
+      success,
+      waring,
     }),
-    [user, signUp, signIn, logout, error, message]
+    [user, signUp, signIn, logout, loading, error, success, waring]
   );
 
   return (
