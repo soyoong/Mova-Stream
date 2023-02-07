@@ -5,7 +5,6 @@ import { backgroundImageUrl, logoUrl } from "../utils/constants/image";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { BiLoaderAlt } from "react-icons/bi";
 import useAuth from "../hooks/useAuth";
-import toast, { Toaster } from "react-hot-toast";
 
 interface Inputs {
   email: string;
@@ -14,7 +13,7 @@ interface Inputs {
 
 function Login() {
   const [login, setLogin] = useState(false);
-  const { signIn, signUp, loading, success, waring, error } = useAuth();
+  const { signIn, signUp, loading } = useAuth();
 
   const {
     register,
@@ -26,19 +25,7 @@ function Login() {
     if (login) {
       await signIn(email, password);
     } else {
-      await signUp(email, password);
-    }
-
-    if (success.length > 0) {
-      toast.success(success);
-    }
-
-    if (waring.length > 0) {
-      toast.error(waring);
-    }
-
-    if (error.length > 0) {
-      toast.error(error);
+      await signUp(email, password)
     }
   };
 
@@ -48,7 +35,6 @@ function Login() {
         <title>Netflix</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Toaster position="top-center" reverseOrder={false} />
       <body>
         <Image
           src={backgroundImageUrl}

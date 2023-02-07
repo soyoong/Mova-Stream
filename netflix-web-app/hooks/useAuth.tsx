@@ -10,6 +10,7 @@ import {
 import { useRouter } from "next/router";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { auth } from "../config/firebaseConfig";
+import toast, { Toaster } from "react-hot-toast";
 
 interface IAuth {
   user: User | null;
@@ -17,9 +18,6 @@ interface IAuth {
   signIn: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   loading: boolean;
-  error: string;
-  success: string;
-  waring: string;
 }
 
 const AuthContext = createContext<IAuth>({
@@ -28,9 +26,6 @@ const AuthContext = createContext<IAuth>({
   signIn: async () => {},
   logout: async () => {},
   loading: false,
-  error: "",
-  success: "",
-  waring: "",
 });
 
 interface AuthProviderProps {
@@ -40,9 +35,6 @@ interface AuthProviderProps {
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
-  const [waring, setWaring] = useState("");
-  const [error, setError] = useState("");
   const [initialLoading, setInitialLoading] = useState(true);
   const router = useRouter();
 
@@ -53,9 +45,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         if (user) {
           // Logged in...
           setUser(user);
+          setLoading(false);
         } else {
           // Not logged in...
           setUser(null);
+          setLoading(false);
           router.push("/login");
         }
         setInitialLoading(false);
@@ -72,12 +66,15 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
         sendEmailVerification(user).then(() => {
           let msg = "An email verification link has been sent to " + user.email;
-          setSuccess(msg);
+          toast.success(msg);
         });
 
         setUser(user);
+        setLoading(false);
       })
-      .catch((error) => setError(error.code))
+      .catch((error) => {
+        toast.error(error.code);
+      })
       .finally(() => setLoading(false));
   };
 
@@ -89,24 +86,32 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         let user = userCredential.user;
 
         if (user.emailVerified) {
-          setSuccess("User login successful 🎉");
+          toast.success("User login successful 🎉");
           setUser(user);
           router.push("/");
+        } else {
+          toast.error("Please verify the email address in your mailbox");
         }
-
-      })
-      .catch((error) => setError(error.code))
-      .finally(() => {
         setLoading(false);
-      });
+      })
+      .catch((error) => {
+        toast.error(error.code);
+      })
+      .finally(() => setLoading(false));
   };
 
   const logout = async () => {
+    setLoading(true);
+
     signOut(auth)
       .then(() => {
         setUser(null);
+        setLoading(false);
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        toast.error(error.code);
+        setLoading(false);
+      });
   };
 
   const memoedValue = useMemo(
@@ -116,15 +121,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       signIn,
       logout,
       loading,
-      error,
-      success,
-      waring,
     }),
-    [user, signUp, signIn, logout, loading, error, success, waring]
+    [user, signUp, signIn, logout, loading]
   );
 
   return (
     <AuthContext.Provider value={memoedValue}>
+      <Toaster position="top-center" reverseOrder={false} />
       {!initialLoading && children}
     </AuthContext.Provider>
   );
