@@ -6,7 +6,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { BiLoaderAlt } from "react-icons/bi";
 import useAuth from "../hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
-import { sendEmailVerification } from "firebase/auth";
 
 interface Inputs {
   email: string;
@@ -15,7 +14,8 @@ interface Inputs {
 
 function Login() {
   const [login, setLogin] = useState(false);
-  const { signIn, signUp, loading, error, message } = useAuth();
+  const { signIn, signUp } = useAuth();
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -24,21 +24,30 @@ function Login() {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
+    setLoading(true);
     if (login) {
       await signIn(email, password)
         .then(() => {
-          toast.success(message);
+          toast.success("User login successful 🎉")
         })
-        .catch(() => {
-          toast.error(error + " 🤦‍♂️");
+        .catch((error) => {
+          setLoading(false);
+          toast.error(error.code + " 🤦‍♂️");
+        })
+        .finally(() => {
+          setLoading(false);
         });
     } else {
       await signUp(email, password)
         .then(() => {
-          toast.success(message);
+          toast.success("User created successful 🎉");
         })
-        .catch(() => {
-          toast.error(error + " 🤦‍♂️");
+        .catch((error) => {
+          setLoading(false);
+          toast.error(error.code + " 🤦‍♂️");
+        })
+        .finally(() => {
+          setLoading(false);
         });
     }
   };
