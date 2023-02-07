@@ -14,8 +14,8 @@ interface Inputs {
 
 function Login() {
   const [login, setLogin] = useState(false);
-  const { signIn, signUp } = useAuth();
   const [loading, setLoading] = useState(false);
+  const { signIn, signUp, message, error } = useAuth();
 
   const {
     register,
@@ -25,26 +25,25 @@ function Login() {
 
   const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
     setLoading(true);
+
     if (login) {
       await signIn(email, password)
         .then(() => {
-          toast.success("User login successful 🎉")
+          toast.success(message);
         })
-        .catch((error) => {
-          setLoading(false);
-          toast.error(error.code + " 🤦‍♂️");
+        .catch(() => {
+          toast.error(error + " 🤦‍♂️");
         })
         .finally(() => {
           setLoading(false);
-        });
+        })
     } else {
       await signUp(email, password)
         .then(() => {
-          toast.success("User created successful 🎉");
+          toast.success(message);
         })
-        .catch((error) => {
-          setLoading(false);
-          toast.error(error.code + " 🤦‍♂️");
+        .catch(() => {
+          toast.error(error + " 🤦‍♂️");
         })
         .finally(() => {
           setLoading(false);
