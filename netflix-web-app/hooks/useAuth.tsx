@@ -85,13 +85,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       .then((userCredential) => {
         let user = userCredential.user;
         if (user.emailVerified) {
-          let msg =
-            "Please confirm the email address in your mailbox!";
-          setMessage(msg);
-        } else {
           setMessage("User login successful 🎉");
           setUser(user);
           router.push("/");
+        } else {
+          let msg = "Please confirm the email address in your mailbox!";
+          setMessage(msg);
         }
       })
       .catch((error) => setError(error.code));
