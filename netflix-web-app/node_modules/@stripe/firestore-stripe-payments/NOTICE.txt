@@ -1,5 +1,0 @@
-Firestore Stripe Payments Web SDK
-Copyright 2021 Stripe, Inc.
-
-This product includes software developed at
-Google Firebase (https://firebase.google.com/).
