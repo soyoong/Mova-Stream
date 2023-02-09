@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Movie } from "../typings";
 import Image from "next/legacy/image";
-import { baseUrl } from "../utils/constants/movie";
+import { baseUrl } from "../constants/movie";
 import { FaPlay } from "react-icons/fa";
 // import { modalState, movieState } from "../atoms/modalAtom.";
 import { InformationCircleIcon } from "@heroicons/react/solid";

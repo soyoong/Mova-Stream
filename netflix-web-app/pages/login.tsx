@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/legacy/image";
 import { useState } from "react";
-import { backgroundImageUrl, logoUrl } from "../utils/constants/image";
+import { backgroundImageUrl, logoUrl } from "../constants/image";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { BiLoaderAlt } from "react-icons/bi";
 import useAuth from "../hooks/useAuth";
