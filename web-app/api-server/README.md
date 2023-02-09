@@ -8,6 +8,6 @@
 
 # To start
 
-First step: Using "npm install" or "yarn install" with terminal
+First step: Using "npm install" or "yarn install" with terminal \
 Next step: "npm start" or "yarn start" to run server
 
