@@ -1,20 +1,52 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const MovieSchema = new mongoose.Schema(
+const movieSchema = new mongoose.Schema(
   {
-    title: { type: String, required: true, unique: true },
-    desc: { type: String },
-    img: { type: String },
-    imgTitle: { type: String },
-    imgSm: { type: String },
-    trailer: { type: String },
-    video: { type: String },
-    year: { type: String },
-    limit: { type: Number },
-    genre: { type: String },
+    movieTitle: { type: String, default: "" },
+    movieName: { type: String, default: "" },
+    originalName: { type: String, default: "" },
+    genreId: {
+      type: String,
+      default: `${Schema.Types.ObjectId}`,
+      ref: "Genre",
+    },
+    releaseDate: { type: Date || null, default: null },
+    firstAirDate: { type: Date || null, default: null },
+    createdDate: { type: Date, default: Date.now() },
+    updatedDate: { type: Date || null, default: null },
+    countries: [
+      {
+        countryName: { type: String, default: "" },
+        countryId: {
+          type: String,
+          default: `${Schema.Types.ObjectId}`,
+          ref: "Country",
+        },
+      },
+    ],
+    originalLanguage: { type: String, default: "" },
+    cateMovies: [
+      {
+        name: { type: String, default: "" },
+        cateMovieId: {
+          type: String,
+          default: `${Schema.Types.ObjectId}`,
+          ref: "CateMovie",
+        },
+      },
+    ],
+    overview: { type: String, default: "" },
+    popularity: { type: Number, default: 0 },
+    voteAverage: { type: Number, default: 0 },
+    voteCount: { type: Number, default: 0 },
+    video: { type: String, default: "" },
+    trailer: { type: String, default: "" },
+    isMovieAvailable: { type: Boolean, default: false },
+    genre: { type: String, default: "" },
     isSeries: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Movie", MovieSchema);
+module.exports = mongoose.model("Movie", movieSchema);

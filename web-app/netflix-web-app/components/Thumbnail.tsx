@@ -19,6 +19,7 @@ function Thumbnail({ movie }: Props) {
       onClick={() => {
         setCurrentMovie(movie);
         setShowModal(true);
+        console.log(movie);
       }}
     >
       <Image
