@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/user.controller");
-const verify = require("../supports/verifyToken")
+const verify = require("../supports/verifyToken");
 
 // Get user by userId
 router.get("/:id", verify, userController.getUserById);

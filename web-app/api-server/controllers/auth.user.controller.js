@@ -1,7 +1,9 @@
+require("dotenv").config();
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
-const verify = require("../supports/verifyEmail");
+const sendMailVerification = require("../supports/sendMailVerification");
+const mailOptions = require("../config/nodemailerConfig");
 
 // Create / Register User
 exports.register = async (req, res) => {
@@ -23,23 +25,41 @@ exports.register = async (req, res) => {
     });
 
     try {
-      await newUser
-        .save()
+      // await newUser
+      //   .save()
+      //   .then(() => {
+      //     const { password, ...info } = newUser._doc;
+      //     res.status(200).json({
+      //       success: true,
+      //       item: info,
+      //     });
+      //   })
+      //   .catch((err) => {
+      // console.log(`Save error: ${err.message}`);
+      // res.status(500).json({
+      //   success: false,
+      //   code: err.code,
+      //   message: `Save error: ${err.message}`,
+      // });
+      //   });
+
+      await sendMailVerification(mailOptions(newUser.email))
         .then(() => {
-          const { password, ...info } = newUser._doc;
+          console.log("Email has been sent!");
           res.status(200).json({
             success: true,
-            item: info,
+            message: "Email has been sent!",
           });
         })
         .catch((err) => {
-          console.log(`Save error: ${err.message}`);
+          console.log(`Verify error: ${err.message}`);
           res.status(500).json({
             success: false,
             code: err.code,
-            message: `Save error: ${err.message}`,
+            message: `Verify error: ${err.message}`,
           });
         });
+
     } catch (err) {
       console.log(`Try with error: ${err.message}`);
       res.status(500).json({
