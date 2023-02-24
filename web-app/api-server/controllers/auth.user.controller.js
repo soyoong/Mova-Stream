@@ -5,6 +5,20 @@ const jwt = require("jsonwebtoken");
 const sendMailVerification = require("../supports/sendMailVerification");
 const mailOptions = require("../config/nodemailerConfig");
 
+// Get a hash-value-of-email form params and decryption
+exports.verifyEmail = async (req, res) => {
+  let code = req.params.code;
+  if (code) {
+    let bytes = CryptoJS.AES.decrypt(code, process.env.SECRET_KEY);
+    let originalEmail = bytes.toString(CryptoJS.enc.Utf8);
+    console.log(originalEmail);
+    return res.send(originalEmail);
+  } else {
+    console.log("Error");
+    return res.send("Error");
+  }
+};
+
 // Create / Register User
 exports.register = async (req, res) => {
   // Validate form
@@ -14,7 +28,7 @@ exports.register = async (req, res) => {
       .json({ success: false, message: "Content can not be empty!" });
     return;
   } else {
-    const newUser = new User({
+    var newUser = new User({
       username: req.body.username,
       email: req.body.email,
       password: CryptoJS.AES.encrypt(
@@ -25,46 +39,34 @@ exports.register = async (req, res) => {
     });
 
     try {
-      // await newUser
-      //   .save()
-      //   .then(() => {
-      //     const { password, ...info } = newUser._doc;
-      //     res.status(200).json({
-      //       success: true,
-      //       item: info,
-      //     });
-      //   })
-      //   .catch((err) => {
-      // console.log(`Save error: ${err.message}`);
-      // res.status(500).json({
-      //   success: false,
-      //   code: err.code,
-      //   message: `Save error: ${err.message}`,
-      // });
-      //   });
+      let user = await newUser.save();
+      if (!user.isActive) {
+        const cryptoEmail = CryptoJS.AES.encrypt(
+          user.email,
+          process.env.SECRET_KEY
+        ).toString();
 
-      await sendMailVerification(mailOptions(newUser.email))
-        .then(() => {
-          console.log("Email has been sent!");
-          res.status(200).json({
-            success: true,
-            message: "Email has been sent!",
+        await sendMailVerification(mailOptions(user.email, cryptoEmail))
+          .then(() => {
+            return res.status(200).json({
+              success: true,
+              message: "An email has been sent!",
+            });
+          })
+          .catch((err) => {
+            console.log(`Try to verify with error: ${err.message}`);
+            return res.status(500).json({
+              success: false,
+              code: err.code,
+              message: `Try to verify with error: ${err.message}`,
+            });
           });
-        })
-        .catch((err) => {
-          console.log(`Verify error: ${err.message}`);
-          res.status(500).json({
-            success: false,
-            code: err.code,
-            message: `Verify error: ${err.message}`,
-          });
-        });
-
+      }
     } catch (err) {
-      console.log(`Try with error: ${err.message}`);
-      res.status(500).json({
+      console.log(`Error: ${err.message}`);
+      return res.status(500).json({
         success: false,
-        message: `Try with error: ${err.message}`,
+        message: `Error: ${err.message}`,
       });
     }
   }
@@ -97,13 +99,13 @@ exports.login = async (req, res) => {
 
     const { password, ...info } = user._doc;
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       ...info,
       accessToken,
     });
   } catch (err) {
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: err.message,
     });

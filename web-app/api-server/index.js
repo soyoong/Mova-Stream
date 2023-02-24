@@ -2,6 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const app = express();
+
+// Routes
+// User routes
+const authUserRoutes = require("./routes/auth.user.route");
+const userRoutes = require("./routes/user.route");
+
 
 dotenv.config();
 mongoose.set("strictQuery", true); // To suppress errors when run "DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7"
@@ -15,14 +22,9 @@ mongoose
     console.error(err);
   });
 
-const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Routes
-// User routes
-const authUserRoutes = require("./routes/auth.user.route");
-const userRoutes = require("./routes/user.route");
 
 // Auth route api..
 app.use("/api/auth", authUserRoutes);
