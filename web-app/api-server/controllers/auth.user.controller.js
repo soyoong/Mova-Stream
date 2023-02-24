@@ -11,10 +11,9 @@ exports.verifyEmail = async (req, res) => {
   if (code) {
     let bytes = CryptoJS.AES.decrypt(code, process.env.SECRET_KEY);
     let originalEmail = bytes.toString(CryptoJS.enc.Utf8);
-    console.log(originalEmail);
     return res.send(originalEmail);
   } else {
-    console.log("Error");
+    console.log("Verify with error!");
     return res.send("Error");
   }
 };
@@ -25,7 +24,7 @@ exports.register = async (req, res) => {
   if (!req.body.username || !req.body.email || !req.body.password) {
     res
       .status(400)
-      .json({ success: false, message: "Content can not be empty!" });
+      .json({ success: false, message: "Content can't be empty!" });
     return;
   } else {
     var newUser = new User({
@@ -81,28 +80,23 @@ exports.login = async (req, res) => {
         success: false,
         message: "Wrong password or username!",
       });
-
     const bytes = CryptoJS.AES.decrypt(user.password, process.env.SECRET_KEY);
     const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
-
     originalPassword !== req.body.password &&
       res.status(401).json({
         success: false,
         message: "Wrong password or username!",
       });
-
-    const accessToken = jwt.sign(
+    const authToken = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
       process.env.SECRET_KEY,
       { expiresIn: "5d" }
     );
-
     const { password, ...info } = user._doc;
-
     return res.status(200).json({
       success: true,
       ...info,
-      accessToken,
+      "authToken": `${authToken}`,
     });
   } catch (err) {
     return res.status(500).json({
