@@ -1,20 +1,16 @@
 require("dotenv").config();
-const axios = require("axios");
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 const sendMailVerification = require("../supports/sendMailVerification");
 const mailOptions = require("../config/nodemailerConfig");
-const { response } = require("express");
 
 // Get a hash-value-of-email form params and decryption
 exports.verifyEmail = async (req, res) => {
-  let code = req.params.code;
-  if (code) {
-    let bytes = CryptoJS.AES.decrypt(code, process.env.SECRET_KEY);
-    let originalEmail = bytes.toString(CryptoJS.enc.Utf8);
+  let email = req.params.email;
+  if (email) {
     // Find user with email
-    let user = await User.findOne({ email: originalEmail });
+    let user = await User.findOne({ email: email });
     if (user) {
       if (!user.isActive) {
         // Update active
@@ -41,9 +37,11 @@ exports.verifyEmail = async (req, res) => {
         });
       }
     } else {
-      return res
-        .status(404)
-        .json({ success: false, message: "User not found!" });
+      return res.status(404).json({
+        success: false,
+        errorCode: err.code,
+        errorMessage: "User not found!",
+      });
     }
   } else {
     console.log("Verify with error!");
@@ -57,7 +55,7 @@ exports.register = async (req, res) => {
   if (!req.body.username || !req.body.email || !req.body.password) {
     return res.status(400).json({
       success: false,
-      errorCode: null,
+      errorCode: '400',
       errorMessage: "Content can't be empty!",
     });
   } else {
@@ -74,17 +72,11 @@ exports.register = async (req, res) => {
     try {
       let user = await newUser.save();
       if (!user.isActive) {
-        const cryptoEmail = CryptoJS.AES.encrypt(
-          user.email,
-          process.env.SECRET_KEY
-        ).toString();
-
-        await sendMailVerification(mailOptions(user.email, cryptoEmail))
+        // Send verify email
+        await sendMailVerification(mailOptions(user.email))
           .then(() => {
-            const { password, ...info } = user._doc;
             return res.status(200).json({
               success: true,
-              item: info,
               message: "An email has been sent!",
             });
           })
@@ -111,32 +103,43 @@ exports.login = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (user) {
-      const bytes = CryptoJS.AES.decrypt(user.password, process.env.SECRET_KEY);
-      const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
-      if (originalPassword !== req.body.password) {
+      if (user.isActive) {
+        const bytes = CryptoJS.AES.decrypt(
+          user.password,
+          process.env.SECRET_KEY
+        );
+        const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
+        if (originalPassword !== req.body.password) {
+          return res.status(401).json({
+            success: false,
+            errorCode: null,
+            errorMessage: "Wrong password!",
+          });
+        } else {
+          const authToken = jwt.sign(
+            { id: user._id, isAdmin: user.isAdmin },
+            process.env.SECRET_KEY,
+            { expiresIn: "5d" }
+          );
+          const { password, ...info } = user._doc;
+          return res.status(200).json({
+            success: true,
+            item: info,
+            authToken: `${authToken}`,
+          });
+        }
+      } else {
         return res.status(401).json({
           success: false,
-          errorCode: null,
-          errorMessage: "Wrong password!",
-        });
-      } else {
-        const authToken = jwt.sign(
-          { id: user._id, isAdmin: user.isAdmin },
-          process.env.SECRET_KEY,
-          { expiresIn: "5d" }
-        );
-        const { password, ...info } = user._doc;
-        return res.status(200).json({
-          success: true,
-          item: info,
-          authToken: `${authToken}`,
+          errorCode: "401",
+          errorMessage: "Please verify your email address!",
         });
       }
     } else {
       return res.status(404).json({
         success: false,
         errorCode: "404",
-        errorMessage: "Wrong email or password!",
+        errorMessage: "User don't exist!",
       });
     }
   } catch (err) {

@@ -3,7 +3,7 @@ const router = express.Router();
 const authUserController = require("../controllers/auth.user.controller");
 
 // Verify email address
-router.get("/email-verification/:code", authUserController.verifyEmail);
+router.get("/email-verification/:email", authUserController.verifyEmail);
 // Register
 router.post("/register", authUserController.register);
 // Login

@@ -27,8 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 // Auth route api..
-app.use("/api/auth", authUserRoutes);
-app.use("/api/users", userRoutes);
+app.use(`${process.env.HOST}/auth`, authUserRoutes);
+app.use(`${process.env.HOST}/users`, userRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Backend server is running with port: ${process.env.PORT}`);
