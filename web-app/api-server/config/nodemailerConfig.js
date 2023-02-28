@@ -21,7 +21,8 @@ const mailOptions = (mail) => {
                 <table style="border-bottom: 1px solid #e9e9e8;width:100%;table-layout: fixed;">
                     <tr>
                         <td align="left" style="padding:32px 32px 16px 32px">
-                            <img width="auto" height="28" src="https://raw.githubusercontent.com/soyoongdev/Mova-Stream/42e4ae607d529a39ffdb949be015fe752ef47ac6/resource/icons/mova-fulltext.svg">
+                            <img img height="28" src="https://raw.githubusercontent.com/soyoongdev/Mova-Stream/42e4ae607d529a39ffdb949be015fe752ef47ac6/resource/icons/mova-fulltext.svg"
+                                srcset="https://raw.githubusercontent.com/soyoongdev/Mova-Stream/42e4ae607d529a39ffdb949be015fe752ef47ac6/resource/icons/mova-fulltext.svg 2x,https://raw.githubusercontent.com/soyoongdev/Mova-Stream/42e4ae607d529a39ffdb949be015fe752ef47ac6/resource/icons/mova-fulltext.svg 3x">
                         </td>
                     </tr>
                 </table>
