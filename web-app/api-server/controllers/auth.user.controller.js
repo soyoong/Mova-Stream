@@ -4,7 +4,6 @@ const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 const sendMailVerification = require("../supports/sendMailVerification");
 const mailOptions = require("../config/nodemailerConfig");
-const userController = require("../controllers/user.controller");
 
 // Get a hash-value-of-email form params and decryption
 exports.verifyEmail = async (req, res) => {
