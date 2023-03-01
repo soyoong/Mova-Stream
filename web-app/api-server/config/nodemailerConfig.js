@@ -21,8 +21,8 @@ const mailOptions = (mail) => {
                 <table style="border-bottom: 1px solid #e9e9e8;width:100%;table-layout: fixed;">
                     <tr>
                         <td align="left" style="padding:32px 32px 16px 32px">
-                            <img img height="28" src="https://kickwheel-dev.firebaseapp.com/img/mobile-logo.png"
-                                srcset="https://kickwheel-dev.firebaseapp.com/img/mobile-logo@2x.png 2x,https://kickwheel-dev.firebaseapp.com/img/mobile-logo@3x.png 3x">
+                            <img img height="28" src="https://raw.githubusercontent.com/soyoongdev/Mova-Stream/back-end/resource/icons/mova-fulltext/mova-fulltext%201x.png"
+                                srcset="https://raw.githubusercontent.com/soyoongdev/Mova-Stream/back-end/resource/icons/mova-fulltext/mova-fulltext%202x.png 2x,https://raw.githubusercontent.com/soyoongdev/Mova-Stream/back-end/resource/icons/mova-fulltext/mova-fulltext%203x.png 3x">
                         </td>
                     </tr>
                 </table>
@@ -48,7 +48,7 @@ const mailOptions = (mail) => {
                                     <td colspan="3" style="padding-bottom:16px;">
                                         <p
                                             style="-webkit-margin-before:0em; -webkit-margin-after:0em;font-size:16px; color:rgba(14, 24, 48, 0.5); line-height:22px;">
-                                            Hello, we need to verify that <span style="color:#49b6c2">${mail}</span> is
+                                            Hello, we need to verify that <span style="color:#e50914">${mail}</span> is
                                             your email address. Once verified you'll be able to see all the schools
                                             you've been accepted to!</p>
                                     </td>
@@ -56,8 +56,8 @@ const mailOptions = (mail) => {
 
                                 <tr>
                                     <td colspan="3" style="padding:16px 0px">
-                                        <a href="${process.env.HOST}/auth/email-verification/${mail}"
-                                            style="min-width:131px; border-radius:25px; background-color:#49b6c2; text-decoration:none; font-weight:500; font-style:normal; font-stretch:normal; line-height:1; letter-spacing:normal; text-align:center; padding:16px 31px; color:#ffffff;">Verify
+                                        <a href="http://localhost:8800${process.env.HOST}/auth/email-verification/${mail}"
+                                            style="min-width:131px; border-radius:25px; background-color:#e50914; text-decoration:none; font-weight:500; font-style:normal; font-stretch:normal; line-height:1; letter-spacing:normal; text-align:center; padding:16px 31px; color:#ffffff;">Verify
                                             Email
                                         </a>
                                     </td>

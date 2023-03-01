@@ -1,4 +1,3 @@
-require("dotenv").config();
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
@@ -55,7 +54,7 @@ exports.register = async (req, res) => {
   if (!req.body.username || !req.body.email || !req.body.password) {
     return res.status(400).json({
       success: false,
-      errorCode: '400',
+      errorCode: "400",
       errorMessage: "Content can't be empty!",
     });
   } else {
@@ -68,14 +67,13 @@ exports.register = async (req, res) => {
       ).toString(),
       isAdmin: req.body.isAdmin,
     });
-
     try {
       let user = await newUser.save();
       if (!user.isActive) {
         // Send verify email
         await sendMailVerification(mailOptions(user.email))
           .then(() => {
-            return res.status(200).json({
+            res.status(200).json({
               success: true,
               message: "An email has been sent!",
             });
@@ -84,7 +82,7 @@ exports.register = async (req, res) => {
             return res.status(500).json({
               success: false,
               errorCode: err.code,
-              errorMessage: `Try to verify with error: ${err.message}`,
+              errorMessage: `Try to verify but error: ${err.message}`,
             });
           });
       }
