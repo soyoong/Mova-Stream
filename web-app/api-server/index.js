@@ -8,7 +8,7 @@ const app = express();
 // User routes
 const authUserRoutes = require("./routes/auth.user.route");
 const userRoutes = require("./routes/user.route");
-
+const genreRoutes = require("./routes/genre.route");
 
 dotenv.config();
 mongoose.set("strictQuery", true); // To suppress errors when run "DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7"
@@ -29,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Auth route api..
 app.use(`${process.env.HOST}/auth`, authUserRoutes);
 app.use(`${process.env.HOST}/users`, userRoutes);
+app.use(`${process.env.HOST}/genres`, genreRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Backend server is running with port: ${process.env.PORT}`);
