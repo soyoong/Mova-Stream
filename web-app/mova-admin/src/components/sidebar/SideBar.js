@@ -1,26 +1,53 @@
 import { useState } from 'react'
-import './SideBar.css'
+import './sidebar.css'
 
-import logo from 'assets/mova-logo-dark.png'
+import { icons } from 'assets/index'
 
-function SideBar() {
-  const handleClick = event => {
-    console.log('className 👉️', event.currentTarget.className)
+import { appDefineData } from 'constants/appDefineData'
+import { Link } from 'react-router-dom'
 
-    if (event.currentTarget.classList.contains('my-class')) {
-      console.log('Element contains class')
-    } else {
-      console.log('Element does NOT contain class')
-    }
-  }
+function SideBar(props) {
+  const [selected, setSelected] = useState(0)
 
   return (
     <div className="sidebar">
-      <div className="logo">
-        <img src={logo} alt="logo" />
-        <span>
-          Sh<span>o</span>ps
-        </span>
+      <a className="logo-expand" href="/">
+        <img src={icons.logo} alt="logo" className="logo" />
+        Mova
+      </a>
+      <div className="side-wrapper">
+        <div className="side-title">MENU</div>
+        <div className="side-menu">
+          {appDefineData.map((item, index) => {
+            if (index <= 8) {
+              return (
+                <Link className={selected === index ? 'sidebar-link is-active' : 'sidebar-link'} to={item.path}>
+                  <img src={selected === index ? item.iconFill : item.iconOutLine} alt={item.title} />
+                  {item.title}
+                </Link>
+              )
+            } else {
+              return null
+            }
+          })}
+        </div>
+      </div>
+      <div className="side-wrapper">
+        <div className="side-title">Other</div>
+        <div className="side-menu">
+          {appDefineData.map((item, index) => {
+            if (index > 8) {
+              return (
+                <a className={selected === index ? 'sidebar-link is-active' : 'sidebar-link'} href="/">
+                  <img src={selected === index ? item.iconFill : item.iconOutLine} alt={item.title} />
+                  {item.title}
+                </a>
+              )
+            } else {
+              return null
+            }
+          })}
+        </div>
       </div>
     </div>
   )

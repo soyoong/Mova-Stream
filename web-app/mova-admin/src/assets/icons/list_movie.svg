@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlnsXlink="http://www.w3.org/1999/xlink"
+  xmlnsSvgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 32 32"
+  style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+  <g>
+    <path
+      d="M27 10H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h22a3 3 0 0 0 3-3V13a3 3 0 0 0-3-3zm1 17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V13a1 1 0 0 1 1-1h22a1 1 0 0 1 1 1zm-7.55-7.89-8-4A1 1 0 0 0 11 16v8a1 1 0 0 0 .47.85A1 1 0 0 0 12 25a1 1 0 0 0 .45-.11l8-4a1 1 0 0 0 0-1.78zM13 22.38v-4.76L17.76 20zM7 3a1 1 0 0 1 1-1h16a1 1 0 0 1 0 2H8a1 1 0 0 1-1-1zM4 7a1 1 0 0 1 1-1h22a1 1 0 0 1 0 2H5a1 1 0 0 1-1-1z"
+      data-name="07 playlist" fill="#000000" data-original="#000000"></path>
+  </g>
+</svg>

@@ -1,115 +1,147 @@
 .sidebar {
+  width: 220px;
+  height: 100%;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  position: relative;
-  padding-top: 4rem;
-  transition: all 300ms ease;
+  flex-shrink: 0;
+  transition-duration: 0.2s;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
-/* logo */
-.bars {
+.sidebar .logo {
+  display: none;
+  width: 30px;
+  height: 30px;
+  background-color: #22b07d;
+  flex-shrink: 0;
+  color: #fff;
+  align-items: center;
+  border-radius: 50%;
+  justify-content: center;
+}
+.sidebar .logo-expand {
+  text-decoration: none;
+  color: var(--mainColor);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 34px;
+  position: sticky;
+  top: 0;
+  text-align: left;
+}
+.sidebar .logo-expand:before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: 0;
+  background: var(--theme-bg);
+  width: 200px;
+  height: 70px;
+  z-index: -1;
+}
+.sidebar-link {
+  gap: 1rem;
+}
+.sidebar-link img {
+  object-fit: contain;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sidebar-link:hover,
+.sidebar-link.is-active {
+  color: #fff;
+  font-weight: 600;
+  filter: invert(100%) sepia(0%) saturate(7436%) hue-rotate(138deg) brightness(101%) contrast(113%);
+}
+.sidebar-link:hover:nth-child(2n + 1) svg,
+.sidebar-link.is-active:nth-child(2n + 1) svg {
+  background: #ff7551;
+}
+.sidebar-link:hover:nth-child(2n) svg,
+.sidebar-link.is-active:nth-child(2n) svg {
+  background: #32a7e2;
+}
+.sidebar-link:hover:nth-child(2n + 3) svg,
+.sidebar-link.is-active:nth-child(2n + 3) svg {
+  background: #6c5ecf;
+}
+.sidebar.collapse {
+  width: 90px;
+  border-right: 1px solid var(--border-color);
+}
+.sidebar.collapse .logo-expand,
+.sidebar.collapse .side-title {
   display: none;
 }
-
-.logo {
+.sidebar.collapse .logo {
   display: flex;
-  height: 5rem;
-  font-weight: bold;
-  font-size: 22px;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
-  height: 4%;
 }
-.logo > span > span {
-  color: var(--pink);
+.sidebar.collapse .side-wrapper {
+  width: 30px;
+}
+.sidebar.collapse .side-menu svg {
+  margin-right: 30px;
 }
 
-.logo > img {
-  width: 3rem;
-  height: 3rem;
+@-webkit-keyframes bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-/* menu */
-.menu {
-  margin-top: 4rem;
+@keyframes bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+.side-menu {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
-.menuItem {
+.side-menu a {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  height: 2.5rem;
-  margin-left: 2rem;
-  position: relative;
-  transition: all 300ms ease;
-  border-radius: 0.7rem;
-  font-size: 14px;
+  text-decoration: none;
+  color: var(--body-color);
+}
+.side-menu a + a {
+  margin-top: 26px;
+}
+.side-menu svg {
+  width: 30px;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: var(--button-bg);
+  flex-shrink: 0;
+  margin-right: 16px;
+}
+.side-menu svg:hover {
+  color: #fff;
 }
 
-.menuItem:hover {
-  cursor: pointer;
+.side-title {
+  font-size: 12px;
+  letter-spacing: 0.07em;
+  margin-bottom: 24px;
+  text-transform: uppercase;
 }
 
-.menu .menuItem:last-child {
-  position: absolute;
-  bottom: 2.3rem;
-  width: 100%;
+.side-wrapper {
+  border-bottom: 1px solid var(--border-color);
+  padding: 36px 0;
+  width: 145px;
 }
-
-.active {
-  background: var(--activeItem);
-  margin-left: 0;
-}
-.active::before {
-  content: '';
-  width: 8px;
-  height: 100%;
-  background: var(--pink);
-  margin-right: calc(1rem - 8px);
-}
-
-/* Tablets */
-@media screen and (max-width: 1200px) {
-  .menuItem > span {
-    display: none;
-  }
-  .logo {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .sidebar {
-    position: fixed;
-    z-index: 9;
-    background: #ffe0e0;
-    width: 55%;
-    padding-right: 1rem;
-    height: 100%;
-  }
-  .menuItem > span {
-    display: block;
-  }
-  .logo {
-    display: flex;
-  }
-  .menu .menuItem:last-child {
-    position: relative;
-    margin-top: 6rem;
-  }
-  .bars {
-    display: flex;
-    position: fixed;
-    top: 2rem;
-    left: 60%;
-    background: #ffe0e0;
-    padding: 10px;
-    border-radius: 10px;
-    z-index: 9;
-  }
-  .close {
-    left: -60%;
-  }
+.side-wrapper + .side-wrapper {
+  border-bottom: none;
 }
