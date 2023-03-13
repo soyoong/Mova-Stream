@@ -11,7 +11,8 @@ import TopTrending from 'pages/toptrending/TopTrending'
 import Favorites from 'pages/favorites/Favorites'
 import ListMovies from 'pages/listmovies/ListMovies'
 
-export const appDefineData = [
+// SIDEBAR CONFIGURATION
+export const sidebarData = [
   {
     id: 0,
     title: 'Home',

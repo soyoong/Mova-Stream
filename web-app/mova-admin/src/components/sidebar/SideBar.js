@@ -3,11 +3,17 @@ import './sidebar.css'
 
 import { icons } from 'assets/index'
 
-import { appDefineData } from 'constants/appDefineData'
+import { sidebarData } from 'constants/appDefineData'
 import { Link } from 'react-router-dom'
 
-function SideBar(props) {
+function SideBar() {
   const [selected, setSelected] = useState(0)
+
+  const handleSelector = index => {
+    setSelected(index)
+    // const getElementById = document.getElementById(`${index}`)
+    // getElementById.className = 'is-active'
+  }
 
   return (
     <div className="sidebar">
@@ -18,37 +24,29 @@ function SideBar(props) {
       <div className="side-wrapper">
         <div className="side-title">MENU</div>
         <div className="side-menu">
-          {appDefineData.map((item, index) => {
-            if (index <= 8) {
-              return (
-                <Link className={selected === index ? 'sidebar-link is-active' : 'sidebar-link'} to={item.path}>
-                  <img src={selected === index ? item.iconFill : item.iconOutLine} alt={item.title} />
-                  {item.title}
-                </Link>
-              )
-            } else {
-              return null
-            }
+          {sidebarData.map((item, index) => {
+            return (
+              <a id={`${index}`} className="sidebar-link" onClick={handleSelector(index)} href="/">
+                <img src={selected === index ? item.iconFill : item.iconOutLine} alt={item.title} />
+                {item.title}
+              </a>
+            )
           })}
         </div>
       </div>
-      <div className="side-wrapper">
+      {/* <div className="side-wrapper">
         <div className="side-title">Other</div>
         <div className="side-menu">
-          {appDefineData.map((item, index) => {
-            if (index > 8) {
-              return (
-                <a className={selected === index ? 'sidebar-link is-active' : 'sidebar-link'} href="/">
-                  <img src={selected === index ? item.iconFill : item.iconOutLine} alt={item.title} />
-                  {item.title}
-                </a>
-              )
-            } else {
-              return null
-            }
+          {sidebarData.map((item, index) => {
+            return (
+              <a className={selected === index ? 'sidebar-link is-active' : 'sidebar-link'} href="/">
+                <img src={selected === index ? item.iconFill : item.iconOutLine} alt={item.title} />
+                {item.title}
+              </a>
+            )
           })}
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
