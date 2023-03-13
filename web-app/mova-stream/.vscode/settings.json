@@ -1,4 +1,16 @@
 {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.formatOnPaste": false, // required
+  "editor.formatOnType": false, // required
+  "editor.formatOnSave": true, // optional
+  "editor.formatOnSaveMode": "file", // required to format on save
+  "files.autoSave": "onFocusChange", // optional but recommended,
+  "prettier.arrowParens": "avoid",
+  "prettier.semi": false,
+  "prettier.trailingComma": "none",
+  "prettier.endOfLine": "lf",
+  "prettier.tabWidth": 2,
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 120,
+  "prettier.jsxSingleQuote": false
 }
