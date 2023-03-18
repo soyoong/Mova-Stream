@@ -1,0 +1,63 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+  --default-layout-height-header: 70px;
+  --default-layout-height-footer: 252px;
+  --primary-red: #e50f1e;
+  --default-layout-background-container: #141414;
+  --default-layout-background-footer: #191919;
+  --default-horizontal-spacing: 16px;
+  --default-vertical-spacing: 16px;
+  // color
+  --m-bg-opacity: 1;
+  --m-white: #ffffff;
+  --m-bg-opacity: 1;
+  --m-background-page: rgb(20, 20, 20);
+  --m-border: rgba(255, 255, 255, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  text-rendering: optimizeSpeed;
+  background-color: rgb(20 20 20 / var(--m-bg-opacity));
+}
+
+html,
+body {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  transition: all 0.5s ease-in-out;
+}
+
+// Title font style
+
+.title-400 {
+  font-weight: 400;
+  color: var(--m-white);
+}
+
+.title-400:hover {
+}
+
+.title-600 {
+  font-weight: 600;
+  color: var(--m-white);
+}
+
+.title-600:hover {
+  color: var(--primary-red);
+  transition: all 0.2s ease-in-out;
+}

@@ -1,13 +1,13 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Banner from '../components/Banner'
-import Header from '../components/Header'
-import requests from '../service/apiRequest'
-import { Movie } from '../typings'
-import Row from '../components/Row'
-import { useRecoilValue } from 'recoil'
-import { modalState } from '../atoms/modalAtom'
-import Modal from '../components/Modal'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Banner from "../components/Banner";
+import Header from "../components/Header";
+import requests from "../service/apiRequest";
+import { Movie } from "../typings";
+import Row from "../components/Row";
+import { useRecoilValue } from "recoil";
+import { modalState } from "../atoms/modalAtom";
+import Modal from "../components/Modal";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -31,7 +31,6 @@ const Home = ({
   topRated,
   trendingNow,
 }: Props) => {
-
   const showModal = useRecoilValue(modalState);
 
   return (
@@ -61,7 +60,7 @@ const Home = ({
   );
 };
 
-export default Home
+export default Home;
 
 export const getServerSideProps = async () => {
   // const products = await getProducts(payments, {

@@ -1,0 +1,7 @@
+@import 'normalize.css';
+
+.wrapper {
+  height: var(--default-layout-height-footer);
+  background-color: #313131;
+  padding: var(--default-horizontal-spacing) var(--default-horizontal-spacing);
+}

@@ -1,0 +1,7 @@
+export { default as Home } from '~/pages/home/Home'
+export { default as Movies } from '~/pages/movies/Movies'
+export { default as TVShows } from '~/pages/tvshows/TVShows'
+export { default as Cinemas } from '~/pages/cinemas/Cinemas'
+export { default as News } from '~/pages/news/News'
+export { default as MyList } from '~/pages/mylist/MyList'
+export { default as Favorites } from '~/pages/favorites/Favorites'

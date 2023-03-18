@@ -7,6 +7,14 @@
           "~": "./src"
         }
       }
+    ],
+    [
+      "macros",
+      {
+        "fontawesome-svg-core": {
+          "license": "free"
+        }
+      }
     ]
   ]
 }

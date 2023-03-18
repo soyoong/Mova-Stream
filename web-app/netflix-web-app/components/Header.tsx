@@ -5,24 +5,24 @@ import useAuth from "../hooks/useAuth";
 import { logoUrl } from "../constants/image";
 
 function Header() {
-    const [isScrolled, setIsScrolled] = useState(false)
-    const { logout } = useAuth()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { logout } = useAuth();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 0) {
-                setIsScrolled(true)
-            } else {
-                setIsScrolled(false)
-            }
-        }
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
 
-        window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
-        return () => {
-            window.removeEventListener("scroll", handleScroll)
-        }
-    })
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
 
   return (
     <header className={`${isScrolled && "bg-[#141414]"}`}>
@@ -55,12 +55,12 @@ function Header() {
           <BellIcon className="h-6 w-6" />
         </button>
         {/* <Link href="/account"> */}
-          <img
-            onClick={logout}
-            src="https://rb.gy/g1pwyx"
-            alt="account"
-            className="cursor-pointer rounded"
-          />
+        <img
+          onClick={logout}
+          src="https://rb.gy/g1pwyx"
+          alt="account"
+          className="cursor-pointer rounded"
+        />
         {/* </Link> */}
       </div>
     </header>
