@@ -1,18 +1,15 @@
 @import 'normalize.css';
 
 .wrapper {
-  min-width: 900px;
   width: 100%;
   position: relative;
 }
 
 .container {
-  overflow: hidden;
-
   .carousel {
     display: flex;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 
     img {
       width: 100%;
@@ -22,30 +19,45 @@
     }
   }
 
-  .content {
+  .overview {
+    width: 90%;
+    overflow: hidden;
     position: absolute;
-    z-index: 10;
     top: 25%;
-    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: start;
     align-items: center;
-    margin: 1rem 3rem 1rem;
+    padding: 2rem 4rem;
+    z-index: 10;
 
-    h1 {
-      font-size: 4rem;
-      line-height: 2rem;
-      font-weight: 700;
-      color: var(--m-white);
+    .title {
+      width: 100%;
+
+      h1 {
+        font-size: 4rem;
+        line-height: 2rem;
+        font-weight: 700;
+        color: var(--m-white);
+        text-align: start;
+      }
     }
 
-    p {
-      font-size: 1.5rem;
-      line-height: 2rem;
-      text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
-      color: var(--m-white);
-      max-width: 65%;
+    .sub-title {
+      width: 100%;
+
+      p {
+        max-width: 80%;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+        color: var(--m-white);
+      }
     }
 
     .action-buttons {
+      width: 100%;
       display: flex;
       flex-direction: row;
       column-gap: 0.75rem;

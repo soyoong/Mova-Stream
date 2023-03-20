@@ -1,14 +1,17 @@
-import styles from './Header.module.scss'
+import { useEffect, useState } from 'react'
+import styles from './HeaderNav.module.scss'
 import { Link } from 'react-router-dom'
 import { publicRoutes } from '~/routes'
 import classNames from 'classnames/bind'
 import images from '~/assets/images'
 import config from '~/config/routes'
-import { useEffect, useState } from 'react'
+import { ButtonIcon } from '~/components'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
+import UserDropDownMenu from './user_dropdown_menu/UserDropDownMenu'
 
 const cx = classNames.bind(styles)
 
-function Header() {
+function HeaderNav() {
   const [indexSelected, setIndexSelected] = useState(0)
   const [scrolled, setScrolled] = useState(false)
 
@@ -31,7 +34,7 @@ function Header() {
   }, [indexSelected])
 
   return (
-    <div
+    <nav
       className={cx('wrapper', {
         'bg-blur': scrolled,
       })}
@@ -59,9 +62,13 @@ function Header() {
           </ul>
         </div>
       </div>
-      <div className={cx('right-side')}>Right side</div>
-    </div>
+      <div className={cx('right-side')}>
+        <ButtonIcon icon={solid('magnifying-glass')} />
+        <ButtonIcon icon={solid('bell')} />
+        <UserDropDownMenu />
+      </div>
+    </nav>
   )
 }
 
-export default Header
+export default HeaderNav

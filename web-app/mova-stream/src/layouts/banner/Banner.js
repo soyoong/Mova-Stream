@@ -1,6 +1,7 @@
 import styles from './Banner.module.scss'
 import classNames from 'classnames/bind'
-import { ButtonPlay, ButtonInfo } from '~/components'
+import { ButtonPlay, ButtonInfo, ButtonIcon } from '~/components'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 const cx = classNames.bind(styles)
 
@@ -29,9 +30,13 @@ function Banner() {
         <div className={cx('carousel')}>
           <img src={movie.backdrop_path} alt="" />
         </div>
-        <div className={cx('content')}>
-          <h1 className={cx('title')}>{movie?.title || movie?.name || movie?.original_name}</h1>
-          <p className={cx('sub-title')}>{movie?.overview}</p>
+        <div className={cx('overview')}>
+          <div className={cx('title')}>
+            <h1>{movie?.title || movie?.name || movie?.original_name}</h1>
+          </div>
+          <div className={cx('sub-title')}>
+            <p>{movie?.overview}</p>
+          </div>
           <div className={cx('action-buttons')}>
             <ButtonPlay />
             <ButtonInfo />

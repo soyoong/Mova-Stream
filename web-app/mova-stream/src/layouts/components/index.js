@@ -1,3 +1,1 @@
-export { default as Header } from './header/Header'
-export { default as Footer } from './footer/Footer'
-export { default as Banner } from './banner/Banner'
+export { default as HeaderNavItem } from '../../components/header_nav_item/HeaderNavItem'

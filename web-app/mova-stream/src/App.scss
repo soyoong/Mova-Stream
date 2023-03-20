@@ -15,6 +15,15 @@
   --m-bg-opacity: 1;
   --m-background-page: rgb(20, 20, 20);
   --m-border: rgba(255, 255, 255, 0.12);
+
+  // Button side
+  --m-icon-primary-size: 1.25rem; /* 24px */
+  --m-icon-large-size: 2rem; /* 32px */
+  --m-avatar-mini-size: 2rem; /* 32px */
+
+  // Transition
+  --m-button-transition-duration: 0.15s;
+  --m-button-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -26,7 +35,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   text-rendering: optimizeSpeed;
-  background-color: rgb(20 20 20 / var(--m-bg-opacity));
+  background-color: var(--m-background-page);
 }
 
 html,
@@ -40,6 +49,13 @@ a {
 
 a:hover {
   transition: all 0.5s ease-in-out;
+}
+.element-hidden {
+  visibility: hidden;
+}
+
+.element-visibility {
+  visibility: visible;
 }
 
 // Title font style
