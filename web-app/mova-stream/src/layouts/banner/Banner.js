@@ -2,6 +2,7 @@ import styles from './Banner.module.scss'
 import classNames from 'classnames/bind'
 import { ButtonPlay, ButtonInfo, ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const cx = classNames.bind(styles)
 
@@ -30,7 +31,7 @@ function Banner() {
         <div className={cx('carousel')}>
           <img src={movie.backdrop_path} alt="" />
         </div>
-        <div className={cx('overview')}>
+        <div className={cx('overview-content')}>
           <div className={cx('title')}>
             <h1>{movie?.title || movie?.name || movie?.original_name}</h1>
           </div>
@@ -38,18 +39,24 @@ function Banner() {
             <p>{movie?.overview}</p>
           </div>
           <div className={cx('action-buttons')}>
-            <ButtonPlay />
-            <ButtonInfo />
+            <button className={cx('button-play')}>
+              <FontAwesomeIcon className={cx('fa-button')} icon={solid('play')} />
+              Play
+            </button>
+            <button className={cx('button-info')}>
+              More Info
+              <FontAwesomeIcon className={cx('fa-button')} icon={solid('circle-info')} />
+            </button>
           </div>
-          {/* Controller */}
-          {/* <div className={cx('controller')}>
-          <div className={cx('button-wrapper')}>
-            <FontAwesomeIcon className={cx('fa-prev')} icon={solid('chevron-left')} />
-          </div>
-          <div className={cx('button-wrapper')}>
-            <FontAwesomeIcon className={cx('fa-next')} icon={solid('chevron-right')} />
-          </div>
-        </div> */}
+        </div>
+        {/* Controller */}
+        <div className={cx('slider-buttons')}>
+          <button>
+            <FontAwesomeIcon className={cx('button-prev')} icon={solid('chevron-left')} />
+          </button>
+          <button>
+            <FontAwesomeIcon className={cx('button-next')} icon={solid('chevron-right')} />
+          </button>
         </div>
       </div>
     </div>
