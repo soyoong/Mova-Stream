@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './HeaderNav.module.scss'
 import { Link } from 'react-router-dom'
 import { publicRoutes } from '~/routes'
@@ -14,7 +14,8 @@ const cx = classNames.bind(styles)
 function HeaderNav() {
   const [indexSelected, setIndexSelected] = useState(0)
   const [scrolled, setScrolled] = useState(false)
-  const [searchBarOpen, setSearchBarOpen] = useState(false)
+  const inputRef = useRef(null)
+  const [searchBarExpand, setSearchBarExpand] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +29,15 @@ function HeaderNav() {
 
   const handleSelected = index => {
     setIndexSelected(index)
+  }
+
+  const handleSearchIconSelected = () => {
+    // if (!searchBarExpand) {
+    //   setSearchBarExpand(true)
+    //   inputRef.current.focus()
+    // } else {
+    console.log('Searching...')
+    // }
   }
 
   return (
@@ -59,12 +69,12 @@ function HeaderNav() {
           </ul>
         </div>
       </div>
+      <div className={cx('search-bar')}>
+        <input ref={inputRef} className={cx('search-input')} type="text" placeholder="Search..." spellCheck={false} />
+        <ButtonIcon className={cx('search-btn')} icon={solid('magnifying-glass')} onClick={handleSearchIconSelected} />
+      </div>
       <div className={cx('right-side')}>
-        <ButtonIcon
-          className={cx('search-btn')}
-          icon={solid('magnifying-glass')}
-          onClick={() => setSearchBarOpen(!searchBarOpen)}
-        />
+        {/* <ButtonIcon className={cx('search-btn')} icon={solid('magnifying-glass')} onClick={() => {}} /> */}
         <ButtonIcon icon={solid('bell')} />
         <UserDropDownMenu />
       </div>
