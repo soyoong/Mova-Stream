@@ -7,8 +7,9 @@ const cx = classNames.bind(styles)
 
 function Home() {
   return (
-    <div>
+    <div className={cx('wrapper')}>
       <Banner />
+      <div>Other slider</div>
     </div>
   )
 }

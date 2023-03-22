@@ -1,50 +1,78 @@
 @import 'normalize.css';
 
 .wrapper {
-  position: relative;
   width: 100vw;
   height: 100vh;
+  // z-index: -10;
 
   .container {
     width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation-duration: 0.8s;
+    animation-name: opacity 0.8s;
+    animation-play-state: running;
+    animation-timing-function: ease;
 
     .carousel {
       position: absolute;
-      top: 0px;
       left: 0px;
+      top: 0px;
       right: 0px;
-      z-index: -10;
-      height: 95vh;
       width: 100vw;
+      height: 95vh;
+      animation: slider 20s linear infinite;
 
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        -webkit-transition: opacity 2s;
+      }
+
+      .overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        background-image: linear-gradient(
+          180deg,
+          hsla(0, 0%, 8%, 0) 0,
+          hsla(0, 0%, 8%, 0.15) 15%,
+          hsla(0, 0%, 8%, 0.35) 29%,
+          hsla(0, 0%, 8%, 0.58) 44%,
+          #141414 98%,
+          #141414
+        );
       }
     }
 
     .overview-content {
+      position: absolute;
       display: flex;
       flex-direction: column;
       row-gap: 1rem;
-      margin: 0rem 4rem;
+      margin: 0 4rem;
+      z-index: 10s;
 
       .title {
         width: 100%;
+        margin-bottom: -50px;
 
         h1 {
-          font-size: 4rem;
-          line-height: 2rem;
+          max-width: 70%;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2; /* number of lines to show */
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+          font-family: NetflixSans-Medium;
+          font-size: 4.5rem;
           font-weight: 700;
           color: var(--m-white);
-          text-align: start;
         }
       }
 
@@ -52,9 +80,14 @@
         width: 100%;
 
         p {
-          max-width: 80%;
+          max-width: 50%;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 3; /* number of lines to show */
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+          font-family: NetflixSans-Regular;
           font-size: 1.5rem;
-          line-height: 2rem;
           text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
           color: var(--m-white);
         }
@@ -80,8 +113,8 @@
           font-size: 1.25rem;
           line-height: 1.25rem;
           font-weight: 600;
-          transition-duration: var(--m-button-transition-duration);
-          transition-timing-function: var(--m-button-transition-timing-function);
+          // transition-duration: var(--m-button-transition-duration);
+          // transition-timing-function: var(--m-button-transition-timing-function);
         }
 
         .button-play {
@@ -133,19 +166,27 @@
         opacity: 1;
       }
 
-      .button-prev,
-      .button-next {
+      .fa-prev,
+      .fa-next {
         color: var(--m-white);
         width: 1.5rem;
         height: 1.5rem;
       }
 
-      .button-prev:hover,
-      .button-next:hover {
-        width: 1.75rem;
-        height: 1.75rem;
-        transition: 0.2s ease-in-out;
+      .fa-prev:hover,
+      .fa-next:hover {
+        opacity: 1;
       }
     }
   }
+
+  // .container {
+  //   width: 100%;
+  //   height: 100%;
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+
+  // }
 }

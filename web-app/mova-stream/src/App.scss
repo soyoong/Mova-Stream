@@ -1,5 +1,6 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&display=swap');
 
 :root {
   --default-layout-height-header: 70px;
@@ -33,14 +34,17 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  // font-family: 'Roboto', sans-serif;
+  font-family: 'Public Sans', sans-serif;
   text-rendering: optimizeSpeed;
-  background-color: var(--m-background-page);
 }
 
 html,
 body {
   height: 100%;
+}
+
+.wrapper {
 }
 
 a {
@@ -76,4 +80,35 @@ a:hover {
 .title-600:hover {
   color: var(--primary-red);
   transition: all 0.2s ease-in-out;
+}
+
+@font-face {
+  font-family: NetflixSans-Medium;
+  src: url(./assets/fonts/netflix-sans-font/NetflixSans-Medium.otf);
+}
+
+@font-face {
+  font-family: NetflixSans-Regular;
+  src: url(./assets/fonts/netflix-sans-font/NetflixSans-Regular.otf);
+}
+
+@font-face {
+  font-family: NetflixSans-Bold;
+  src: url(./assets/fonts/netflix-sans-font/NetflixSans-Bold.otf);
+}
+
+@font-face {
+  font-family: NetflixSans-Medium;
+  src: url(./assets/fonts/netflix-sans-font/NetflixSans-Medium.otf);
+}
+
+// Animation
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

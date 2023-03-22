@@ -14,6 +14,7 @@ const cx = classNames.bind(styles)
 function HeaderNav() {
   const [indexSelected, setIndexSelected] = useState(0)
   const [scrolled, setScrolled] = useState(false)
+  const [searchBarOpen, setSearchBarOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,10 +29,6 @@ function HeaderNav() {
   const handleSelected = index => {
     setIndexSelected(index)
   }
-
-  useEffect(() => {
-    console.log(indexSelected)
-  }, [indexSelected])
 
   return (
     <nav
@@ -63,7 +60,11 @@ function HeaderNav() {
         </div>
       </div>
       <div className={cx('right-side')}>
-        <ButtonIcon icon={solid('magnifying-glass')} />
+        <ButtonIcon
+          className={cx('search-btn')}
+          icon={solid('magnifying-glass')}
+          onClick={() => setSearchBarOpen(!searchBarOpen)}
+        />
         <ButtonIcon icon={solid('bell')} />
         <UserDropDownMenu />
       </div>

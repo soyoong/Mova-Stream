@@ -1,22 +1,24 @@
 @import 'normalize.css';
 
 .wrapper {
+  width: 100%;
+  height: var(--default-layout-height-header);
   position: fixed;
   top: 0px;
   left: 0px;
   right: 0px;
-  width: 100%;
   align-items: center;
   display: flex;
   flex-direction: row;
-  height: var(--default-layout-height-header);
-  justify-content: space-between;
+  // justify-content: space-between;
   padding: 0 2rem;
   z-index: 999;
   // background-color: rgba(20, 20, 20, 0.25) !important;
   transition: 0.2s ease-in-out;
 
   .left-side {
+    flex-grow: 3;
+    left: 0px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -42,15 +44,14 @@
         align-items: center;
         list-style-type: none;
 
-        .active-item li {
-          font-weight: 700;
-          color: var(--primary-red);
+        .menu-item li {
+          font-family: NetflixSans-Medium;
+          color: var(--m-white);
         }
 
-        .menu-item li {
-          font-weight: 500;
-          font-size: 1rem;
-          color: var(--m-white);
+        .active-item li {
+          font-family: NetflixSans-Medium;
+          color: var(--primary-red);
         }
 
         .menu-item li:hover {
@@ -62,6 +63,7 @@
   }
 
   .right-side {
+    flex-grow: 1;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -75,4 +77,13 @@
   background-color: rgba(20, 20, 20, 0.5) !important;
   -webkit-backdrop-filter: blur(0.65em);
   transition: 0.2s ease-in-out;
+}
+
+body,
+.search-bar {
+  display: flex;
+}
+body {
+  background: #f1f1f1;
+  height: 100vh;
 }

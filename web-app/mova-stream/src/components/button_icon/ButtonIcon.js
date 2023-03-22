@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const cx = classNames.bind(styles)
 
-function ButtonIcon({ icon, actionClicked, large }) {
+function ButtonIcon({ icon, onClick, large }) {
   return (
     <div className={cx('wrapper')}>
-      <button onClick={actionClicked}>
+      <button onClick={onClick}>
         <FontAwesomeIcon
           className={cx('fa-button', {
             'large-icon': large,

@@ -1,42 +1,76 @@
+import { useEffect, useRef, useState } from 'react'
 import styles from './Banner.module.scss'
 import classNames from 'classnames/bind'
-import { ButtonPlay, ButtonInfo, ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import tmdbData from '~/data/tmdb'
 
 const cx = classNames.bind(styles)
 
-const movie = {
-  adult: false,
-  backdrop_path: 'https://image.tmdb.org/t/p/original/jr8tSoJGj33XLgFBy6lmZhpGQNu.jpg',
-  genre_ids: [16, 12, 35, 10751],
-  id: 315162,
-  original_language: 'en',
-  original_title: 'Puss in Boots: The Last Wish',
-  overview:
-    'Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives.',
-  popularity: 1972.345,
-  poster_path: 'https://image.tmdb.org/t/p/original/kuf6dutpsT0vSVehic3EZIqkOBt.jpg',
-  release_date: '2022-12-07',
-  title: 'Puss in Boots: The Last Wish',
-  video: false,
-  vote_average: 8.4,
-  vote_count: 4613,
-}
-
 function Banner() {
+  const [data, setData] = useState(tmdbData.netflixOriginals)
+  const [item, setItem] = useState({})
+  const initialSeconds = 15
+  const [seconds, setSeconds] = useState(initialSeconds)
+  var currentIndex = useRef(0)
+
+  useEffect(() => {
+    setItem(data[currentIndex.current])
+  }, [data, currentIndex.current])
+
+  const handleSlider = i => {
+    if (i > 0) {
+      if (currentIndex.current >= data.length - 1) {
+        currentIndex.current = 0
+      } else {
+        currentIndex.current += i
+      }
+    } else {
+      if (currentIndex.current === 0) {
+        currentIndex.current = data.length - 1
+      } else {
+        currentIndex.current += i
+      }
+    }
+  }
+
+  useEffect(() => {
+    let myInterval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1)
+      }
+      if (seconds === 0) {
+        if (currentIndex.current < data.length - 1) {
+          currentIndex.current += 1
+        } else {
+          currentIndex.current = 0
+        }
+        setSeconds(initialSeconds)
+      }
+    }, 1000)
+    return () => {
+      clearInterval(myInterval)
+    }
+  })
+
+  function randomNumberInRange(min, max) {
+    // 👇️ get number between min (inclusive) and max (inclusive)
+    return Math.floor(Math.random() * (max - min + 1)) + min
+  }
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('container')}>
         <div className={cx('carousel')}>
-          <img src={movie.backdrop_path} alt="" />
+          <img src={item.backdrop_path} alt="banner" />
+          <div className={cx('overlay')}></div>
         </div>
         <div className={cx('overview-content')}>
           <div className={cx('title')}>
-            <h1>{movie?.title || movie?.name || movie?.original_name}</h1>
+            <h1>{item?.title || item?.name || item?.original_name}</h1>
           </div>
           <div className={cx('sub-title')}>
-            <p>{movie?.overview}</p>
+            <p>{item?.overview}</p>
           </div>
           <div className={cx('action-buttons')}>
             <button className={cx('button-play')}>
@@ -51,11 +85,11 @@ function Banner() {
         </div>
         {/* Controller */}
         <div className={cx('slider-buttons')}>
-          <button>
-            <FontAwesomeIcon className={cx('button-prev')} icon={solid('chevron-left')} />
+          <button onClick={() => handleSlider(-1)}>
+            <FontAwesomeIcon className={cx('fa-prev')} icon={solid('chevron-left')} />
           </button>
-          <button>
-            <FontAwesomeIcon className={cx('button-next')} icon={solid('chevron-right')} />
+          <button onClick={() => handleSlider(1)}>
+            <FontAwesomeIcon className={cx('fa-next')} icon={solid('chevron-right')} />
           </button>
         </div>
       </div>
