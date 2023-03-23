@@ -1,11 +1,17 @@
+import 'animate.css'
 import styles from './DefaultLayout.module.scss'
 import PropTypes from 'prop-types'
 import classNames from 'classnames/bind'
 import { HeaderNav, FooterNav } from '~/layouts'
+import { useRecoilValue } from 'recoil'
+import { modalState } from '~/lib/recoil'
+import { MovieModal } from '~/layouts/components'
 
 const cx = classNames.bind(styles)
 
 function DefaultLayout({ children }) {
+  const showModal = useRecoilValue(modalState)
+
   return (
     <div className={cx('wrapper')}>
       <HeaderNav />
@@ -14,6 +20,7 @@ function DefaultLayout({ children }) {
         <div className={cx('page-container')}>{children}</div>
       </div>
       <FooterNav />
+      {showModal && <MovieModal />}
     </div>
   )
 }

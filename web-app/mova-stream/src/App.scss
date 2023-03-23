@@ -11,10 +11,9 @@
   --default-horizontal-spacing: 16px;
   --default-vertical-spacing: 16px;
   // color
-  --m-bg-opacity: 1;
   --m-white: #ffffff;
-  --m-bg-opacity: 1;
   --m-background-page: rgb(20, 20, 20);
+  --m-background-page-modal: rgb(24, 24, 24);
   --m-border: rgba(255, 255, 255, 0.12);
 
   // Button side
@@ -100,15 +99,4 @@ a:hover {
 @font-face {
   font-family: NetflixSans-Medium;
   src: url(./assets/fonts/netflix-sans-font/NetflixSans-Medium.otf);
-}
-
-// Animation
-@keyframes opacity {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }

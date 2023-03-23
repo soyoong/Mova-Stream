@@ -4,6 +4,9 @@ import classNames from 'classnames/bind'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import tmdbData from '~/data/tmdb'
+import { useSetRecoilState } from 'recoil'
+import { modalState } from '~/lib/recoil'
+import { MovieModal } from '~/layouts/components'
 
 const cx = classNames.bind(styles)
 
@@ -13,6 +16,7 @@ function Banner() {
   const initialSeconds = 15
   const [seconds, setSeconds] = useState(initialSeconds)
   var currentIndex = useRef(0)
+  const setShowModal = useSetRecoilState(modalState)
 
   useEffect(() => {
     setItem(data[currentIndex.current])
@@ -32,6 +36,7 @@ function Banner() {
         currentIndex.current += i
       }
     }
+    setSeconds(initialSeconds)
   }
 
   useEffect(() => {
@@ -77,7 +82,7 @@ function Banner() {
               <FontAwesomeIcon className={cx('fa-button')} icon={solid('play')} />
               Play
             </button>
-            <button className={cx('button-info')}>
+            <button className={cx('button-info')} onClick={() => setShowModal(true)}>
               More Info
               <FontAwesomeIcon className={cx('fa-button')} icon={solid('circle-info')} />
             </button>
