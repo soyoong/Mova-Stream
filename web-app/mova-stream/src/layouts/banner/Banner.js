@@ -5,8 +5,8 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import tmdbData from '~/data/tmdb'
 import { useSetRecoilState } from 'recoil'
-import { modalState } from '~/lib/recoil'
-import { MovieModal } from '~/layouts/components'
+import { modal } from '~/lib/recoil'
+import { ButtonPlay, ButtonInfo, ButtonIcon } from '~/components'
 
 const cx = classNames.bind(styles)
 
@@ -16,7 +16,8 @@ function Banner() {
   const initialSeconds = 15
   const [seconds, setSeconds] = useState(initialSeconds)
   var currentIndex = useRef(0)
-  const setShowModal = useSetRecoilState(modalState)
+  const setShowModal = useSetRecoilState(modal.modalState)
+  const setModalProps = useSetRecoilState(modal.modalProps)
 
   useEffect(() => {
     setItem(data[currentIndex.current])
@@ -58,9 +59,19 @@ function Banner() {
     }
   })
 
-  function randomNumberInRange(min, max) {
-    // 👇️ get number between min (inclusive) and max (inclusive)
-    return Math.floor(Math.random() * (max - min + 1)) + min
+  const handleInfoSelected = () => {
+    setModalProps({
+      urlVideo: 'https://youtu.be/wxN1T1uxQ2g',
+      voteAverage: item.vote_average,
+      releaseDate: item.release_date,
+      firstAirDate: item.release_date,
+      videoQuality: '4K',
+      overview: item.overview,
+      genres: item.genre_ids,
+      originalLanguage: item.original_language,
+      voteCount: item.vote_count,
+    })
+    setShowModal(true)
   }
 
   return (
@@ -78,14 +89,8 @@ function Banner() {
             <p>{item?.overview}</p>
           </div>
           <div className={cx('action-buttons')}>
-            <button className={cx('button-play')}>
-              <FontAwesomeIcon className={cx('fa-button')} icon={solid('play')} />
-              Play
-            </button>
-            <button className={cx('button-info')} onClick={() => setShowModal(true)}>
-              More Info
-              <FontAwesomeIcon className={cx('fa-button')} icon={solid('circle-info')} />
-            </button>
+            <ButtonPlay onClick={() => console.log('Play')} />
+            <ButtonInfo onClick={handleInfoSelected} />
           </div>
         </div>
         {/* Controller */}

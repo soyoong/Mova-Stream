@@ -33,9 +33,9 @@
 }
 
 body {
-  // font-family: 'Roboto', sans-serif;
-  font-family: 'Public Sans', sans-serif;
+  font-family: NetflixSans-Regular;
   text-rendering: optimizeSpeed;
+  color: rgb(255, 255, 255);
 }
 
 html,
@@ -61,29 +61,9 @@ a:hover {
   visibility: visible;
 }
 
-// Title font style
-
-.title-400 {
-  font-weight: 400;
-  color: var(--m-white);
-}
-
-.title-400:hover {
-}
-
-.title-600 {
-  font-weight: 600;
-  color: var(--m-white);
-}
-
-.title-600:hover {
-  color: var(--primary-red);
-  transition: all 0.2s ease-in-out;
-}
-
 @font-face {
-  font-family: NetflixSans-Medium;
-  src: url(./assets/fonts/netflix-sans-font/NetflixSans-Medium.otf);
+  font-family: NetflixSans-Light;
+  src: url(./assets/fonts/netflix-sans-font/NetflixSans-Light.otf);
 }
 
 @font-face {
@@ -92,11 +72,11 @@ a:hover {
 }
 
 @font-face {
-  font-family: NetflixSans-Bold;
-  src: url(./assets/fonts/netflix-sans-font/NetflixSans-Bold.otf);
+  font-family: NetflixSans-Medium;
+  src: url(./assets/fonts/netflix-sans-font/NetflixSans-Medium.otf);
 }
 
 @font-face {
-  font-family: NetflixSans-Medium;
-  src: url(./assets/fonts/netflix-sans-font/NetflixSans-Medium.otf);
+  font-family: NetflixSans-Bold;
+  src: url(./assets/fonts/netflix-sans-font/NetflixSans-Bold.otf);
 }

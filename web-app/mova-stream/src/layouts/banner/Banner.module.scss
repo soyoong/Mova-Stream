@@ -103,7 +103,6 @@
         flex-direction: row;
         column-gap: 0.75rem;
 
-        .button-play,
         .button-info {
           cursor: pointer;
           background: none;
@@ -121,15 +120,6 @@
           // transition-timing-function: var(--m-button-transition-timing-function);
         }
 
-        .button-play {
-          background-color: white;
-
-          .fa-button {
-            width: var(--m-icon-large-size);
-            height: var(--m-icon-large-size);
-          }
-        }
-
         .button-info {
           background-color: #808080b3;
           color: white;
@@ -140,7 +130,6 @@
             color: white;
           }
         }
-        .button-play:hover,
         .button-info:hover {
           opacity: 0.75;
         }
@@ -153,6 +142,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
       padding: 0 1rem;
       z-index: 10;
 

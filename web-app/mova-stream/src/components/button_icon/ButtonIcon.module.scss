@@ -1,30 +1,23 @@
 @import 'normalize.css';
 
 .wrapper {
-  width: var(--m-icon-primary-size);
-  height: var(--m-icon-primary-size);
+  width: 1rem;
+  height: 1rem;
 
   button {
     cursor: pointer;
     background-image: none;
     background: none;
     border: none;
-    // transition-duration: var(--m-button-transition-duration);
-    // transition-timing-function: var(--m-button-transition-timing-function);
 
     .fa-button {
-      width: 90%;
-      height: 90%;
+      width: 100%;
+      height: 100%;
       color: white;
     }
   }
 
   button:hover {
-    opacity: 0.7;
+    opacity: 0.75;
   }
-}
-
-.largeIcon {
-  width: var(--m-icon-large-size);
-  height: var(--m-icon-large-size);
 }

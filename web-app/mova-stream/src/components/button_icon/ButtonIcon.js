@@ -8,12 +8,7 @@ function ButtonIcon({ icon, onClick, large }) {
   return (
     <div className={cx('wrapper')}>
       <button onClick={onClick}>
-        <FontAwesomeIcon
-          className={cx('fa-button', {
-            'large-icon': large,
-          })}
-          icon={icon}
-        />
+        <FontAwesomeIcon className={cx('fa-button')} icon={icon} />
       </button>
     </div>
   )

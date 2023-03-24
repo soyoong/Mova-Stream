@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames/bind'
 import { HeaderNav, FooterNav } from '~/layouts'
 import { useRecoilValue } from 'recoil'
-import { modalState } from '~/lib/recoil'
+import { modal } from '~/lib/recoil'
 import { MovieModal } from '~/layouts/components'
 
 const cx = classNames.bind(styles)
 
 function DefaultLayout({ children }) {
-  const showModal = useRecoilValue(modalState)
+  const showModal = useRecoilValue(modal.modalState)
 
   return (
     <div className={cx('wrapper')}>
