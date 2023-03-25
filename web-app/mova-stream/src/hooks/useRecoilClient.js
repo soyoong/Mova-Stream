@@ -25,10 +25,18 @@ const useSidebarState = () => {
   return [sidebarState, setSidebarState]
 }
 
+const useSidebarCurrentIndexState = () => {
+  const [sidebarCurrentIndexState, setSidebarCurrentIndexState] = useRecoilState(
+    sidebarRecoils.sidebarCurrentIndexState
+  )
+
+  return [sidebarCurrentIndexState, setSidebarCurrentIndexState]
+}
+
 const useAppState = () => {
   const [appState, setAppState] = useRecoilState(appRecoils.appState)
 
   return [appState, setAppState]
 }
 
-export { useUserMenu, useModalProps, useModalState, useSidebarState, useAppState }
+export { useUserMenu, useModalProps, useModalState, useSidebarState, useSidebarCurrentIndexState, useAppState }

@@ -5,4 +5,9 @@ const sidebarState = atom({
   default: false,
 })
 
-export { sidebarState }
+const sidebarCurrentIndexState = atom({
+  key: 'sidebarCurrentIndexState',
+  default: 0,
+})
+
+export { sidebarState, sidebarCurrentIndexState }

@@ -37,7 +37,7 @@ function HeaderNav() {
     >
       <div className={cx('left-side')}>
         <div className={cx('sidebar-icon')}>
-          <ButtonIcon onClick={() => setSidebarState(true)} className={cx('fa-button')} icon={solid('bars')} large />
+          <ButtonIcon onClick={() => setSidebarState(true)} className={cx('fa-button')} icon={solid('bars')} />
         </div>
         <div className={cx('logo-container')}>
           <Link to={publicRoutes[0].path}>

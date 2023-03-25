@@ -6,17 +6,18 @@ import { ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { Link } from 'react-router-dom'
 import images from '~/assets/images'
-import { useSidebarState } from '~/hooks/useRecoilClient'
+import { useSidebarState, useSidebarCurrentIndexState } from '~/hooks/useRecoilClient'
+import { useEffect } from 'react'
 
 const cx = classNames.bind(styles)
 
 function Sidebar() {
   const [sidebarState, setSidebarState] = useSidebarState()
-  // var [useAppState, setUseAppState] = useRecoilState(appState)
+  var [sidebarCurrentIndexState, setSidebarCurrentIndexState] = useSidebarCurrentIndexState()
 
-  // useEffect(() => {
-  //   console.log(useAppState.currentIndexPageSelected)
-  // }, [useAppState.currentIndexPageSelected])
+  useEffect(() => {
+    console.log(sidebarCurrentIndexState)
+  }, [])
 
   return (
     <div className={`${sidebarState ? 'bounceInLeft' : 'bounceOutLeft'} ${cx('wrapper')}`}>
@@ -36,11 +37,11 @@ function Sidebar() {
               <HeaderItem
                 key={index}
                 data={item}
-                // isActive={useAppState.currentIndexPageSelected === index}
-                // onClick={() => {
-                //   setUseAppState(index)
-                //   setShowSidebar(false)
-                // }}
+                isActive={sidebarCurrentIndexState === index}
+                onClick={() => {
+                  setSidebarCurrentIndexState(index)
+                  setSidebarState(false)
+                }}
               />
             )
           })}
