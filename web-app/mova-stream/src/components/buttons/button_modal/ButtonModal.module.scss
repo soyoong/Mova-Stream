@@ -1,0 +1,35 @@
+@import 'normalize.css';
+
+.button-modal {
+  cursor: pointer;
+  width: 2.75rem;
+  height: 2.75rem;
+  background-image: none;
+  background: none;
+  border: none;
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: rgb(42 42 42 / 0.5);
+    border-color: white;
+    animation-name: 'pulse';
+    animation-duration: 0.5s;
+  }
+
+  .fa-button {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+  }
+}
+
+.background {
+  background-color: rgb(42, 42, 42);
+}
+
+.bordered {
+  border: 2px solid rgb(128 128 128);
+}

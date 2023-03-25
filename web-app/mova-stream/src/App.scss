@@ -5,7 +5,7 @@
 :root {
   --default-layout-height-header: 70px;
   --default-layout-height-footer: 252px;
-  --primary-red: #e50f1e;
+  --m-primary-red: #e50f1e;
   --default-layout-background-container: #141414;
   --default-layout-background-footer: #191919;
   --default-horizontal-spacing: 16px;
@@ -15,6 +15,7 @@
   --m-background-page: rgb(20, 20, 20);
   --m-background-page-modal: rgb(24, 24, 24);
   --m-border: rgba(255, 255, 255, 0.12);
+  --m-background-page-opacity: rgba(20, 20, 20, 0.25);
 
   // Button side
   --m-icon-primary-size: 1.25rem; /* 24px */
@@ -32,18 +33,27 @@
   padding: 0;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: NetflixSans-Regular;
   text-rendering: optimizeSpeed;
   color: rgb(255, 255, 255);
 }
 
-html,
-body {
-  height: 100%;
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-.wrapper {
+.shadow {
+  box-shadow: 0 2rem 4rem #0a0a0c;
 }
 
 a {
@@ -53,11 +63,14 @@ a {
 a:hover {
   transition: all 0.5s ease-in-out;
 }
+
 .element-hidden {
+  display: none;
   visibility: hidden;
 }
 
 .element-visibility {
+  display: block;
   visibility: visible;
 }
 
@@ -79,4 +92,14 @@ a:hover {
 @font-face {
   font-family: NetflixSans-Bold;
   src: url(./assets/fonts/netflix-sans-font/NetflixSans-Bold.otf);
+}
+
+.bounceInLeft {
+  animation-name: 'bounceInLeft';
+  animation-duration: 0.5s;
+}
+
+.bounceOutLeft {
+  animation-name: 'bounceOutLeft';
+  animation-duration: 0.5s;
 }

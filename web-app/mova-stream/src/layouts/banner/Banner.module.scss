@@ -154,10 +154,12 @@
         opacity: 0.5;
         width: 2rem;
         height: 2rem;
-      }
 
-      button:hover {
-        opacity: 1;
+        &:hover {
+          opacity: 1;
+          animation-name: 'pulse';
+          animation-duration: 0.5s;
+        }
       }
 
       .fa-prev,

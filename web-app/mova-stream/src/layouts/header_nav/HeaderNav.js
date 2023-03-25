@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 import { publicRoutes } from '~/routes'
 import classNames from 'classnames/bind'
 import images from '~/assets/images'
-import config from '~/config/routes'
 import { ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import UserDropDownMenu from './user_dropdown_menu/UserDropDownMenu'
+import HeaderItem from './header_item/HeaderItem'
+import { useSetRecoilState } from 'recoil'
+import { sidebarState } from '~/lib/recoil'
 
 const cx = classNames.bind(styles)
 
@@ -15,7 +17,6 @@ function HeaderNav() {
   const [indexSelected, setIndexSelected] = useState(0)
   const [scrolled, setScrolled] = useState(false)
   const inputRef = useRef(null)
-  const [searchBarExpand, setSearchBarExpand] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,18 +28,7 @@ function HeaderNav() {
     }
   })
 
-  const handleSelected = index => {
-    setIndexSelected(index)
-  }
-
-  const handleSearchIconSelected = () => {
-    // if (!searchBarExpand) {
-    //   setSearchBarExpand(true)
-    //   inputRef.current.focus()
-    // } else {
-    console.log('Searching...')
-    // }
-  }
+  const setShowSideBar = useSetRecoilState(sidebarState)
 
   return (
     <nav
@@ -47,34 +37,32 @@ function HeaderNav() {
       })}
     >
       <div className={cx('left-side')}>
+        <div className={cx('sidebar-icon')}>
+          <ButtonIcon onClick={() => setShowSideBar(true)} className={cx('fa-button')} icon={solid('bars')} large />
+        </div>
         <div className={cx('logo-container')}>
-          <Link to={config.home}>
+          <Link to={publicRoutes[0].path}>
             <img src={images.logo} alt="logo" />
           </Link>
         </div>
         <div className={cx('menu-container')}>
-          <ul className={cx('menu')}>
-            {publicRoutes.map((item, index) => {
-              return (
-                <Link
-                  key={index}
-                  to={item.path}
-                  className={cx(indexSelected === index ? 'active-item' : 'menu-item')}
-                  onClick={() => handleSelected(index)}
-                >
-                  <li>{item.name}</li>
-                </Link>
-              )
-            })}
-          </ul>
+          {publicRoutes.map((item, index) => {
+            return (
+              <HeaderItem
+                key={index}
+                data={item}
+                isActive={indexSelected === index}
+                onClick={() => setIndexSelected(index)}
+              />
+            )
+          })}
         </div>
       </div>
       <div className={cx('search-bar')}>
         <input ref={inputRef} className={cx('search-input')} type="text" placeholder="Search..." spellCheck={false} />
-        <ButtonIcon className={cx('search-btn')} icon={solid('magnifying-glass')} onClick={handleSearchIconSelected} />
+        <ButtonIcon className={cx('search-btn')} icon={solid('magnifying-glass')} />
       </div>
       <div className={cx('right-side')}>
-        {/* <ButtonIcon className={cx('search-btn')} icon={solid('magnifying-glass')} onClick={() => {}} /> */}
         <ButtonIcon icon={solid('bell')} />
         <UserDropDownMenu />
       </div>

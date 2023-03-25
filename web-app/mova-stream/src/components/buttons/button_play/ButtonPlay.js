@@ -5,14 +5,12 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 const cx = classNames.bind(styles)
 
-function ButtonPlay({ onClick, large }) {
+function ButtonPlay({ onClick }) {
   return (
-    <div className={cx('wrapper')}>
-      <button onClick={onClick}>
-        <FontAwesomeIcon className={cx('fa-button')} icon={solid('play')} />
-        Play
-      </button>
-    </div>
+    <button className={cx('button-play')} onClick={onClick}>
+      <FontAwesomeIcon className={cx('fa-button')} icon={solid('play')} />
+      Play
+    </button>
   )
 }
 

@@ -1,41 +1,40 @@
-import routes from '~/config/routes'
 import { Home, Movies, TVShows, Cinemas, News, MyList, Favorites } from '~/pages'
 
 const publicRoutes = [
   {
     name: 'Home',
-    path: routes.home,
-    component: Home,
+    path: '/',
+    page: Home,
   },
   {
     name: 'Movies',
-    path: routes.movies,
-    component: Movies,
+    path: '/movies',
+    page: Movies,
   },
   {
     name: 'TV Shows',
-    path: routes.tvshows,
-    component: TVShows,
+    path: '/tvshows',
+    page: TVShows,
   },
   {
     name: 'Cinema Movies',
-    path: routes.cinemas,
-    component: Cinemas,
+    path: '/cinemas',
+    page: Cinemas,
   },
   {
     name: 'New Movies',
-    path: routes.news,
-    component: News,
+    path: '/news',
+    page: News,
   },
   {
     name: 'My List',
-    path: routes.mylist,
-    component: MyList,
+    path: '/mylist',
+    page: MyList,
   },
   {
     name: 'Favorites',
-    path: routes.favorites,
-    component: Favorites,
+    path: '/favorites',
+    page: Favorites,
   },
 ]
 

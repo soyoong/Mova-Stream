@@ -20,10 +20,11 @@
     transition-duration: 150ms;
     background-color: rgba(128, 128, 128, 0.702);
     color: white;
-  }
 
-  button:hover {
-    opacity: 0.75;
+    &:hover {
+      animation-name: 'pulse';
+      animation-duration: 0.5s;
+    }
   }
 
   .fa-button {

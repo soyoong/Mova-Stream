@@ -1,0 +1,33 @@
+@import 'normalize.css';
+
+.button-play {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  border-radius: 0.25em;
+  background: none;
+  border: none;
+  background-image: none;
+  padding: 0.625rem 1.5rem;
+  font-size: 1.125rem /* 14px */;
+  line-height: 1.75rem /* 20px */;
+  font-weight: 600;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow,
+    transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  background-color: white;
+  color: black;
+
+  &:hover {
+    animation-name: 'pulse';
+    animation-duration: 0.5s;
+  }
+}
+
+.fa-button {
+  color: black;
+  width: 1.75rem;
+  height: 1.75rem;
+}

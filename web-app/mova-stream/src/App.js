@@ -9,24 +9,22 @@ const cx = classNames.bind(styles)
 function App() {
   return (
     <Router>
-      <div className={cx('wrapper')}>
-        <Routes>
-          {publicRoutes.map((route, index) => {
-            const Page = route.component
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                element={
-                  <Layout>
-                    <Page />
-                  </Layout>
-                }
-              />
-            )
-          })}
-        </Routes>
-      </div>
+      <Routes>
+        {publicRoutes.map((route, index) => {
+          const Page = route.page
+          return (
+            <Route
+              key={index}
+              path={route.path}
+              element={
+                <Layout>
+                  <Page />
+                </Layout>
+              }
+            />
+          )
+        })}
+      </Routes>
     </Router>
   )
 }

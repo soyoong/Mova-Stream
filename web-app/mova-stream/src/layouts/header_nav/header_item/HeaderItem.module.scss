@@ -1,0 +1,17 @@
+@import 'normalize.css';
+
+.menu-item {
+  font-family: NetflixSans-Medium;
+  line-height: 1rem;
+  color: white;
+
+  &:hover {
+    color: var(--m-primary-red);
+    transition: all 0.1s ease-in-out;
+  }
+}
+
+.active-item {
+  font-family: NetflixSans-Medium;
+  color: var(--m-primary-red);
+}

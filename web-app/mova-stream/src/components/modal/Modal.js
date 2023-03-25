@@ -18,7 +18,7 @@ function Modal({ children }) {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('bg-container')} onClick={() => setShowModal(false)}></div>
-      <div className={cx('container')}>{children}</div>
+      <div className={`shadow ${cx('container')}`}>{children}</div>
     </div>
   )
 }

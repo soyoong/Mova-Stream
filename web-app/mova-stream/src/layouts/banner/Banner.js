@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import tmdbData from '~/data/tmdb'
 import { useSetRecoilState } from 'recoil'
 import { modal } from '~/lib/recoil'
-import { ButtonPlay, ButtonInfo, ButtonIcon } from '~/components'
+import { ButtonPlay, ButtonInfo } from '~/components'
 
 const cx = classNames.bind(styles)
 

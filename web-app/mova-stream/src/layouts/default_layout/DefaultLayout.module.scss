@@ -8,17 +8,9 @@
   flex-direction: column;
   background-color: var(--m-background-page);
 
-  .container {
-    height: 100%;
-
-    .page-container {
-      min-height: 1900px;
-      display: flex;
-      flex-direction: column;
-    }
+  .page-container {
+    min-height: 1900px;
+    display: flex;
+    flex-direction: column;
   }
-}
-
-.element-hidden {
-  visibility: hidden;
 }
