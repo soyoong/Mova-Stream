@@ -1,23 +1,21 @@
-import React, { useState } from 'react'
 import styles from './Modal.module.scss'
 import classNames from 'classnames/bind'
-import { useSetRecoilState } from 'recoil'
-import { modal } from '~/lib/recoil'
+import { useModalState } from '~/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 
 function Modal({ children }) {
-  const setShowModal = useSetRecoilState(modal.modalState)
+  const [modalState, setModalState] = useModalState()
 
   window.onkeyup = function (e) {
     if (e.keyCode === 27) {
-      setShowModal(false)
+      setModalState(false)
     }
   }
 
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('bg-container')} onClick={() => setShowModal(false)}></div>
+      <div className={cx('bg-container')} onClick={() => setModalState(false)}></div>
       <div className={`shadow ${cx('container')}`}>{children}</div>
     </div>
   )

@@ -5,4 +5,4 @@ const sidebarState = atom({
   default: false,
 })
 
-export default sidebarState
+export { sidebarState }

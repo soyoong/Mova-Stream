@@ -8,8 +8,7 @@ import { ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import UserDropDownMenu from './user_dropdown_menu/UserDropDownMenu'
 import HeaderItem from './header_item/HeaderItem'
-import { useSetRecoilState } from 'recoil'
-import { sidebarState } from '~/lib/recoil'
+import { useSidebarState } from '~/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 
@@ -28,7 +27,7 @@ function HeaderNav() {
     }
   })
 
-  const setShowSideBar = useSetRecoilState(sidebarState)
+  const [sidebarState, setSidebarState] = useSidebarState()
 
   return (
     <nav
@@ -38,7 +37,7 @@ function HeaderNav() {
     >
       <div className={cx('left-side')}>
         <div className={cx('sidebar-icon')}>
-          <ButtonIcon onClick={() => setShowSideBar(true)} className={cx('fa-button')} icon={solid('bars')} large />
+          <ButtonIcon onClick={() => setSidebarState(true)} className={cx('fa-button')} icon={solid('bars')} large />
         </div>
         <div className={cx('logo-container')}>
           <Link to={publicRoutes[0].path}>

@@ -18,9 +18,9 @@
   --m-background-page-opacity: rgba(20, 20, 20, 0.25);
 
   // Button side
-  --m-icon-primary-size: 1.25rem; /* 24px */
-  --m-icon-large-size: 2rem; /* 32px */
-  --m-avatar-mini-size: 2rem; /* 32px */
+  --m-icon-primary-size: 1.25rem; /* 20px */
+  --m-icon-large-size: 1.875rem; /* 30px */
+  --m-logo-width-size: 6.25rem; /* 30px */
 
   // Transition
   --m-button-transition-duration: 0.15s;
@@ -93,6 +93,8 @@ a:hover {
   font-family: NetflixSans-Bold;
   src: url(./assets/fonts/netflix-sans-font/NetflixSans-Bold.otf);
 }
+
+/** Animations */
 
 .bounceInLeft {
   animation-name: 'bounceInLeft';

@@ -3,16 +3,15 @@ import styles from './MovieModal.module.scss'
 import { ButtonIcon, ButtonModal, ButtonPlay, Modal } from '~/components'
 import classNames from 'classnames/bind'
 import ReactPlayer from 'react-player/lazy'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
-import { modal } from '~/lib/recoil'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
+import { useModalState, useModalProps } from '~/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 
 function MovieModal() {
   const [muted, setMuted] = useState(true)
-  const setModalState = useSetRecoilState(modal.modalState)
-  const modalProps = useRecoilValue(modal.modalProps)
+  const [modalState, setModalState] = useModalState()
+  const [modalProps, setModalProps] = useModalProps()
 
   const toFixed = (n, fixed) => ~~(Math.pow(10, fixed) * n) / Math.pow(10, fixed)
 

@@ -1,26 +1,29 @@
 import styles from './Sidebar.module.scss'
 import classNames from 'classnames/bind'
-import { useState } from 'react'
 import { publicRoutes } from '~/routes'
 import HeaderItem from '../header_nav/header_item/HeaderItem'
-import { useRecoilState } from 'recoil'
-import { sidebarState } from '~/lib/recoil'
 import { ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { Link } from 'react-router-dom'
 import images from '~/assets/images'
+import { useSidebarState } from '~/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 
 function Sidebar() {
-  const [showSidebar, setShowSidebar] = useRecoilState(sidebarState)
-  const [indexSelected, setIndexSelected] = useState(0)
+  const [sidebarState, setSidebarState] = useSidebarState()
+  // var [useAppState, setUseAppState] = useRecoilState(appState)
+
+  // useEffect(() => {
+  //   console.log(useAppState.currentIndexPageSelected)
+  // }, [useAppState.currentIndexPageSelected])
 
   return (
-    <div className={`${showSidebar ? 'bounceInLeft' : 'bounceOutLeft'} ${cx('wrapper')}`}>
+    <div className={`${sidebarState ? 'bounceInLeft' : 'bounceOutLeft'} ${cx('wrapper')}`}>
       <div className={cx('close-button')}>
-        <ButtonIcon large icon={solid('xmark')} onClick={() => setShowSidebar(false)} />
+        <ButtonIcon icon={solid('xmark')} onClick={() => setSidebarState(false)} />
       </div>
+      <div className={cx('bg')} onClick={() => setSidebarState(false)}></div>
       <div className={cx('sidebar-container')}>
         <div className={cx('logo-container')}>
           <Link to={publicRoutes[0].path}>
@@ -33,11 +36,11 @@ function Sidebar() {
               <HeaderItem
                 key={index}
                 data={item}
-                isActive={indexSelected === index}
-                onClick={() => {
-                  setIndexSelected(index)
-                  setShowSidebar(false)
-                }}
+                // isActive={useAppState.currentIndexPageSelected === index}
+                // onClick={() => {
+                //   setUseAppState(index)
+                //   setShowSidebar(false)
+                // }}
               />
             )
           })}

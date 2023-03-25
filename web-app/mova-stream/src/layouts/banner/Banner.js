@@ -4,9 +4,8 @@ import classNames from 'classnames/bind'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import tmdbData from '~/data/tmdb'
-import { useSetRecoilState } from 'recoil'
-import { modal } from '~/lib/recoil'
 import { ButtonPlay, ButtonInfo } from '~/components'
+import { useModalState, useModalProps } from '~/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 
@@ -16,8 +15,8 @@ function Banner() {
   const initialSeconds = 15
   const [seconds, setSeconds] = useState(initialSeconds)
   var currentIndex = useRef(0)
-  const setShowModal = useSetRecoilState(modal.modalState)
-  const setModalProps = useSetRecoilState(modal.modalProps)
+  const [modalState, setModalState] = useModalState()
+  const [modalProps, setModalProps] = useModalProps()
 
   useEffect(() => {
     setItem(data[currentIndex.current])
@@ -71,7 +70,7 @@ function Banner() {
       originalLanguage: item.original_language,
       voteCount: item.vote_count,
     })
-    setShowModal(true)
+    setModalState(true)
   }
 
   return (

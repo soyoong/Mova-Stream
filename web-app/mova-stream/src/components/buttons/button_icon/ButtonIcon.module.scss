@@ -2,8 +2,8 @@
 
 .button-icon {
   cursor: pointer;
-  width: 1rem;
-  height: 1rem;
+  width: var(--m-icon-primary-size);
+  height: var(--m-icon-primary-size);
   background-image: none;
   background: none;
   border: none;
@@ -19,12 +19,11 @@
   }
 
   &:hover {
-    animation-name: 'pulse';
-    animation-duration: 0.5s;
+    animation: 'pulse' 0.5s;
   }
 }
 
 .large {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--m-icon-large-size);
+  height: var(--m-icon-large-size);
 }

@@ -25,6 +25,8 @@
     column-gap: 2rem;
 
     .sidebar-icon {
+      display: none;
+      animation: 'fadeOut' 0.2s;
     }
 
     .logo-container {
@@ -44,16 +46,12 @@
       flex-direction: row;
       column-gap: 1rem;
       align-items: center;
+      animation: 'fadeIn' 0.2s;
     }
   }
 
   // Search bar
   .search-bar {
-    // display: flex;
-    // flex-direction: row;
-    // justify-content: end;
-    // align-items: center;
-    // column-gap: 0.5rem;
     position: relative;
     top: 0px;
     right: 0px;
@@ -122,6 +120,12 @@
     .left-side {
       .menu-container {
         display: none;
+        animation: 'fadeOut' 0.2s;
+      }
+
+      .sidebar-icon {
+        display: block;
+        animation: 'fadeIn' 0.2s;
       }
     }
   }

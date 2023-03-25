@@ -4,7 +4,8 @@ const appState = atom({
   key: 'appState',
   default: {
     scrollbarHidden: false,
+    currentIndexPageSelected: 0,
   },
 })
 
-export default appState
+export { appState }

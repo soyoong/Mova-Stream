@@ -3,28 +3,27 @@ import styles from './DefaultLayout.module.scss'
 import PropTypes from 'prop-types'
 import classNames from 'classnames/bind'
 import { HeaderNav, FooterNav, Sidebar } from '~/layouts'
-import { useRecoilValue } from 'recoil'
-import { modal, sidebarState } from '~/lib/recoil'
 import { MovieModal } from '~/layouts/components'
 import { useEffect } from 'react'
+import { useModalState, useSidebarState } from '~/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 
 function DefaultLayout({ children }) {
-  const showModal = useRecoilValue(modal.modalState)
-  const showSideBar = useRecoilValue(sidebarState)
+  const [modalState, setModalState] = useModalState()
+  const [sidebarState, setSidebarState] = useSidebarState()
 
   useEffect(() => {
-    document.body.style.overflow = showSideBar ? 'hidden' : 'visible'
-  }, [showSideBar])
+    document.body.style.overflow = sidebarState ? 'hidden' : 'visible'
+  }, [sidebarState])
 
   return (
     <div className={`${cx('wrapper')}`}>
       <HeaderNav />
-      {showSideBar && <Sidebar />}
+      {sidebarState && <Sidebar />}
       <div className={`${cx('page-container')}`}>{children}</div>
       <FooterNav />
-      {showModal && <MovieModal />}
+      {modalState && <MovieModal />}
     </div>
   )
 }
