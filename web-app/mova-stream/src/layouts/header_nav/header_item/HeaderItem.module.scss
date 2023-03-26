@@ -1,7 +1,8 @@
 @import 'normalize.css';
 
 .menu-item {
-  font-family: NetflixSans-Medium;
+  font-family: NetflixSans-Regular;
+  font-size: 0.875rem;
   line-height: 1rem;
   color: white;
 
@@ -12,6 +13,6 @@
 }
 
 .active-item {
-  font-family: NetflixSans-Medium;
+  font-family: NetflixSans-Regular;
   color: var(--m-primary-red);
 }
