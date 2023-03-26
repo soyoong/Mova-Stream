@@ -6,16 +6,17 @@ import classNames from 'classnames/bind'
 import images from '~/assets/images'
 import { ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
-import UserDropDownMenu from './user_dropdown_menu/UserDropDownMenu'
 import HeaderItem from './header_item/HeaderItem'
 import { useSidebarState } from '~/hooks/useRecoilClient'
 import SearchBar from './searchbar/SearchBar'
+import UserDropMenu from './searchbar/user_drop_menu/UserDropMenu'
 
 const cx = classNames.bind(styles)
 
 function HeaderNav() {
   const [indexSelected, setIndexSelected] = useState(0)
   const [scrolled, setScrolled] = useState(false)
+  const [indexIcon, setIdexIcon] = useState(undefined)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,9 +59,9 @@ function HeaderNav() {
         </div>
       </div>
       <div className={cx('right-side')}>
-        <SearchBar />
-        <ButtonIcon icon={solid('bell')} />
-        <UserDropDownMenu />
+        <SearchBar index={indexIcon} onClick={() => setIdexIcon(2)} />
+        <ButtonIcon onClick={() => setIdexIcon(1)} icon={solid('bell')} />
+        <UserDropMenu index={indexIcon} onClick={() => setIdexIcon(0)} />
       </div>
     </nav>
   )

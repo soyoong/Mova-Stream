@@ -4,14 +4,18 @@ import { ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import SearchBarItem from './searchbar_item/SearchBarItem'
 import tmdb from '~/data/tmdb'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const cx = classNames.bind(styles)
 
-function SearchBar() {
+function SearchBar({ onClick, index }) {
   const [data, setData] = useState(tmdb.netflixOriginals)
-  const [showSearch, setShowSearch] = useState(true)
+  const [showSearch, setShowSearch] = useState(false)
   const [listSearch, setListSearch] = useState([])
+
+  useEffect(() => {
+    setShowSearch(index === 2)
+  }, [index])
 
   return (
     <div className={cx('wrapper')}>
@@ -24,6 +28,7 @@ function SearchBar() {
           className={cx('fa-button')}
           icon={showSearch ? solid('xmark') : solid('magnifying-glass')}
           onClick={() => {
+            onClick()
             setShowSearch(!showSearch)
           }}
         />
