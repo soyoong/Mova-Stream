@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&display=swap');
 
 :root {
-  --default-layout-height-header: 70px;
+  --default-layout-height-header: 48px;
   --default-layout-height-footer: 252px;
   --m-primary-red: #e50f1e;
   --default-layout-background-container: #141414;
@@ -16,11 +16,12 @@
   --m-background-page-modal: rgb(24, 24, 24);
   --m-border: rgba(255, 255, 255, 0.12);
   --m-background-page-opacity: rgba(20, 20, 20, 0.25);
-
+  --m-color-gray: rgb(58, 58, 58);
   // Button side
-  --m-icon-primary-size: 1.25rem; /* 20px */
+  --m-icon-primary-size: 1rem; /* 20px */
   --m-icon-large-size: 1.875rem; /* 30px */
-  --m-logo-width-size: 6.25rem; /* 30px */
+  --m-logo-width-size: 5rem; /* 30px */
+  --m-border-radius: 0.25rem;
 
   // Transition
   --m-button-transition-duration: 0.15s;

@@ -13,7 +13,6 @@ function UserDropDownMenu() {
     <div className={cx('wrapper')}>
       <ButtonImage
         src="https://scontent.fhan14-2.fna.fbcdn.net/v/t1.6435-9/117100276_2654196668230424_8985351350698507025_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Imo-WgXoUMcAX91SWQK&_nc_ht=scontent.fhan14-2.fna&oh=00_AfDezGvJ0WXdb0CMrDAsq7ycuSh8F9XjPGFI6HOLBRxlKg&oe=643FEE5B"
-        large
         onClick={() => setOpen(!open)}
       />
 

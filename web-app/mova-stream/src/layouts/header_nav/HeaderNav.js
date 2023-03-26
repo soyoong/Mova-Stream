@@ -9,13 +9,13 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import UserDropDownMenu from './user_dropdown_menu/UserDropDownMenu'
 import HeaderItem from './header_item/HeaderItem'
 import { useSidebarState } from '~/hooks/useRecoilClient'
+import SearchBar from './searchbar/SearchBar'
 
 const cx = classNames.bind(styles)
 
 function HeaderNav() {
   const [indexSelected, setIndexSelected] = useState(0)
   const [scrolled, setScrolled] = useState(false)
-  const inputRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,11 +57,8 @@ function HeaderNav() {
           })}
         </div>
       </div>
-      <div className={cx('search-bar')}>
-        <input ref={inputRef} className={cx('search-input')} type="text" placeholder="Search..." spellCheck={false} />
-        <ButtonIcon className={cx('search-btn')} icon={solid('magnifying-glass')} />
-      </div>
       <div className={cx('right-side')}>
+        <SearchBar />
         <ButtonIcon icon={solid('bell')} />
         <UserDropDownMenu />
       </div>

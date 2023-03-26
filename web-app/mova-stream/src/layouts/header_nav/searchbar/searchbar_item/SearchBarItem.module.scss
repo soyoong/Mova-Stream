@@ -1,0 +1,37 @@
+@import 'normalize.css';
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 0.5rem;
+  opacity: 1;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  img {
+    object-fit: cover;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--m-border-radius);
+  }
+
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+
+    h5 {
+      font-size: 0.625rem;
+      color: rgb(255, 255, 255);
+    }
+
+    h6 {
+      font-size: 0.5rem;
+      color: rgb(255, 255, 255, 0.5);
+    }
+  }
+}
