@@ -4,8 +4,16 @@
 .wrapper {
   position: relative;
   --width: 250px;
-  --height: 300px;
+  --height: 250px;
   --radius: var(--m-border-radius);
+  --box-padding-horizontal: 0.5rem;
+  --box-padding-vertical: 0.5rem;
+  --box-top: 2.5rem;
+  --box-left: 0;
+  --box-bottom: 0;
+  --box-right: 0;
+  --row-gap-list: 1rem;
+  --search-bar-height: 2rem;
 
   .active {
     &::before {
@@ -20,28 +28,32 @@
   }
 
   .search-bar-wrapper {
+    position: absolute;
+    top: var(--box-top);
+    left: var(--box-left);
+    bottom: var(--box-bottom);
+    right: var(--box-right);
+
     .bg {
       position: fixed;
-      top: 0;
+      top: var(--default-layout-height-header);
       left: 0;
       bottom: 0;
       right: 0;
     }
 
     .search-bar-container {
-      overflow: hidden;
-      overflow-y: scroll;
       width: var(--width);
       max-height: var(--height);
       position: absolute;
-      top: calc(var(--default-layout-height-header) - 0.5rem);
+      top: 0;
       right: 0;
-      background-color: var(--m-background-page);
       border-radius: var(--radius);
-      box-shadow: 0 2rem 4rem rgb(10, 10, 12);
+      box-shadow: 0 2rem 4rem rgb(10, 10, 10, 0.8);
       -ms-overflow-style: none; /* Internet Explorer 10+ */
       scrollbar-width: none; /* Firefox */
       animation: 'fadeIn' 0.2s;
+      background-color: var(--m-background-page);
 
       &::-webkit-scrollbar {
         display: none; /* Safari and Chrome */
@@ -51,14 +63,13 @@
         width: calc(var(--width));
         height: 3rem;
         position: fixed;
-        padding: 0.5rem;
+        padding: 0 var(--box-padding-horizontal);
         display: flex;
         flex-direction: row;
         column-gap: 0.5rem;
         align-items: center;
-        background-color: var(--m-background-page);
         border-radius: var(--radius) var(--radius) 0 0;
-        z-index: 1000;
+        z-index: 999;
 
         input {
           width: 100%;
@@ -87,19 +98,25 @@
         }
       }
 
-      .drop-panel {
-        margin-top: 3rem;
-        display: flex;
-        flex-direction: column;
-        row-gap: 1rem;
-        padding: 0.5rem;
-        justify-content: center;
+      .drop-list-container {
+        margin-top: calc(var(--search-bar-height) + (var(--box-padding-vertical) * 2));
+        overflow: hidden;
+        overflow-y: scroll;
+        max-height: calc(var(--height) - var(--search-bar-height) - (var(--box-padding-vertical) * 2));
+        padding: var(--box-padding-vertical) var(--box-padding-horizontal);
 
-        p {
-          font-size: 0.75rem;
-          color: var(--m-color-gray);
-          width: 100%;
-          text-align: center;
+        .drop-list {
+          display: flex;
+          flex-direction: column;
+          row-gap: var(--row-gap-list);
+          justify-content: center;
+
+          p {
+            font-size: 0.75rem;
+            color: var(--m-color-gray);
+            width: 100%;
+            text-align: center;
+          }
         }
       }
     }

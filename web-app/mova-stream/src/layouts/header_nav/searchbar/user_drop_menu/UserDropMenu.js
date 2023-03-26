@@ -29,43 +29,47 @@ function UserDropMenu({ onClick, index }) {
       </div>
 
       {showMenu ? (
-        <div className={cx('user-menu')}>
-          <ul className={cx('menu')}>
-            <li>
-              <a href="/">New Pen 1</a>
-            </li>
-            <li>
-              <a href="/">New Pen 2</a>
-            </li>
-            <li className={cx('line-space')}></li>
-            <li>
-              <a href="/">New Pen 3</a>
-            </li>
-            <li className={cx('line-space')}></li>
-            <li>
-              <a href="/">New Pen 4</a>
-            </li>
-            <li>
-              <a href="/">New Pen 5</a>
-            </li>
-            <li>
-              <a href="/">New Pen 1</a>
-            </li>
-            <li>
-              <a href="/">New Pen 2</a>
-            </li>
-            <li className={cx('line-space')}></li>
-            <li>
-              <a href="/">New Pen 3</a>
-            </li>
-            <li className={cx('line-space')}></li>
-            <li>
-              <a href="/">New Pen 4</a>
-            </li>
-            <li>
-              <a href="/">New Pen 5</a>
-            </li>
-          </ul>
+        <div className={cx('menu-container')}>
+          <div className={cx('bg')} onClick={() => setShowMenu(false)}></div>
+
+          <div className={cx('user-menu')}>
+            <ul className={cx('menu')}>
+              <li>
+                <a href="/">New Pen 1</a>
+              </li>
+              <li>
+                <a href="/">New Pen 2</a>
+              </li>
+              <li className={cx('line-space')}></li>
+              <li>
+                <a href="/">New Pen 3</a>
+              </li>
+              <li className={cx('line-space')}></li>
+              <li>
+                <a href="/">New Pen 4</a>
+              </li>
+              <li>
+                <a href="/">New Pen 5</a>
+              </li>
+              <li>
+                <a href="/">New Pen 1</a>
+              </li>
+              <li>
+                <a href="/">New Pen 2</a>
+              </li>
+              <li className={cx('line-space')}></li>
+              <li>
+                <a href="/">New Pen 3</a>
+              </li>
+              <li className={cx('line-space')}></li>
+              <li>
+                <a href="/">New Pen 4</a>
+              </li>
+              <li>
+                <a href="/">New Pen 5</a>
+              </li>
+            </ul>
+          </div>
         </div>
       ) : null}
     </div>
