@@ -1,11 +1,19 @@
 @import 'normalize.css';
 
 .wrapper {
-  width: var(--m-avatar-mini-size);
-  height: var(--m-avatar-mini-size);
+  width: var(--m-icon-large-size);
+  height: var(--m-icon-large-size);
+  position: relative;
   --width: 250px;
   --height: 300px;
-  position: relative;
+  --radius: var(--m-border-radius);
+  --box-padding-horizontal: 0.5rem;
+  --box-padding-vertical: 0.5rem;
+  --box-top: 2.9rem;
+  --box-left: 0;
+  --box-bottom: 0;
+  --box-right: 0;
+  --row-gap-list: 0.75rem;
 
   .button-wrapper {
   }
@@ -21,18 +29,13 @@
       animation: 'fadeIn' 0.2s;
     }
   }
-  .user-menu {
-    overflow: hidden;
-    overflow-y: scroll;
+
+  .menu-wrapper {
     position: absolute;
-    top: calc(var(--default-layout-height-header));
-    right: 0;
-    width: var(--width);
-    max-height: var(--height);
-    background-color: var(--m-background-page);
-    border-radius: var(--m-border-radius);
-    box-shadow: 0 2rem 4rem rgb(10, 10, 12);
-    animation: 'fadeIn' 0.2s;
+    top: var(--box-top);
+    left: var(--box-left);
+    bottom: var(--box-bottom);
+    right: var(--box-right);
 
     .bg {
       position: fixed;
@@ -40,40 +43,47 @@
       left: 0;
       bottom: 0;
       right: 0;
-      background-color: aqua;
-      z-index: 100;
     }
 
-    ul {
-      width: 100%;
-      height: 100%;
-      list-style: none;
-      white-space: nowrap;
-      color: white;
-      padding: 0.75rem;
-      display: flex;
-      flex-direction: column;
-      row-gap: 0.75rem;
-      transform-origin: top right;
-      // transition: all 0.2s ease-in-out, visibility 0s linear 0.2s;
+    .menu-container {
+      overflow: hidden;
+      overflow-y: scroll;
+      width: var(--width);
+      max-height: var(--height);
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: var(--m-background-page);
+      border-radius: var(--m-border-radius);
+      box-shadow: 0 2rem 4rem rgb(10, 10, 10);
+      animation: 'fadeIn' 0.2s;
 
-      li {
-        color: white;
+      ul {
+        width: 100%;
+        height: 100%;
+        list-style: none;
+        padding: var(--box-padding-vertical) var(--box-padding-horizontal);
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--row-gap-list);
 
-        a {
+        li {
           color: white;
-          font-size: 0.75rem;
-          // transition-duration: var(--m-button-transition-duration);
+
+          a {
+            color: white;
+            font-size: 0.75rem;
+          }
+
+          a:hover {
+            opacity: 0.7;
+          }
         }
 
-        a:hover {
-          opacity: 0.7;
+        .line-space {
+          border-bottom: 1px solid #2c303a;
+          border-radius: 0.5rem;
         }
-      }
-
-      .line-space {
-        border-bottom: 1px solid #2c303a;
-        border-radius: 0.5rem;
       }
     }
   }

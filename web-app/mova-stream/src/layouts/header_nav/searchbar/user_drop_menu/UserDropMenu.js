@@ -29,11 +29,10 @@ function UserDropMenu({ onClick, index }) {
       </div>
 
       {showMenu ? (
-        <div className={cx('menu-container')}>
+        <div className={cx('menu-wrapper')}>
           <div className={cx('bg')} onClick={() => setShowMenu(false)}></div>
-
-          <div className={cx('user-menu')}>
-            <ul className={cx('menu')}>
+          <div className={cx('menu-container')}>
+            <ul>
               <li>
                 <a href="/">New Pen 1</a>
               </li>

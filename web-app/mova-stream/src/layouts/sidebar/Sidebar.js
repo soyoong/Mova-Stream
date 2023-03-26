@@ -15,9 +15,9 @@ function Sidebar() {
   const [sidebarState, setSidebarState] = useSidebarState()
   var [sidebarCurrentIndexState, setSidebarCurrentIndexState] = useSidebarCurrentIndexState()
 
-  useEffect(() => {
-    console.log(sidebarCurrentIndexState)
-  }, [])
+  // useEffect(() => {
+  //   console.log(sidebarCurrentIndexState)
+  // }, [])
 
   return (
     <div className={`${sidebarState ? 'bounceInLeft' : 'bounceOutLeft'} ${cx('wrapper')}`}>
