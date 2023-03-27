@@ -32,11 +32,7 @@ function HeaderNav() {
   const [sidebarState, setSidebarState] = useSidebarState()
 
   return (
-    <nav
-      className={cx('wrapper', {
-        'bg-blur': scrolled,
-      })}
-    >
+    <nav className={cx('wrapper')}>
       <div className={cx('left-side')}>
         <div className={cx('sidebar-icon')}>
           <Sidebar />

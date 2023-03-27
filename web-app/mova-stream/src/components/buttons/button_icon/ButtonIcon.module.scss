@@ -10,6 +10,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  --border: 1px solid var(--m-primary-red);
+  --top: 0;
+  --left: 0;
+  --bottom: -0.25rem;
+  --right: 0;
 
   .fa-button {
     object-fit: contain;
@@ -20,6 +26,44 @@
 
   &:hover {
     animation: 'pulse' 0.5s;
+  }
+}
+
+.underline {
+  &::before {
+    content: '';
+    border: var(--border);
+    position: absolute;
+    left: var(--left);
+    bottom: var(--bottom);
+    right: var(--right);
+    animation: 'fadeIn' 0.2s;
+  }
+}
+
+.underline-hover {
+  &:hover {
+    &::before {
+      content: '';
+      border: var(--border);
+      position: absolute;
+      left: var(--left);
+      bottom: var(--bottom);
+      right: var(--right);
+      animation: 'fadeIn' 0.2s;
+    }
+  }
+}
+
+.underline-active {
+  &::before {
+    content: '';
+    border: var(--border);
+    position: absolute;
+    left: var(--left);
+    bottom: var(--bottom);
+    right: var(--right);
+    animation: 'fadeIn' 0.2s;
   }
 }
 

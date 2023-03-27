@@ -19,11 +19,7 @@ function SearchBar({ onClick, index }) {
 
   return (
     <div className={cx('wrapper')}>
-      <div
-        className={cx('search-bar-icon-wrapper', {
-          active: showSearch,
-        })}
-      >
+      <div className={cx('search-bar-icon-wrapper')}>
         <ButtonIcon
           className={cx('fa-button')}
           icon={showSearch ? solid('xmark') : solid('magnifying-glass')}
@@ -31,6 +27,8 @@ function SearchBar({ onClick, index }) {
             onClick()
             setShowSearch(!showSearch)
           }}
+          underlineHover
+          underlineActive={showSearch}
         />
       </div>
       {showSearch && (

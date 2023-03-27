@@ -18,8 +18,8 @@
     .carousel {
       position: absolute;
       left: 0;
-      // top: var(--default-layout-height-header);
-      top: 0;
+      top: var(--default-layout-height-header);
+      // top: 0;
       right: 0;
       width: 100vw;
       height: 90vh;

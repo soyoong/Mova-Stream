@@ -15,18 +15,6 @@
   --row-gap-list: 1rem;
   --search-bar-height: 2rem;
 
-  .active {
-    &::before {
-      content: '';
-      border: 1px solid var(--m-primary-red);
-      position: absolute;
-      bottom: -0.25rem;
-      left: 0;
-      right: 0;
-      animation: 'fadeIn' 0.2s;
-    }
-  }
-
   .search-bar-wrapper {
     position: absolute;
     top: var(--box-top);

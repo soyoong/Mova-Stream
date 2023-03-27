@@ -15,19 +15,35 @@ function Sidebar() {
 
   return (
     <div className={cx('wrapper')}>
-      <div
-        className={cx('sidebar-icon-wrapper', {
-          active: showSidebar,
-        })}
-      >
+      <div className={cx('sidebar-icon-wrapper')}>
         <ButtonIcon
           className={cx('fa-button')}
           icon={showSidebar ? solid('xmark') : solid('bars')}
           onClick={() => {
             setShowSidebar(!showSidebar)
           }}
+          underlineHover
+          underlineActive={showSidebar}
         />
       </div>
+
+      <div
+        className={cx('dropdown-header-wrapper', showSidebar ? 'dropdown-header-active' : 'dropdown-header-inactive')}
+      >
+        <div className={cx('dropdown-container')}>
+          {publicRoutes.map((item, index) => {
+            return (
+              <HeaderItem
+                key={index}
+                data={item}
+                isActive={sidebarCurrentIndexState === index}
+                onClick={() => setSidebarCurrentIndexState(index)}
+              />
+            )
+          })}
+        </div>
+      </div>
+
       {/* {showSidebar && (
         <div className={cx('search-bar-wrapper')}>
           <div className={cx('bg')} onClick={() => setShowSidebar(false)}></div>

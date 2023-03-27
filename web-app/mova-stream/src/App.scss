@@ -106,3 +106,21 @@ a:hover {
   animation-name: 'bounceOutLeft';
   animation-duration: 0.5s;
 }
+
+@keyframes animLinearHeightIn {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--default-layout-height-header);
+  }
+}
+
+@keyframes animLinearHeightOut {
+  from {
+    height: var(--default-layout-height-header);
+  }
+  to {
+    height: 0;
+  }
+}
