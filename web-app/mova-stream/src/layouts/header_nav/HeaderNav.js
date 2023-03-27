@@ -10,6 +10,7 @@ import HeaderItem from './header_item/HeaderItem'
 import { useSidebarState } from '~/hooks/useRecoilClient'
 import SearchBar from './searchbar/SearchBar'
 import UserDropMenu from './searchbar/user_drop_menu/UserDropMenu'
+import Sidebar from '../sidebar/Sidebar'
 
 const cx = classNames.bind(styles)
 
@@ -38,7 +39,7 @@ function HeaderNav() {
     >
       <div className={cx('left-side')}>
         <div className={cx('sidebar-icon')}>
-          <ButtonIcon onClick={() => setSidebarState(true)} className={cx('fa-button')} icon={solid('bars')} />
+          <Sidebar />
         </div>
         <div className={cx('logo-container')}>
           <Link to={publicRoutes[0].path}>

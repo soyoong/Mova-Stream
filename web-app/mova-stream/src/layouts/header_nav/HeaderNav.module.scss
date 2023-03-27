@@ -16,6 +16,7 @@
   z-index: 11;
   // background-color: rgba(20, 20, 20, 0.25) !important;
   transition: 0.2s ease-in-out;
+  // background-color: var(--m-background-page);
 
   .left-side {
     flex-grow: 1;
@@ -25,8 +26,21 @@
     column-gap: 2rem;
 
     .sidebar-icon {
+      position: relative;
       display: none;
       animation: 'fadeOut' 0.2s;
+
+      .fa-button {
+      }
+
+      .active {
+        &::before {
+          content: '';
+          border: 1px solid var(--m-primary-red);
+          position: absolute;
+          animation: 'fadeIn' 0.2s;
+        }
+      }
     }
 
     .logo-container {
@@ -61,7 +75,7 @@
 }
 
 .bg-blur {
-  background-color: rgba(20, 20, 20, 0.5) !important;
+  background-color: rgba(20, 20, 20, 0.75) !important;
   -webkit-backdrop-filter: blur(0.65em);
   transition: 0.2s ease-in-out;
 }

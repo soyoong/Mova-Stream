@@ -3,16 +3,17 @@
 .menu-item {
   font-family: NetflixSans-Regular;
   font-size: 0.875rem;
+  font-weight: 500;
   line-height: 1rem;
-  color: white;
+  color: rgb(120, 120, 120);
 
   &:hover {
-    color: var(--m-primary-red);
+    color: var(--m-white);
     transition: all 0.1s ease-in-out;
   }
 }
 
 .active-item {
   font-family: NetflixSans-Regular;
-  color: var(--m-primary-red);
+  color: var(--m-white);
 }

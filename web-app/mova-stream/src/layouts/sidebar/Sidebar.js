@@ -4,49 +4,57 @@ import { publicRoutes } from '~/routes'
 import HeaderItem from '../header_nav/header_item/HeaderItem'
 import { ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
-import { Link } from 'react-router-dom'
-import images from '~/assets/images'
-import { useSidebarState, useSidebarCurrentIndexState } from '~/hooks/useRecoilClient'
-import { useEffect } from 'react'
+import { useSidebarCurrentIndexState } from '~/hooks/useRecoilClient'
+import { useState } from 'react'
 
 const cx = classNames.bind(styles)
 
 function Sidebar() {
-  const [sidebarState, setSidebarState] = useSidebarState()
+  const [showSidebar, setShowSidebar] = useState(false)
   var [sidebarCurrentIndexState, setSidebarCurrentIndexState] = useSidebarCurrentIndexState()
 
-  // useEffect(() => {
-  //   console.log(sidebarCurrentIndexState)
-  // }, [])
-
   return (
-    <div className={`${sidebarState ? 'bounceInLeft' : 'bounceOutLeft'} ${cx('wrapper')}`}>
-      <div className={cx('close-button')}>
-        <ButtonIcon icon={solid('xmark')} onClick={() => setSidebarState(false)} />
+    <div className={cx('wrapper')}>
+      <div
+        className={cx('sidebar-icon-wrapper', {
+          active: showSidebar,
+        })}
+      >
+        <ButtonIcon
+          className={cx('fa-button')}
+          icon={showSidebar ? solid('xmark') : solid('bars')}
+          onClick={() => {
+            setShowSidebar(!showSidebar)
+          }}
+        />
       </div>
-      <div className={cx('bg')} onClick={() => setSidebarState(false)}></div>
-      <div className={cx('sidebar-container')}>
-        <div className={cx('logo-container')}>
-          <Link to={publicRoutes[0].path}>
-            <img src={images.logo} alt="logo" />
-          </Link>
+      {/* {showSidebar && (
+        <div className={cx('search-bar-wrapper')}>
+          <div className={cx('bg')} onClick={() => setShowSidebar(false)}></div>
+          <div className={cx('search-bar-container')}>
+            <div className={cx('search-input-container')}>
+              <input type="text" placeholder="Search..." spellCheck={false} />
+              <div className={cx('search-button')}>
+                <ButtonIcon className={cx('fa-button')} icon={solid('magnifying-glass')} />
+              </div>
+            </div>
+            <div className={cx('drop-list-container')}>
+              <div className={cx('drop-list')}>
+                {publicRoutes.map((item, index) => {
+                  return (
+                    <HeaderItem
+                      key={index}
+                      data={item}
+                      isActive={sidebarCurrentIndexState === index}
+                      onClick={() => setSidebarCurrentIndexState(index)}
+                    />
+                  )
+                })}
+              </div>
+            </div>
+          </div>
         </div>
-        <div className={`${cx('set-open')}`}>
-          {publicRoutes.map((item, index) => {
-            return (
-              <HeaderItem
-                key={index}
-                data={item}
-                isActive={sidebarCurrentIndexState === index}
-                onClick={() => {
-                  setSidebarCurrentIndexState(index)
-                  setSidebarState(false)
-                }}
-              />
-            )
-          })}
-        </div>
-      </div>
+      )} */}
     </div>
   )
 }
