@@ -1,42 +1,73 @@
 @import 'normalize.css';
 
-.menu-item {
-  font-family: NetflixSans-Regular;
-  font-size: 0.875rem;
-  font-weight: 500;
-  // line-height: 1.5rem;
-  color: rgb(120, 120, 120);
-  position: relative;
+.wrapper {
+  --underline-border: 1px solid var(--m-primary-red);
+  --underline-left: 0;
+  --underline-bottom: -0.375rem;
+  --underline-right: 0;
 
-  &:hover {
-    color: var(--m-white);
-    transition: all 0.1s ease-in-out;
+  .link-button {
+    position: relative;
+    background: none;
+    border: none;
 
+    .link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      // line-height: 1.5rem;
+      // color: rgb(120, 120, 120);
+      color: white;
+    }
+
+    &::after {
+      content: '';
+      border: var(--underline-border);
+      position: absolute;
+      left: var(--underline-left);
+      bottom: var(--underline-bottom);
+      right: var(--underline-right);
+    }
+  }
+
+  .underline {
     &::before {
       content: '';
-      border: 1px solid var(--m-primary-red);
+      border: var(--underline-border);
       position: absolute;
-      bottom: -0.375rem;
-      left: 0;
-      right: 0;
+      left: var(--underline-left);
+      bottom: var(--underline-bottom);
+      right: var(--underline-right);
       animation: 'fadeIn' 0.2s;
     }
   }
-}
 
-.active-item {
-  font-family: NetflixSans-Regular;
-  color: var(--m-white);
-  position: relative;
-  animation: 'fadeIn' 0.2s;
+  .underline-active {
+    &::before {
+      content: '';
+      border: var(--underline-border);
+      position: absolute;
+      left: var(--underline-left);
+      bottom: var(--underline-bottom);
+      right: var(--underline-right);
+    }
+  }
 
-  &::before {
-    content: '';
-    border: 1px solid var(--m-primary-red);
-    position: absolute;
-    bottom: -0.375rem;
-    left: 0;
-    right: 0;
-    animation: 'fadeIn' 0.2s;
+  .underline-hover {
+    &::after {
+      transform: scale(0, 1);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      &::after {
+        content: '';
+        border: var(--underline-border);
+        position: absolute;
+        left: var(--underline-left);
+        bottom: var(--underline-bottom);
+        right: var(--underline-right);
+        transform: scale(1, 1);
+      }
+    }
   }
 }

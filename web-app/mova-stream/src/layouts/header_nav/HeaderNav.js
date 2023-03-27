@@ -18,6 +18,7 @@ function HeaderNav() {
   const [indexSelected, setIndexSelected] = useState(0)
   const [scrolled, setScrolled] = useState(false)
   const [indexIcon, setIdexIcon] = useState(undefined)
+  const [showSidebar, setShowSidebar] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,35 +33,48 @@ function HeaderNav() {
   const [sidebarState, setSidebarState] = useSidebarState()
 
   return (
-    <nav className={cx('wrapper')}>
-      <div className={cx('left-side')}>
-        <div className={cx('sidebar-icon')}>
-          <Sidebar />
+    <div
+      className={cx('wrapper', 'bg-linear', {
+        'bg-page': scrolled,
+      })}
+    >
+      <div className={cx('container')}>
+        <div className={cx('left-side')}>
+          <div className={cx('sidebar-icon')}>
+            <ButtonIcon
+              icon={showSidebar ? solid('xmark') : solid('bars')}
+              onClick={() => setShowSidebar(!showSidebar)}
+              underlineActive={showSidebar}
+              underlineHover
+            />
+          </div>
+          <div className={cx('logo-container')}>
+            <Link to={publicRoutes[0].path}>
+              <img src={images.logo} alt="logo" />
+            </Link>
+          </div>
+          <div className={cx('menu-container')}>
+            {publicRoutes.map((item, index) => {
+              return (
+                <HeaderItem
+                  key={index}
+                  data={item}
+                  isActive={indexSelected === index}
+                  onClick={() => setIndexSelected(index)}
+                  underlineHover
+                />
+              )
+            })}
+          </div>
         </div>
-        <div className={cx('logo-container')}>
-          <Link to={publicRoutes[0].path}>
-            <img src={images.logo} alt="logo" />
-          </Link>
-        </div>
-        <div className={cx('menu-container')}>
-          {publicRoutes.map((item, index) => {
-            return (
-              <HeaderItem
-                key={index}
-                data={item}
-                isActive={indexSelected === index}
-                onClick={() => setIndexSelected(index)}
-              />
-            )
-          })}
+        <div className={cx('right-side')}>
+          <SearchBar index={indexIcon} onClick={() => setIdexIcon(2)} />
+          <ButtonIcon onClick={() => setIdexIcon(1)} icon={solid('bell')} />
+          <UserDropMenu index={indexIcon} onClick={() => setIdexIcon(0)} />
         </div>
       </div>
-      <div className={cx('right-side')}>
-        <SearchBar index={indexIcon} onClick={() => setIdexIcon(2)} />
-        <ButtonIcon onClick={() => setIdexIcon(1)} icon={solid('bell')} />
-        <UserDropMenu index={indexIcon} onClick={() => setIdexIcon(0)} />
-      </div>
-    </nav>
+      <Sidebar expanded={showSidebar} onClick={() => setShowSidebar(!showSidebar)} />
+    </div>
   )
 }
 
