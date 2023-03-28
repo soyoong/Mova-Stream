@@ -59,9 +59,9 @@ function HeaderNav() {
                 <HeaderItem
                   key={index}
                   data={item}
-                  isActive={indexSelected === index}
                   onClick={() => setIndexSelected(index)}
                   underlineHover
+                  underlineActive={indexSelected === index}
                 />
               )
             })}

@@ -21,6 +21,7 @@ function Sidebar({ expanded, onClick }) {
               <HeaderItem
                 key={index}
                 data={item}
+                className={cx('nav-item')}
                 onClick={() => {
                   setSidebarCurrentIndexState(index)
                   onClick()

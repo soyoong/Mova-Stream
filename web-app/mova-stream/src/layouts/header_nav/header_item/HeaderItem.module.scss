@@ -5,6 +5,7 @@
   --underline-left: 0;
   --underline-bottom: -0.375rem;
   --underline-right: 0;
+  margin: 1rem;
 
   .link-button {
     position: relative;
@@ -12,7 +13,8 @@
     border: none;
 
     .link {
-      font-size: 0.875rem;
+      font-family: NetflixSans-Light;
+      font-size: 0.75rem;
       font-weight: 500;
       // line-height: 1.5rem;
       // color: rgb(120, 120, 120);
