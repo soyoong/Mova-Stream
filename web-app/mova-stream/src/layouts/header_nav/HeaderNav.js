@@ -7,7 +7,6 @@ import images from '~/assets/images'
 import { ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import HeaderItem from './header_item/HeaderItem'
-import { useSidebarState } from '~/hooks/useRecoilClient'
 import SearchBar from './searchbar/SearchBar'
 import UserDropMenu from './searchbar/user_drop_menu/UserDropMenu'
 import Sidebar from '../sidebar/Sidebar'
@@ -29,8 +28,6 @@ function HeaderNav() {
       window.removeEventListener('scroll', handleScroll)
     }
   })
-
-  const [sidebarState, setSidebarState] = useSidebarState()
 
   return (
     <div
@@ -55,13 +52,15 @@ function HeaderNav() {
           </div>
           <div className={cx('menu-container')}>
             {publicRoutes.map((item, index) => {
+              const active = indexSelected === index
               return (
                 <HeaderItem
                   key={index}
                   data={item}
+                  isActive={active}
                   onClick={() => setIndexSelected(index)}
                   underlineHover
-                  underlineActive={indexSelected === index}
+                  underlineActive={active}
                 />
               )
             })}
@@ -69,7 +68,7 @@ function HeaderNav() {
         </div>
         <div className={cx('right-side')}>
           <SearchBar index={indexIcon} onClick={() => setIdexIcon(2)} />
-          <ButtonIcon onClick={() => setIdexIcon(1)} icon={solid('bell')} />
+          <ButtonIcon icon={solid('bell')} onClick={() => setIdexIcon(1)} />
           <UserDropMenu index={indexIcon} onClick={() => setIdexIcon(0)} />
         </div>
       </div>

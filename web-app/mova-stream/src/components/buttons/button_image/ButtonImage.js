@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
-function ButtonImage({ src, onClick, bordered, underline, underlineActive, underlineHover }) {
+function ButtonImage({ src, onClick, underline, underlineActive, underlineHover }) {
   return (
     <div
       className={cx('wrapper', {

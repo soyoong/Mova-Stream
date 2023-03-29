@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import styles from './Banner.module.scss'
 import classNames from 'classnames/bind'
-import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import tmdbData from '~/data/tmdb'
 import { ButtonPlay, ButtonInfo } from '~/components'
 import { useModalState, useModalProps } from '~/hooks/useRecoilClient'
@@ -80,12 +78,14 @@ function Banner() {
           <img src={item.backdrop_path} alt="banner" />
           <div className={cx('overlay')}></div>
         </div>
-        <div className={cx('overview-content')}>
-          <div className={cx('title')}>
-            <h1>{item?.title || item?.name || item?.original_name}</h1>
-          </div>
-          <div className={cx('sub-title')}>
-            <p>{item?.overview}</p>
+        <div className={cx('content')}>
+          <div className={cx('overview')}>
+            <div className={cx('title')}>
+              <h1>{item?.title || item?.name || item?.original_name}</h1>
+            </div>
+            <div className={cx('sub-title')}>
+              <p>{item?.overview}</p>
+            </div>
           </div>
           <div className={cx('action-buttons')}>
             <ButtonPlay onClick={() => console.log('Play')} />
@@ -93,14 +93,14 @@ function Banner() {
           </div>
         </div>
         {/* Controller */}
-        <div className={cx('slider-buttons')}>
+        {/* <div className={cx('slider-buttons')}>
           <button onClick={() => handleSlider(-1)}>
             <FontAwesomeIcon className={cx('fa-prev')} icon={solid('chevron-left')} />
           </button>
           <button onClick={() => handleSlider(1)}>
             <FontAwesomeIcon className={cx('fa-next')} icon={solid('chevron-right')} />
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   )

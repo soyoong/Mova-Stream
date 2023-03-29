@@ -7,10 +7,12 @@ const cx = classNames.bind(styles)
 
 function ButtonPlay({ onClick }) {
   return (
-    <button className={cx('button-play')} onClick={onClick}>
-      <FontAwesomeIcon className={cx('fa-button')} icon={solid('play')} />
-      Play
-    </button>
+    <div className={cx('wrapper')}>
+      <button onClick={onClick}>
+        <FontAwesomeIcon className={cx('fa-button')} icon={solid('play')} />
+        Play
+      </button>
+    </div>
   )
 }
 

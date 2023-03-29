@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil'
-import { userMenuRecoils, modalRecoils, sidebarRecoils, appRecoils } from '~/lib/recoil'
+import { userMenuRecoils, modalRecoils, sidebarRecoils, appRecoils, layoutRecoils } from '~/lib/recoil'
 
 const useUserMenu = () => {
   const [userMenuState, setUserMenuState] = useRecoilState(userMenuRecoils.userMenuState)
@@ -19,24 +19,22 @@ const useModalState = () => {
   return [modalProps, setModalProps]
 }
 
-const useSidebarState = () => {
-  const [sidebarState, setSidebarState] = useRecoilState(sidebarRecoils.sidebarState)
-
-  return [sidebarState, setSidebarState]
-}
-
-const useSidebarCurrentIndexState = () => {
-  const [sidebarCurrentIndexState, setSidebarCurrentIndexState] = useRecoilState(
-    sidebarRecoils.sidebarCurrentIndexState
-  )
-
-  return [sidebarCurrentIndexState, setSidebarCurrentIndexState]
-}
-
 const useAppState = () => {
   const [appState, setAppState] = useRecoilState(appRecoils.appState)
 
   return [appState, setAppState]
 }
 
-export { useUserMenu, useModalProps, useModalState, useSidebarState, useSidebarCurrentIndexState, useAppState }
+const useSearchBarState = () => {
+  const [searchBarState, setSearchBarState] = useRecoilState(layoutRecoils.searchBarState)
+
+  return [searchBarState, setSearchBarState]
+}
+
+const useSideBarState = () => {
+  const [sideBarState, setSideBarState] = useRecoilState(layoutRecoils.sideBarState)
+
+  return [sideBarState, setSideBarState]
+}
+
+export { useUserMenu, useModalProps, useModalState, useAppState, useSearchBarState, useSideBarState }

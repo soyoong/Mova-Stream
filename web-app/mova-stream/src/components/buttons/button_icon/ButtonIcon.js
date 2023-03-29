@@ -1,7 +1,6 @@
 import styles from './ButtonIcon.module.scss'
 import classNames from 'classnames/bind'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import PropTypes from 'prop-types'
 
 const cx = classNames.bind(styles)
 
@@ -19,10 +18,6 @@ function ButtonIcon({ icon, large, onClick, color, underline, underlineActive, u
       <FontAwesomeIcon className={cx('fa-button')} icon={icon} style={{ color: color }} />
     </button>
   )
-}
-
-ButtonIcon.propTypes = {
-  icon: PropTypes.node.isRequired,
 }
 
 export default ButtonIcon

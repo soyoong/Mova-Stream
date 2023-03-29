@@ -4,17 +4,22 @@ import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
-function HeaderItem({ data, onClick, underline, underlineActive, underlineHover }) {
+function HeaderItem({ data, onClick, isActive, underlineActive, underlineHover }) {
   return (
     <div className={cx('wrapper')}>
       <button
         className={cx('link-button', {
-          underline: underline,
           'underline-active': underlineActive,
           'underline-hover': underlineHover,
         })}
       >
-        <Link to={data.path} className={cx('link')} onClick={onClick}>
+        <Link
+          to={data.path}
+          className={cx('link', {
+            'link-active': isActive,
+          })}
+          onClick={onClick}
+        >
           {data.name}
         </Link>
       </button>
