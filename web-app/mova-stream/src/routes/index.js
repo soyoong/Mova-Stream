@@ -38,4 +38,15 @@ const publicRoutes = [
   },
 ]
 
-export { publicRoutes }
+const userMenuRoutes = [
+  {
+    name: 'Quản lý tài khoản',
+    path: '/user-accounts',
+  },
+  {
+    name: 'Cài đặt',
+    path: '/settings',
+  },
+]
+
+export { publicRoutes, userMenuRoutes }

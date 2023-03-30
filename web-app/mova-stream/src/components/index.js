@@ -1,6 +1,6 @@
 export { default as ButtonIcon } from '~/components/buttons/button_icon/ButtonIcon'
-export { default as ButtonImage } from '~/components/buttons/button_image/ButtonImage'
 export { default as ButtonPlay } from '~/components/buttons/button_play/ButtonPlay'
 export { default as ButtonInfo } from '~/components/buttons/button_info/ButtonInfo'
 export { default as ButtonModal } from '~/components/buttons/button_modal/ButtonModal'
 export { default as Modal } from '~/components/modal/Modal'
+export { default as DropMenu } from '~/components/drop_menu/DropMenu'

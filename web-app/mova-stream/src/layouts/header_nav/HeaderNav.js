@@ -8,7 +8,7 @@ import { ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import HeaderItem from './header_item/HeaderItem'
 import SearchBar from './searchbar/SearchBar'
-import UserDropMenu from './searchbar/user_drop_menu/UserDropMenu'
+import UserDropMenu from './searchbar/user_menu/UserMenu'
 import Sidebar from '../sidebar/Sidebar'
 
 const cx = classNames.bind(styles)
@@ -37,6 +37,11 @@ function HeaderNav() {
     >
       <div className={cx('container')}>
         <div className={cx('left-side')}>
+          <div className={cx('logo-container')}>
+            <Link to={publicRoutes[0].path}>
+              <img src={images.logo} alt="logo" />
+            </Link>
+          </div>
           <div className={cx('sidebar-icon')}>
             <ButtonIcon
               icon={showSidebar ? solid('xmark') : solid('bars')}
@@ -44,11 +49,6 @@ function HeaderNav() {
               underlineActive={showSidebar}
               underlineHover
             />
-          </div>
-          <div className={cx('logo-container')}>
-            <Link to={publicRoutes[0].path}>
-              <img src={images.logo} alt="logo" />
-            </Link>
           </div>
           <div className={cx('menu-container')}>
             {publicRoutes.map((item, index) => {

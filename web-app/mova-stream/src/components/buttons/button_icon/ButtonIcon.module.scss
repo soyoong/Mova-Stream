@@ -10,17 +10,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: var(--m-button-radius);
   position: relative;
-  --left: 0;
-  --bottom: -0.5rem;
-  --radius: 0.6rem;
-  --bg-color: var(--m-primary-red);
+  --border: 1px solid var(--m-primary-red);
+  --underline-left: 0;
+  --underline-bottom: -0.4rem;
+  --underline-radius: 0.6rem;
+  --underline-bg-color: var(--m-primary-red);
 
   .fa-button {
     object-fit: contain;
     width: 100%;
     height: 100%;
     color: white;
+  }
+
+  .img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: var(--m-button-radius);
   }
 }
 
@@ -40,11 +49,12 @@
 
 .underline-hover {
   &:before {
-    left: var(--left);
-    bottom: var(--bottom);
+    left: var(--underline-left);
+    bottom: var(--underline-bottom);
     width: 100%;
     height: 0.2rem;
-    background: var(--bg-color);
+    background: var(--underline-bg-color);
+    border-radius: var(--underline-radius);
     transform: scaleX(0);
   }
   &:hover:before {
@@ -54,12 +64,18 @@
 
 .underline-active {
   &:after {
-    left: var(--left);
-    bottom: var(--bottom);
+    left: var(--underline-left);
+    bottom: var(--underline-bottom);
     width: 100%;
     height: 0.2rem;
-    background: var(--bg-color);
+    background: var(--underline-bg-color);
+    border-radius: var(--underline-radius);
   }
+}
+
+.medium {
+  width: var(--m-icon-medium-size);
+  height: var(--m-icon-medium-size);
 }
 
 .large {

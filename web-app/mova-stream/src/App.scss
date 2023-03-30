@@ -32,10 +32,14 @@
 
   /* ICON SIZE */
   --m-icon-primary-size: 1.6rem;
-  --m-icon-large-size: 3rem; /* 30px */
+  --m-icon-medium-size: 3.2rem; /* 32px */
+  --m-icon-large-size: 6.4rem; /* 64px */
 
   /* BUTTON STYLE */
   --m-button-radius: 0.25rem;
+
+  /* MODAL STYLE */
+  --m-modal-radius: 0.6rem;
 
   // Transition
   --m-button-transition-duration: 0.15s;
@@ -79,7 +83,9 @@ html *::-webkit-scrollbar-track {
 }
 
 .box-shadow {
-  box-shadow: 0 2rem 4rem #0a0a0c;
+  box-shadow: 0px 2.5px 2.2px rgba(0, 0, 0, 0.028), 0px 6px 5.3px rgba(0, 0, 0, 0.04),
+    0px 11.3px 10px rgba(0, 0, 0, 0.05), 0px 20.1px 17.9px rgba(0, 0, 0, 0.06), 0px 37.6px 33.4px rgba(0, 0, 0, 0.072),
+    0px 90px 80px rgba(0, 0, 0, 0.1);
 }
 
 .scrollbar-visibility {
@@ -173,6 +179,16 @@ a:hover {
   }
   to {
     height: 0;
+  }
+}
+
+@keyframes animTranslateX {
+  from {
+    transform: translate(-55px, 0px);
+  }
+
+  to {
+    transform: translate(61px, 0px);
   }
 }
 

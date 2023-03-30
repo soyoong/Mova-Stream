@@ -13,7 +13,8 @@
   // background-color: rgba(20, 20, 20, 0.25) !important;
   // background-color: var(--m-background-page);
   transition: 0.2s ease-in-out;
-  --padding-horizontal: 2rem;
+  --element-padding-horizontal: 2rem;
+  --container-padding-horizontal: 3rem;
 
   .container {
     width: 100%;
@@ -21,15 +22,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    // column-gap: 5rem;
-    padding: 0 5rem;
+    padding: 0 var(--container-padding-horizontal);
 
     .left-side {
       flex-grow: 1;
       display: flex;
       flex-direction: row;
       align-items: center;
-      column-gap: 5rem;
+      column-gap: var(--element-padding-horizontal);
       font-size: var(--font-size-vw);
 
       .sidebar-icon {
@@ -51,7 +51,7 @@
       .menu-container {
         display: flex;
         flex-direction: row;
-        column-gap: var(--padding-horizontal);
+        column-gap: var(--element-padding-horizontal);
         align-items: center;
         animation: 'fadeIn' 0.2s;
       }
@@ -61,7 +61,7 @@
       height: 100%;
       display: flex;
       flex-direction: row;
-      column-gap: var(--padding-horizontal);
+      column-gap: var(--element-padding-horizontal);
       align-items: center;
       justify-content: flex-end;
     }

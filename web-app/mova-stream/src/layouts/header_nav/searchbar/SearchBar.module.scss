@@ -1,5 +1,13 @@
 @import 'normalize.css';
 
+.ease500ms {
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
 .default {
   --width: 25rem;
   --height: 3.2rem;
@@ -7,7 +15,6 @@
   --padding-vertical: 0;
   --transition-duration: 0.5s;
   width: var(--width);
-
   position: relative;
   display: flex;
   flex-direction: row;
@@ -18,7 +25,6 @@
   .search-input-container {
     height: var(--height);
     display: inline-block;
-    position: relative;
 
     input {
       height: var(--height);
@@ -47,7 +53,8 @@
 
   .search-icon-container {
     position: absolute;
-    right: calc(var(--padding-horizontal) / 2);
+    // right: calc(var(--padding-horizontal) / 2);
+    // right: 0;
     z-index: 999;
   }
 }
@@ -66,6 +73,11 @@
       padding-right: calc((var(--padding-horizontal) * 2) + var(--m-icon-primary-size));
     }
   }
+
+  .search-icon-container {
+    right: calc(var(--padding-horizontal) / 2);
+    @extend .ease500ms;
+  }
 }
 
 .inactive {
@@ -74,13 +86,13 @@
   transition-duration: var(--transition-duration);
 
   .search-input-container {
-    // width: 0;
-
     input {
       width: 0;
     }
   }
 
   .search-icon-container {
+    right: 0;
+    @extend .ease500ms;
   }
 }
