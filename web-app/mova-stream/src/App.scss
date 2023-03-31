@@ -8,8 +8,8 @@
   --default-layout-height-footer: 15.75rem;
   --default-layout-background-container: #141414;
   --default-layout-background-footer: #191919;
-  --default-horizontal-spacing: 1rem;
-  --default-vertical-spacing: 1rem;
+  --layout-horizontal-padding: 5rem;
+  --layout-vertical-padding: 5rem;
 
   /* LOGO */
   --m-logo-width: 7.5rem; /* 56px */
@@ -46,72 +46,47 @@
   --m-button-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-* {
-  box-sizing: border-box;
+*,
+*:before,
+*:after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
   font-size: 62.5%;
-  overflow-y: scroll;
-  overflow-x: hidden;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
 }
 
 body {
   font-family: NetflixSans-Regular;
-  // font-size: 1.6rem;
   line-height: 1.5;
-  color: white;
   text-rendering: optimizeSpeed;
+  color: white;
+  overflow-y: overlay;
 }
 
-// Scrollbar CSS
-html *::-webkit-scrollbar {
-  border-radius: var(--scrollbar-border-radius);
-  width: var(--scrollbar-width);
-}
-
-html *::-webkit-scrollbar-thumb {
-  border-radius: var(--scrollbar-border-radius);
-  background-color: var(--scrollbar-thumb-bg);
-}
-
-html *::-webkit-scrollbar-track {
-  border-radius: var(--scrollbar-border-radius);
-  background-color: var(--scrollbar-track-bg);
-}
-
-.box-shadow {
-  box-shadow: 0px 2.5px 2.2px rgba(0, 0, 0, 0.028), 0px 6px 5.3px rgba(0, 0, 0, 0.04),
-    0px 11.3px 10px rgba(0, 0, 0, 0.05), 0px 20.1px 17.9px rgba(0, 0, 0, 0.06), 0px 37.6px 33.4px rgba(0, 0, 0, 0.072),
-    0px 90px 80px rgba(0, 0, 0, 0.1);
-}
-
-.scrollbar-visibility {
-  overflow: scroll; /* Visibility scrollbars */
-}
-
+/* Scrollbar */
+/* Hide Scrollbars But Keep Functionality */
 .scrollbar-hidden {
-  overflow: hidden; /* Hide scrollbars */
-}
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 
-.scrollbar-hidden[functionality] {
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
     display: none;
   }
-  /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 }
 
 a {
   text-decoration: none;
-}
-
-a:hover {
-  transition: all 0.5s ease-in-out;
 }
 
 @font-face {
