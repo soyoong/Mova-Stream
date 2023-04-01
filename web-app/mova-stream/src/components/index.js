@@ -3,6 +3,6 @@ export { default as ButtonPlay } from '~/components/buttons/button_play/ButtonPl
 export { default as ButtonInfo } from '~/components/buttons/button_info/ButtonInfo'
 export { default as ButtonModal } from '~/components/buttons/button_modal/ButtonModal'
 export { default as Modal } from '~/components/modal/Modal'
-export { default as DropMenu } from '~/components/drop_menu/DropMenu'
+export { default as PopBarWrapper } from '~/components/popbar_wrapper/PopbarWrapper'
 export { default as Row } from '~/components/row/Row'
 export { default as RowItem } from '~/components/row_item/RowItem'

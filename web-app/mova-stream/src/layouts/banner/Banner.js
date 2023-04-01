@@ -8,7 +8,7 @@ import { useModalState, useModalProps } from '~/hooks/useRecoilClient'
 const cx = classNames.bind(styles)
 
 function Banner() {
-  const [data, setData] = useState(tmdbData.netflixOriginals)
+  const [data, setData] = useState(tmdbData.netflixOriginals.list)
   const [item, setItem] = useState({})
   const initialSeconds = 15
   const [seconds, setSeconds] = useState(initialSeconds)

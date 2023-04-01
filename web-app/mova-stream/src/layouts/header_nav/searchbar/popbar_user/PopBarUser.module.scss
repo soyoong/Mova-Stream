@@ -1,16 +1,19 @@
 .wrapper {
-  position: relative;
   --box-padding-horizontal: 1.6rem;
   --box-padding-vertical: 1.6rem;
   --row-gap-list: 1.6rem;
+  position: relative;
 
-  .drop-list-container {
-    .drop-list {
+  .drop__list__container {
+    width: 20rem;
+    height: auto;
+
+    ul {
       list-style: none;
-      padding: var(--box-padding-vertical) var(--box-padding-horizontal);
       display: flex;
       flex-direction: column;
       row-gap: var(--row-gap-list);
+      padding: var(--box-padding-vertical) var(--box-padding-horizontal);
 
       li {
         a {

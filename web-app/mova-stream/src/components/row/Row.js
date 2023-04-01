@@ -1,31 +1,19 @@
 import styles from './Row.module.scss'
 import classNames from 'classnames/bind'
-import tmdbData from '~/data/tmdb'
 import { RowItem } from '~/components'
 
 const cx = classNames.bind(styles)
 
-function Row() {
+function Row({ title, data }) {
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('row-container')}>
-        <div className={cx('title-wrapper')}>
-          <h1>{tmdbData.trendingNow.title}</h1>
+      <div className={cx('row')}>
+        <div className={cx('title__container')}>
+          <h1>{title}</h1>
         </div>
-        <div className={`scrollbar-hidden ${cx('row-list')}`}>
-          {tmdbData.trendingNow.list.map((item, index) => {
-            return (
-              <RowItem
-                imgUrl={item.backdrop_path}
-                videoUrl="https://youtu.be/wxN1T1uxQ2g"
-                matchScore={item.vote_average}
-                genres={item.genre_ids}
-                maturityNumber="18+"
-                duration="1h30p"
-                quality="hd"
-                onClick={() => console.log('Props')}
-              />
-            )
+        <div className={`scrollbar-hidden ${cx('row__container')}`}>
+          {data.map((item, i) => {
+            return <RowItem key={i} item={item} onClick={() => console.log(data)} />
           })}
         </div>
       </div>

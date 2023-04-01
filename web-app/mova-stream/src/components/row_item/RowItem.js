@@ -3,14 +3,14 @@ import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
-function RowItem({ imgUrl, videoUrl, matchScore, genres, maturityNumber, duration, quality, onClick }) {
+function RowItem({ item, onClick }) {
   const toFixed = (n, fixed) => ~~(Math.pow(10, fixed) * n) / Math.pow(10, fixed)
 
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('card')}>
+      <div className={cx('card')} onClick={onClick}>
         <div className={cx('card__thumb')}>
-          <img src={imgUrl} alt="Mountain Background" />
+          <img src={item.backdrop_path} alt="" />
         </div>
         <div className={cx('card__full')}></div>
       </div>

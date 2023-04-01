@@ -1,18 +1,14 @@
-import styles from './DropMenu.module.scss'
+import styles from './PopbarWrapper.module.scss'
 import classNames from 'classnames/bind'
 import { useState } from 'react'
 
 const cx = classNames.bind(styles)
 
-function DropMenu({ behindOnClick, overflowHidden, children }) {
+function PopBarWrapper({ behindOnClick, children }) {
   const [behindState, setBehindState] = useState(false)
 
   return (
-    <div
-      className={`box-shadow ${cx('wrapper', {
-        'overflow-hidden': overflowHidden,
-      })}`}
-    >
+    <div className={`${cx('wrapper')} shadow`}>
       <div
         className={cx('behind-layout')}
         onClick={even => {
@@ -21,9 +17,9 @@ function DropMenu({ behindOnClick, overflowHidden, children }) {
         }}
       ></div>
 
-      <div className={` ${cx('container')}`}>{children}</div>
+      <div className={`${cx('container')}`}>{children}</div>
     </div>
   )
 }
 
-export default DropMenu
+export default PopBarWrapper

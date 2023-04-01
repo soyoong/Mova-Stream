@@ -8,7 +8,7 @@ import { ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import HeaderItem from './header_item/HeaderItem'
 import SearchBar from './searchbar/SearchBar'
-import UserDropMenu from './searchbar/user_menu/UserMenu'
+import PopBarUser from './searchbar/popbar_user/PopBarUser'
 import Sidebar from '../sidebar/Sidebar'
 
 const cx = classNames.bind(styles)
@@ -69,7 +69,7 @@ function HeaderNav() {
         <div className={cx('right-side')}>
           <SearchBar index={indexIcon} onClick={() => setIdexIcon(2)} />
           <ButtonIcon icon={solid('bell')} onClick={() => setIdexIcon(1)} />
-          <UserDropMenu index={indexIcon} onClick={() => setIdexIcon(0)} />
+          <PopBarUser index={indexIcon} onClick={() => setIdexIcon(0)} />
         </div>
       </div>
       <Sidebar expanded={showSidebar} onClick={() => setShowSidebar(!showSidebar)} />

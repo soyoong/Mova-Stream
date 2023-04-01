@@ -10,8 +10,10 @@
   --default-layout-background-footer: #191919;
   --layout-horizontal-padding: 5rem;
   --layout-vertical-padding: 5rem;
+  --element-padding: 2rem;
   --row-width: 21.8rem;
   --row-height: 12.8rem;
+
   /* LOGO */
   --m-logo-width: 7.5rem; /* 56px */
   --m-logo-height: 50%;
@@ -32,7 +34,7 @@
   --m-color-dark-gray: rgb(48, 48, 48);
 
   /* ICON SIZE */
-  --m-icon-primary-size: 1.6rem;
+  --m-icon-primary-size: 1.6rem; /* 16px */
   --m-icon-medium-size: 3.2rem; /* 32px */
   --m-icon-large-size: 6.4rem; /* 64px */
 
@@ -50,8 +52,6 @@
 *,
 *:before,
 *:after {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
@@ -61,6 +61,8 @@ html {
 
 html,
 body {
+  margin: 0;
+  padding: 0;
   height: 100%;
   width: 100%;
 }
@@ -71,6 +73,7 @@ body {
   text-rendering: optimizeSpeed;
   color: white;
   overflow-y: overlay;
+  // overflow-x: hidden;
 }
 
 /* Scrollbar */
@@ -166,6 +169,13 @@ a {
   to {
     transform: translate(61px, 0px);
   }
+}
+
+/* Shadow */
+.shadow {
+  -webkit-box-shadow: 0px 0px 32px 8px rgb(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 32px 8px rgb(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 32px 8px rgb(0, 0, 0, 0.5);
 }
 
 // /* Extra small devices (phones, 600px and down) */

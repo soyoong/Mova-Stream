@@ -1,82 +1,114 @@
-.button-icon {
-  cursor: pointer;
-  width: var(--m-icon-primary-size);
-  height: var(--m-icon-primary-size);
-  background-image: none;
-  background: none;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--m-button-radius);
-  position: relative;
+.wrapper {
   --border: 1px solid var(--m-primary-red);
   --underline-left: 0;
   --underline-bottom: -0.4rem;
   --underline-radius: 0.6rem;
   --underline-bg-color: var(--m-primary-red);
 
-  .fa-button {
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-    color: white;
-  }
-
-  .img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  .primary {
+    width: var(--m-icon-primary-size);
+    height: var(--m-icon-primary-size);
+    position: relative;
+    background-image: none;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: var(--m-button-radius);
-  }
-}
 
-.underline-active,
-.underline-hover {
-  position: relative;
-  color: inherit;
-  text-decoration: none;
-  line-height: 2.4rem;
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    transition: transform 0.5s ease;
-  }
-}
+    .fa-button {
+      cursor: pointer;
+      object-fit: contain;
+      width: var(--m-icon-primary-size);
+      height: var(--m-icon-primary-size);
+      color: white;
+    }
 
-.underline-hover {
-  &:before {
-    left: var(--underline-left);
-    bottom: var(--underline-bottom);
-    width: 100%;
-    height: 0.2rem;
-    background: var(--underline-bg-color);
-    border-radius: var(--underline-radius);
-    transform: scaleX(0);
+    .img {
+      cursor: pointer;
+      width: var(--m-icon-primary-size);
+      height: var(--m-icon-primary-size);
+      object-fit: contain;
+      border-radius: var(--m-button-radius);
+    }
   }
-  &:hover:before {
-    transform: scaleX(1);
+
+  .medium {
+    width: auto;
+    height: auto;
+
+    .fa-button {
+      cursor: pointer;
+      width: var(--m-icon-medium-size);
+      height: var(--m-icon-medium-size);
+    }
+
+    .img {
+      cursor: pointer;
+      width: var(--m-icon-medium-size);
+      height: var(--m-icon-medium-size);
+      object-fit: contain;
+      border-radius: var(--m-button-radius);
+    }
   }
-}
 
-.underline-active {
-  &:after {
-    left: var(--underline-left);
-    bottom: var(--underline-bottom);
-    width: 100%;
-    height: 0.2rem;
-    background: var(--underline-bg-color);
-    border-radius: var(--underline-radius);
+  .large {
+    width: auto;
+    height: auto;
+
+    .fa-button {
+      cursor: pointer;
+      width: var(--m-icon-large-size);
+      height: var(--m-icon-large-size);
+    }
+
+    .img {
+      cursor: pointer;
+      width: var(--m-icon-large-size);
+      height: var(--m-icon-large-size);
+      object-fit: contain;
+      border-radius: var(--m-button-radius);
+    }
   }
-}
 
-.medium {
-  width: var(--m-icon-medium-size);
-  height: var(--m-icon-medium-size);
-}
+  .underline-active,
+  .underline-hover {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    line-height: 2.4rem;
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      transition: transform 0.5s ease;
+    }
+  }
 
-.large {
-  width: var(--m-icon-large-size);
-  height: var(--m-icon-large-size);
+  .underline-hover {
+    &:before {
+      left: var(--underline-left);
+      bottom: var(--underline-bottom);
+      width: 100%;
+      height: 0.2rem;
+      background: var(--underline-bg-color);
+      border-radius: var(--underline-radius);
+      transform: scaleX(0);
+    }
+    &:hover:before {
+      transform: scaleX(1);
+    }
+  }
+
+  .underline-active {
+    &:after {
+      left: var(--underline-left);
+      bottom: var(--underline-bottom);
+      width: 100%;
+      height: 0.2rem;
+      background: var(--underline-bg-color);
+      border-radius: var(--underline-radius);
+    }
+  }
 }

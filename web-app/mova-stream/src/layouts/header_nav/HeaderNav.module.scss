@@ -48,17 +48,16 @@
       .menu-container {
         display: flex;
         flex-direction: row;
-        column-gap: var(--element-padding-horizontal);
+        column-gap: var(--element-padding);
         align-items: center;
         animation: 'fadeIn' 0.2s;
       }
     }
 
     .right-side {
-      height: 100%;
       display: flex;
       flex-direction: row;
-      column-gap: var(--element-padding-horizontal);
+      column-gap: calc(var(--element-padding) * 1);
       align-items: center;
       justify-content: flex-end;
     }

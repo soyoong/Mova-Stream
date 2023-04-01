@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Home.module.scss'
 import { Banner } from '~/layouts'
 import classNames from 'classnames/bind'
-import { Modal } from '~/components'
+import { Modal, RowItem } from '~/components'
 import tmdbData from '~/data/tmdb'
 import { Row } from '~/components'
 
@@ -12,12 +12,11 @@ function Home() {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('container')}>
-        <div className={cx('banner-wrapper')}>
+        <div className={cx('banner__wrapper')}>
           <Banner />
         </div>
-        <div className={cx('list-container')}>
-          <Row />
-          <Row />
+        <div className={cx('list__container')}>
+          <Row title={tmdbData.trendingNow.title} data={tmdbData.trendingNow.list} />
         </div>
       </div>
     </div>

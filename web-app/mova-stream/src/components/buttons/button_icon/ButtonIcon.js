@@ -6,19 +6,24 @@ const cx = classNames.bind(styles)
 
 function ButtonIcon({ icon, src, medium, large, color, underline, underlineActive, underlineHover, onClick }) {
   return (
-    <button
-      className={cx('button-icon', {
-        medium: medium,
-        large: large,
+    <div
+      className={cx('wrapper', {
         underline: underline,
         'underline-hover': underlineHover,
         'underline-active': underlineActive,
       })}
-      onClick={onClick}
     >
-      {icon && <FontAwesomeIcon className={cx('fa-button')} icon={icon} style={{ color: color }} />}
-      {src && <img className={cx('img')} src={src} alt="icon" />}
-    </button>
+      <button
+        className={cx('primary', {
+          medium: medium,
+          large: large,
+        })}
+        onClick={onClick}
+      >
+        {icon && <FontAwesomeIcon className={cx('fa-button')} icon={icon} style={{ color: color }} />}
+        {src && <img className={cx('img')} src={src} alt="icon" />}
+      </button>
+    </div>
   )
 }
 
