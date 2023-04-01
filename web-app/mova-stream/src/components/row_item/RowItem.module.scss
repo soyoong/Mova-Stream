@@ -4,16 +4,17 @@
   --duration: 500ms;
   --property: all;
   --propertyAnim: ease;
-  -webkit-transition: var(--property) var(--duration) var(--propertyAnim);
-  -moz-transition: var(--property) var(--duration) var(--propertyAnim);
-  -ms-transition: var(--property) var(--duration) var(--propertyAnim);
-  -o-transition: var(--property) var(--duration) var(--propertyAnim);
-  transition: var(--property) var(--duration) var(--propertyAnim);
+  --delay: 0ms;
+  -webkit-transition: var(--property) var(--duration) var(--propertyAnim) var(--delay);
+  -moz-transition: var(--property) var(--duration) var(--propertyAnim) var(--delay);
+  -ms-transition: var(--property) var(--duration) var(--propertyAnim) var(--delay);
+  -o-transition: var(--property) var(--duration) var(--propertyAnim) var(--delay);
+  transition: var(--property) var(--duration) var(--propertyAnim) var(--delay);
 }
 
 .transformScaler {
   --scaler: 1.5;
-  --translateX: 0;
+  --translateX: 25%;
   --translateY: 0;
   -webkit-transform: translate(var(--translateX), var(--translateY)) scale(var(--scaler));
   -moz-transform: translate(var(--translateX), var(--translateY)) scale(var(--scaler));
@@ -32,13 +33,10 @@
 
 .wrapper {
   --scaler: 1.5;
-  // overflow: overlay;
-  // position: relative;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  // width: calc(var(--width) * var(--scaler));
-  // height: calc(var(--height) * var(--scaler));
   @extend .transition;
   /* CARD Animation */
 
@@ -46,22 +44,12 @@
     cursor: pointer;
     width: calc(var(--row-width) * 1);
     height: calc(var(--row-height) * 1);
-    position: relative;
-    // @extend .ease300ms;
-    // transition-delay: 100ms;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     border-radius: var(--m-button-radius);
-
-    // background-color: rgb(150, 140, 140);
     @extend .transition;
 
     .card__thumb {
       width: calc(var(--row-width) * 1);
       height: calc(var(--row-height) * 1);
-      // display: none;
 
       img {
         width: 100%;
@@ -73,31 +61,15 @@
     }
 
     // .card__full {
-    //   width: 0;
-    //   height: 0;
+    //   width: calc(var(--row-width) * 1);
+    //   height: calc(var(--row-height) * 1);
     //   background-color: burlywood;
-    //   opacity: 0;
-    //   // display: none;
     //   @extend .transition;
+    //   display: none;
     // }
 
     &:hover {
-      z-index: 1;
       @extend .transformScaler;
-      // background-color: aqua;
-
-      // .card__full {
-      //   position: fixed;
-      //   top: 0;
-      //   left: 0;
-      //   bottom: 0;
-      //   right: 0;
-      //   width: var(--row-width);
-      //   height: var(--row-height);
-      //   opacity: 1;
-      //   display: flex;
-      //   @extend .transition;
-      // }
     }
   }
 }

@@ -13,7 +13,11 @@ function Row({ title, data }) {
         </div>
         <div className={`scrollbar-hidden ${cx('row__container')}`}>
           {data.map((item, i) => {
-            return <RowItem key={i} item={item} onClick={() => console.log(data)} />
+            return (
+              <div className={cx('item__wrapper')}>
+                <RowItem key={i} item={item} onClick={() => console.log(data)} />
+              </div>
+            )
           })}
         </div>
       </div>
