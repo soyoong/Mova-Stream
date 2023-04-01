@@ -4,7 +4,7 @@ import { Banner } from '~/layouts'
 import classNames from 'classnames/bind'
 import { Modal } from '~/components'
 import tmdbData from '~/data/tmdb'
-import Slider from '~/components/slider/Slider'
+import { Row } from '~/components'
 
 const cx = classNames.bind(styles)
 
@@ -16,7 +16,8 @@ function Home() {
           <Banner />
         </div>
         <div className={cx('list-container')}>
-          <Slider />
+          <Row />
+          <Row />
         </div>
       </div>
     </div>

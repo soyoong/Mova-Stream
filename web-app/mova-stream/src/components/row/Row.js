@@ -1,21 +1,21 @@
-import styles from './Slider.module.scss'
+import styles from './Row.module.scss'
 import classNames from 'classnames/bind'
 import tmdbData from '~/data/tmdb'
-import SliderItem from '../slider_item/SliderItem'
+import { RowItem } from '~/components'
 
 const cx = classNames.bind(styles)
 
-function Slider() {
+function Row() {
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('slider-container')}>
+      <div className={cx('row-container')}>
         <div className={cx('title-wrapper')}>
           <h1>{tmdbData.trendingNow.title}</h1>
         </div>
-        <div className={`scrollbar-hidden ${cx('slider-list')}`}>
+        <div className={`scrollbar-hidden ${cx('row-list')}`}>
           {tmdbData.trendingNow.list.map((item, index) => {
             return (
-              <SliderItem
+              <RowItem
                 imgUrl={item.backdrop_path}
                 videoUrl="https://youtu.be/wxN1T1uxQ2g"
                 matchScore={item.vote_average}
@@ -33,4 +33,4 @@ function Slider() {
   )
 }
 
-export default Slider
+export default Row
