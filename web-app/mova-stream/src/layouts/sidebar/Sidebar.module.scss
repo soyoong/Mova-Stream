@@ -1,4 +1,22 @@
 // Search bar
+@keyframes animLinearHeightIn {
+  from {
+    height: 0px;
+  }
+  to {
+    height: var(--default-layout-height-header);
+  }
+}
+
+@keyframes animLinearHeightOut {
+  from {
+    height: var(--default-layout-height-header);
+  }
+  to {
+    height: 0px;
+  }
+}
+
 .wrapper {
   position: relative;
   // height: auto;
@@ -11,7 +29,7 @@
 
   .expand-header-inactive {
     height: 0;
-    animation-name: 'animLinearHeightOut';
+    animation-name: animLinearHeightOut;
     animation-duration: 0.2s;
 
     .content {
@@ -22,7 +40,7 @@
 
   .expand-header-active {
     height: var(--default-layout-height-header);
-    animation-name: 'animLinearHeightIn';
+    animation-name: animLinearHeightIn;
     animation-duration: 0.2s;
     // box-shadow: 0 2rem 4rem rgb(10, 10, 10);
     display: flex;

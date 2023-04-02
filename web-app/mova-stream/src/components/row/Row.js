@@ -8,9 +8,7 @@ function Row({ title, data }) {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('row')}>
-        <div className={cx('title__container')}>
-          <h1>{title}</h1>
-        </div>
+        <h1>{title}</h1>
         <div className={`scrollbar-hidden ${cx('row__container')}`}>
           {data.map((item, i) => {
             return (

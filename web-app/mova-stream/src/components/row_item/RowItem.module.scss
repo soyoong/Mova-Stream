@@ -60,16 +60,25 @@
       }
     }
 
-    // .card__full {
-    //   width: calc(var(--row-width) * 1);
-    //   height: calc(var(--row-height) * 1);
-    //   background-color: burlywood;
-    //   @extend .transition;
-    //   display: none;
-    // }
+    .card__overview {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 25%;
+      opacity: 1;
+      z-index: 10;
+      background-color: black;
+      animation-name: animEaseHeightOut;
+      @extend .transition;
+    }
 
     &:hover {
       @extend .transformScaler;
+      .card__overview {
+        opacity: 1;
+        animation-name: animEaseHeightIn;
+      }
     }
   }
 }

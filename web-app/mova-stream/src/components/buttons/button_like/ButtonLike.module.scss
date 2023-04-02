@@ -1,0 +1,18 @@
+.wrapper {
+  width: fit-content;
+  height: fit-content;
+  padding: 0.4rem;
+  border: 1px solid var(--m-color-light-gray);
+  border-radius: 50rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .fa-icon {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+
+  &:hover {
+  }
+}

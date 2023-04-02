@@ -4,7 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const cx = classNames.bind(styles)
 
-function ButtonIcon({ icon, src, medium, large, color, underline, underlineActive, underlineHover, onClick }) {
+function ButtonIcon({
+  icon,
+  src,
+  medium,
+  large,
+  hoverTitle,
+  color,
+  underline,
+  underlineActive,
+  underlineHover,
+  onClick,
+}) {
   return (
     <div
       className={cx('wrapper', {

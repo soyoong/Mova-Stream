@@ -17,6 +17,7 @@ function Home() {
         </div>
         <div className={cx('list__container')}>
           <Row title={tmdbData.trendingNow.title} data={tmdbData.trendingNow.list} />
+          <Row title={tmdbData.topRated.title} data={tmdbData.topRated.list} />
         </div>
       </div>
     </div>

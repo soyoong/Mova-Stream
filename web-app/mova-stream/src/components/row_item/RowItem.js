@@ -1,5 +1,7 @@
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import styles from './RowItem.module.scss'
 import classNames from 'classnames/bind'
+import ButtonLike from '../buttons/button_like/ButtonLike'
 
 const cx = classNames.bind(styles)
 
@@ -12,7 +14,9 @@ function RowItem({ item, onClick }) {
         <div className={cx('card__thumb')}>
           <img src={item.backdrop_path} alt="" />
         </div>
-        <div className={cx('card__full')}></div>
+        <div className={cx('card__overview')}>
+          <ButtonLike onClick={() => console.log('Cliked')} />
+        </div>
       </div>
     </div>
   )

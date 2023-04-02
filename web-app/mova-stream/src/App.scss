@@ -3,8 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&display=swap');
 
 :root {
-  --default-layout-height-header: 4.5rem; /* 72px */
-  --default-layout-height-sidebar: 2.75rem;
+  --default-layout-height-header: 4.5rem; /* 45px */
   --default-layout-height-footer: 15.75rem;
   --default-layout-background-container: #141414;
   --default-layout-background-footer: #191919;
@@ -143,21 +142,21 @@ a {
   }
 }
 
-@keyframes animLinearHeightIn {
+@keyframes animEaseHeightIn {
   from {
-    height: 0;
+    height: 0%;
   }
   to {
-    height: var(--default-layout-height-header);
+    height: 100%;
   }
 }
 
-@keyframes animLinearHeightOut {
+@keyframes animEaseHeightOut {
   from {
-    height: var(--default-layout-height-sidebar);
+    height: 100%;
   }
   to {
-    height: 0;
+    height: 0%;
   }
 }
 
