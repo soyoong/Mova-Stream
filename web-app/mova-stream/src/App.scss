@@ -33,6 +33,7 @@
   --m-color-dark-gray: rgb(48, 48, 48);
 
   /* ICON SIZE */
+  --m-icon-small-size: 1.2rem; /* 16px */
   --m-icon-primary-size: 1.6rem; /* 16px */
   --m-icon-medium-size: 3.2rem; /* 32px */
   --m-icon-large-size: 6.4rem; /* 64px */
@@ -170,12 +171,310 @@ a {
   }
 }
 
-/* Shadow */
-.shadow {
-  -webkit-box-shadow: 0px 0px 32px 8px rgb(0, 0, 0, 0.5);
-  -moz-box-shadow: 0px 0px 32px 8px rgb(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 32px 8px rgb(0, 0, 0, 0.5);
+@keyframes bounceScaleIn {
+  1% {
+    transform: scale(0.2849774201);
+  }
+  2% {
+    transform: scale(0.6262997345);
+  }
+  3% {
+    transform: scale(0.9883095976);
+  }
+  4% {
+    transform: scale(1.3416358842);
+  }
+  5% {
+    transform: scale(1.6638547178);
+  }
+  6% {
+    transform: scale(1.9395297638);
+  }
+  7% {
+    transform: scale(2.1597632188);
+  }
+  8% {
+    transform: scale(2.3213941648);
+  }
+  9% {
+    transform: scale(2.4259756644);
+  }
+  10% {
+    transform: scale(2.4786487855);
+  }
+  11% {
+    transform: scale(2.4870132841);
+  }
+  12% {
+    transform: scale(2.4600733381);
+  }
+  13% {
+    transform: scale(2.4073146194);
+  }
+  14% {
+    transform: scale(2.3379477846);
+  }
+  15% {
+    transform: scale(2.2603344379);
+  }
+  16% {
+    transform: scale(2.1815955967);
+  }
+  17% {
+    transform: scale(2.1073901321);
+  }
+  18% {
+    transform: scale(2.0418416743);
+  }
+  19% {
+    transform: scale(1.9875869135);
+  }
+  20% {
+    transform: scale(1.9459157263);
+  }
+  21% {
+    transform: scale(1.9169736402);
+  }
+  22% {
+    transform: scale(1.8999992309);
+  }
+  23% {
+    transform: scale(1.8935725746);
+  }
+  24% {
+    transform: scale(1.8958552742);
+  }
+  25% {
+    transform: scale(1.904807376);
+  }
+  26% {
+    transform: scale(1.9183712502);
+  }
+  27% {
+    transform: scale(1.9346169336);
+  }
+  28% {
+    transform: scale(1.951847268);
+  }
+  29% {
+    transform: scale(1.9686642961);
+  }
+  30% {
+    transform: scale(1.9840007243);
+  }
+  31% {
+    transform: scale(1.9971218398);
+  }
+  32% {
+    transform: scale(2.00760414);
+  }
+  33% {
+    transform: scale(2.0152971769);
+  }
+  34% {
+    transform: scale(2.0202748706);
+  }
+  35% {
+    transform: scale(2.0227819169);
+  }
+  36% {
+    transform: scale(2.0231800362);
+  }
+  37% {
+    transform: scale(2.0218977941);
+  }
+  38% {
+    transform: scale(2.0193866737);
+  }
+  39% {
+    transform: scale(2.0160850682);
+  }
+  40% {
+    transform: scale(2.0123909591);
+  }
+  41% {
+    transform: scale(2.0086432807);
+  }
+  42% {
+    transform: scale(2.0051113742);
+  }
+  43% {
+    transform: scale(2.0019915094);
+  }
+  44% {
+    transform: scale(1.9994091829);
+  }
+  45% {
+    transform: scale(1.997425788);
+  }
+  46% {
+    transform: scale(1.9960482515);
+  }
+  47% {
+    transform: scale(1.9952403322);
+  }
+  48% {
+    transform: scale(1.9949344471);
+  }
+  49% {
+    transform: scale(1.9950430951);
+  }
+  50% {
+    transform: scale(1.9954691822);
+  }
+  51% {
+    transform: scale(1.9961147726);
+  }
+  52% {
+    transform: scale(1.9968880072);
+  }
+  53% {
+    transform: scale(1.9977081075);
+  }
+  54% {
+    transform: scale(1.9985085361);
+  }
+  55% {
+    transform: scale(1.9992384935);
+  }
+  56% {
+    transform: scale(1.9998630102);
+  }
+  57% {
+    transform: scale(2.000361929);
+  }
+  58% {
+    transform: scale(2.0007280892);
+  }
+  59% {
+    transform: scale(2.0009650091);
+  }
+  60% {
+    transform: scale(2.0010843352);
+  }
+  61% {
+    transform: scale(2.0011032842);
+  }
+  62% {
+    transform: scale(2.0010422542);
+  }
+  63% {
+    transform: scale(2.0009227342);
+  }
+  64% {
+    transform: scale(2.0007655899);
+  }
+  65% {
+    transform: scale(2.000589764);
+  }
+  66% {
+    transform: scale(2.0004113883);
+  }
+  67% {
+    transform: scale(2.0002432826);
+  }
+  68% {
+    transform: scale(2.0000947885);
+  }
+  69% {
+    transform: scale(1.9999718793);
+  }
+  70% {
+    transform: scale(1.999877477);
+  }
+  71% {
+    transform: scale(1.9998119113);
+  }
+  72% {
+    transform: scale(1.9997734574);
+  }
+  73% {
+    transform: scale(1.9997588984);
+  }
+  74% {
+    transform: scale(1.9997640696);
+  }
+  75% {
+    transform: scale(1.9997843498);
+  }
+  76% {
+    transform: scale(1.9998150775);
+  }
+  77% {
+    transform: scale(1.9998518806);
+  }
+  78% {
+    transform: scale(1.9998909144);
+  }
+  79% {
+    transform: scale(1.9999290118);
+  }
+  80% {
+    transform: scale(1.9999637551);
+  }
+  81% {
+    transform: scale(1.9999934798);
+  }
+  82% {
+    transform: scale(2.0000172265);
+  }
+  83% {
+    transform: scale(2.0000346544);
+  }
+  84% {
+    transform: scale(2.0000459309);
+  }
+  85% {
+    transform: scale(2.0000516104);
+  }
+  86% {
+    transform: scale(2.0000525123);
+  }
+  87% {
+    transform: scale(2.0000496075);
+  }
+  88% {
+    transform: scale(2.0000439187);
+  }
+  89% {
+    transform: scale(2.0000364393);
+  }
+  90% {
+    transform: scale(2.0000280706);
+  }
+  91% {
+    transform: scale(2.0000195806);
+  }
+  92% {
+    transform: scale(2.0000115794);
+  }
+  93% {
+    transform: scale(2.0000045116);
+  }
+  94% {
+    transform: scale(1.9999986616);
+  }
+  95% {
+    transform: scale(1.9999941684);
+  }
+  96% {
+    transform: scale(1.9999910477);
+  }
+  97% {
+    transform: scale(1.9999892174);
+  }
+  98% {
+    transform: scale(1.9999885245);
+  }
+  99% {
+    transform: scale(1.9999887706);
+  }
+  100% {
+    transform: scale(1.9999897358);
+  }
 }
+
+/* Shadow */
 
 // /* Extra small devices (phones, 600px and down) */
 // @media only screen and (max-width: 600px) {

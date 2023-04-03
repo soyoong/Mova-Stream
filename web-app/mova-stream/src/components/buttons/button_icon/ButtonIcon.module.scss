@@ -1,9 +1,8 @@
+@import 'src/styles/_variables.scss';
+@import 'src/styles/_mixins.scss';
+
 .wrapper {
-  --border: 1px solid var(--m-primary-red);
-  --underline-left: 0;
-  --underline-bottom: -0.4rem;
-  --underline-radius: 0.6rem;
-  --underline-bg-color: var(--m-primary-red);
+  @include underlineButton(0, 0, -0.4rem, 0);
 
   .primary {
     width: var(--m-icon-primary-size);
@@ -34,9 +33,28 @@
     }
   }
 
+  .small {
+    width: var(--m-icon-small-size);
+    height: var(--m-icon-small-size);
+
+    .fa-button {
+      cursor: pointer;
+      width: var(--m-icon-small-size);
+      height: var(--m-icon-small-size);
+    }
+
+    .img {
+      cursor: pointer;
+      width: var(--m-icon-small-size);
+      height: var(--m-icon-small-size);
+      object-fit: contain;
+      border-radius: var(--m-button-radius);
+    }
+  }
+
   .medium {
-    width: auto;
-    height: auto;
+    width: var(--m-icon-medium-size);
+    height: var(--m-icon-medium-size);
 
     .fa-button {
       cursor: pointer;
@@ -54,8 +72,8 @@
   }
 
   .large {
-    width: auto;
-    height: auto;
+    width: var(--m-icon-large-size);
+    height: var(--m-icon-large-size);
 
     .fa-button {
       cursor: pointer;
@@ -72,43 +90,16 @@
     }
   }
 
-  .underline-active,
-  .underline-hover {
-    position: relative;
-    color: inherit;
-    text-decoration: none;
-    line-height: 2.4rem;
-    &:before,
-    &:after {
-      content: '';
-      position: absolute;
-      transition: transform 0.5s ease;
-    }
+  .bordered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+    border: 1px solid $grayLight;
+    border-radius: 50px;
   }
 
-  .underline-hover {
-    &:before {
-      left: var(--underline-left);
-      bottom: var(--underline-bottom);
-      width: 100%;
-      height: 0.2rem;
-      background: var(--underline-bg-color);
-      border-radius: var(--underline-radius);
-      transform: scaleX(0);
-    }
-    &:hover:before {
-      transform: scaleX(1);
-    }
-  }
-
-  .underline-active {
-    &:after {
-      left: var(--underline-left);
-      bottom: var(--underline-bottom);
-      width: 100%;
-      height: 0.2rem;
-      background: var(--underline-bg-color);
-      border-radius: var(--underline-radius);
-    }
+  .background {
+    background-color: $grayLight025;
   }
 }

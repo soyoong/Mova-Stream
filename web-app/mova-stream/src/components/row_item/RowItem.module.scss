@@ -1,35 +1,5 @@
-/* LAYOUT */
-
-.transition {
-  --duration: 500ms;
-  --property: all;
-  --propertyAnim: ease;
-  --delay: 0ms;
-  -webkit-transition: var(--property) var(--duration) var(--propertyAnim) var(--delay);
-  -moz-transition: var(--property) var(--duration) var(--propertyAnim) var(--delay);
-  -ms-transition: var(--property) var(--duration) var(--propertyAnim) var(--delay);
-  -o-transition: var(--property) var(--duration) var(--propertyAnim) var(--delay);
-  transition: var(--property) var(--duration) var(--propertyAnim) var(--delay);
-}
-
-.transformScaler {
-  --scaler: 1.5;
-  --translateX: 25%;
-  --translateY: 0;
-  -webkit-transform: translate(var(--translateX), var(--translateY)) scale(var(--scaler));
-  -moz-transform: translate(var(--translateX), var(--translateY)) scale(var(--scaler));
-  -ms-transform: translate(var(--translateX), var(--translateY)) scale(var(--scaler));
-  -o-transform: translate(var(--translateX), var(--translateY)) scale(var(--scaler));
-  transform: translate(var(--translateX), var(--translateY)) scale(var(--scaler));
-}
-
-.transformTop {
-  -webkit-transform: translate(0px, -100px);
-  -moz-transform: translate(0px, -100px);
-  -ms-transform: translate(0px, -100px);
-  -o-transform: translate(0px, -100px);
-  transform: translate(0px, -100px);
-}
+@import 'src/styles/_anim.scss';
+@import 'src/styles/_mixins.scss';
 
 .wrapper {
   --scaler: 1.5;
@@ -37,7 +7,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  @extend .transition;
   /* CARD Animation */
 
   .card {
@@ -45,7 +14,7 @@
     width: calc(var(--row-width) * 1);
     height: calc(var(--row-height) * 1);
     border-radius: var(--m-button-radius);
-    @extend .transition;
+    @include transition();
 
     .card__thumb {
       width: calc(var(--row-width) * 1);
@@ -66,18 +35,26 @@
       bottom: 0;
       right: 0;
       height: 25%;
-      opacity: 1;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      column-gap: 0.4rem;
+      padding: 0 1rem;
+      opacity: 0;
       z-index: 10;
-      background-color: black;
       animation-name: animEaseHeightOut;
-      @extend .transition;
+      @include transition();
     }
 
     &:hover {
-      @extend .transformScaler;
+      @include boxShadow();
+      @include scaler(2, 50%);
+      @include transition();
+
       .card__overview {
         opacity: 1;
         animation-name: animEaseHeightIn;
+        @include transition();
       }
     }
   }

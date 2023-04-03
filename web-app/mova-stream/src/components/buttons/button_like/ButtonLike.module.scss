@@ -1,18 +1,165 @@
+@import 'src/styles/_variables.scss';
+@import 'src/styles/_anim.scss';
+@import 'src/styles/_mixins.scss';
+
+$duration: 500ms;
+
+@mixin textHover($text: '') {
+  &::after {
+    content: $text;
+    color: black;
+    font-weight: 500;
+    position: absolute;
+    bottom: calc(var(--m-icon-small-size) * 2.3);
+    padding: 0.4rem 0.8rem;
+    background-color: white;
+    border-radius: var(--m-button-radius);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: calc(var(--m-icon-small-size) * 2.2);
+    width: 0.6rem;
+    height: 0.6rem;
+    background-color: white;
+    transform: rotate(45deg);
+  }
+}
+
 .wrapper {
+  position: relative;
   width: fit-content;
   height: fit-content;
-  padding: 0.4rem;
-  border: 1px solid var(--m-color-light-gray);
-  border-radius: 50rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid $grayLight;
+  padding: 0.4rem;
+  border-radius: 50px;
+  background-color: $grayLight025;
 
-  .fa-icon {
-    width: 0.8rem;
-    height: 0.8rem;
+  .fa__icon {
+    width: var(--m-icon-small-size);
+    height: var(--m-icon-small-size);
+    color: white;
   }
 
-  &:hover {
+  .popbar_wrapper {
+    position: absolute;
+
+    .popbar__over {
+      // max-width: calc(var(--m-icon-small-size) + 0.4rem * 2);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      column-gap: 0.4rem;
+      border: 1px solid $grayLight;
+      padding: 0.2rem;
+      border-radius: 50px;
+      border: none;
+      width: calc(var(--m-icon-small-size) + 1.2rem);
+      height: calc(var(--m-icon-small-size) + 1.2rem);
+      background: none;
+      background-color: $grayDark;
+      opacity: 0;
+      z-index: 0;
+      @include boxShadow($blurRadius: 6px, $spread: 6px);
+      @include transition($duration);
+
+      button {
+        width: fit-content;
+        height: fit-content;
+        cursor: pointer;
+        border: none;
+        padding: 0.4rem;
+        background: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        z-index: 10;
+        @include transition($duration);
+
+        .fa__icon {
+          position: absolute;
+          width: var(--m-icon-small-size);
+          height: var(--m-icon-small-size);
+          color: white;
+        }
+
+        &:hover {
+          background-color: $grayLight025;
+          border-radius: 50px;
+          @include transition($duration);
+        }
+      }
+
+      .btn__dislike {
+        position: relative;
+        @include translate(100%, 0%);
+        @include transition(300ms);
+
+        &:hover {
+          @include textHover('Dislike');
+          @include transition(300ms);
+        }
+      }
+
+      .btn__like {
+        position: relative;
+        @include transition(300ms);
+
+        &:hover {
+          @include textHover('Like');
+          @include transition(300ms);
+        }
+      }
+
+      .btn__favorite {
+        position: relative;
+        @include translate(-100%, 0%);
+        @include transition(300ms);
+
+        &:hover {
+          @include textHover('Favorite');
+          @include transition(300ms);
+        }
+      }
+    }
+
+    &:hover {
+      .popbar__over {
+        width: fit-content;
+        height: fit-content;
+        opacity: 1;
+        @include transition($duration);
+
+        button {
+          opacity: 1;
+          @include transition($duration);
+
+          .fa__icon {
+            position: relative;
+          }
+        }
+
+        .btn__dislike {
+          @include translate(0%, 0%);
+        }
+
+        .btn__favorite {
+          @include translate(0%, 0%);
+        }
+      }
+    }
   }
+
+  // .active {
+  //   .popbar__over {
+  //     opacity: 0;
+  //   }
+  // }
 }

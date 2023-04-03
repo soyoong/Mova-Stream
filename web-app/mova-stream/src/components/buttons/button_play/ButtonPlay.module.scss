@@ -1,13 +1,11 @@
+@import 'src/styles/_mixins.scss';
+
 .wrapper {
   button {
-    cursor: pointer;
     display: flex;
     align-items: center;
-    column-gap: 0.5em;
+    column-gap: 0.5ema;
     border-radius: 0.25em;
-    background: none;
-    border: none;
-    background-image: none;
     padding: 0.5em 1.5em;
     font-size: 1.125em /* 14px */;
     line-height: 1.75em /* 20px */;
@@ -16,13 +14,7 @@
       transform, filter, backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
-    background-color: white;
     color: black;
-
-    &:hover {
-      animation-name: 'pulse';
-      animation-duration: 0.5s;
-    }
 
     .fa-button {
       color: black;
@@ -30,40 +22,5 @@
       height: 1.75em; /* 28px */
     }
   }
-}
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  .wrapper {
-    button {
-      font-size: 1rem; /* 10px */
-    }
-  }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .wrapper {
-    button {
-      font-size: 1.2rem; /* 12px */
-    }
-  }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  .wrapper {
-    button {
-      font-size: 1.4rem; /* 14px */
-    }
-  }
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .wrapper {
-    button {
-      font-size: 1.6rem; /* 16px */
-    }
-  }
+  @include buttonStyle(white);
 }

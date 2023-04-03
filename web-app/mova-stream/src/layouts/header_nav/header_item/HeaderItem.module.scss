@@ -1,3 +1,5 @@
+@import 'src/styles/_mixins.scss';
+
 .wrapper {
   position: relative;
   --border: 1px solid var(--m-primary-red);
@@ -20,43 +22,5 @@
     }
   }
 
-  .underline-active,
-  .underline-hover {
-    position: relative;
-    color: inherit;
-    text-decoration: none;
-    line-height: 2.4rem;
-    &:before,
-    &:after {
-      content: '';
-      position: absolute;
-      transition: transform 0.5s ease;
-    }
-  }
-
-  .underline-hover {
-    &:before {
-      left: var(--underline-left);
-      bottom: var(--underline-bottom);
-      width: 100%;
-      height: 0.2rem;
-      background: var(--underline-bg-color);
-      border-radius: var(--underline-radius);
-      transform: scaleX(0);
-    }
-    &:hover:before {
-      transform: scaleX(1);
-    }
-  }
-
-  .underline-active {
-    &:after {
-      left: var(--underline-left);
-      bottom: var(--underline-bottom);
-      width: 100%;
-      height: 0.2rem;
-      background: var(--underline-bg-color);
-      border-radius: var(--underline-radius);
-    }
-  }
+  @include underlineButton(0, 0, 2px, 0);
 }

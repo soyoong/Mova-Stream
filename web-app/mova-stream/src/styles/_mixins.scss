@@ -1,0 +1,89 @@
+@mixin buttonStyle($bgColor: white) {
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    background-color: $bgColor;
+  }
+
+  &:hover {
+    opacity: 0.75;
+    animation-name: 'pulse';
+    animation-duration: 0.5s;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 1rem; /* 10px */
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    font-size: 1.2rem; /* 12px */
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    font-size: 1.4rem; /* 14px */
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    font-size: 1.6rem; /* 16px */
+  }
+}
+
+@mixin underlineButton($top: 0, $left: 0, $bottom: 0, $right: 0) {
+  .underline-active,
+  .underline-hover {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    line-height: 2.4rem;
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      transition: transform 0.5s ease;
+    }
+  }
+
+  .underline-hover {
+    &:before {
+      left: $left;
+      bottom: $bottom;
+      right: $right;
+      width: 100%;
+      height: 0.2rem;
+      background: var(--m-primary-red);
+      border-radius: 0.6rem;
+      transform: scaleX(0);
+    }
+    &:hover:before {
+      transform: scaleX(1);
+    }
+  }
+
+  .underline-active {
+    &:after {
+      position: absolute;
+      left: $left;
+      bottom: $bottom;
+      right: $right;
+      width: 100%;
+      height: 0.2rem;
+      background: var(--m-primary-red);
+      border-radius: 0.6rem;
+    }
+  }
+}
+
+@mixin darkGray($opacity: 1) {
+  background-color: rgb(48, 48, 48, $opacity);
+}
+
+/* Shadow */
+@mixin boxShadow($horizontal: 0px, $vertical: 0px, $blurRadius: 1.6rem, $spread: 0.8rem, $color: rgba(0, 0, 0, 0.35)) {
+  box-shadow: $horizontal $vertical $blurRadius $spread $color;
+  -webkit-box-shadow: $horizontal $vertical $blurRadius $spread $color;
+  -moz-box-shadow: $horizontal $vertical $blurRadius $spread $color;
+}

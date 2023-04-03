@@ -1,0 +1,30 @@
+@import 'src/styles/_variables.scss';
+@import 'src/styles/_anim.scss';
+@import 'src/styles/_mixins.scss';
+
+$duration: 500ms;
+
+.wrapper {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  border-radius: 50px;
+  background-color: white;
+  @include transition();
+
+  .fa__icon {
+    width: var(--m-icon-small-size);
+    height: var(--m-icon-small-size);
+    color: black;
+    position: relative;
+    left: 1px;
+  }
+
+  &:hover {
+    opacity: 0.75;
+    @include transition();
+  }
+}

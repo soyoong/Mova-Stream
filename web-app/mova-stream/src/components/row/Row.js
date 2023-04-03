@@ -12,8 +12,8 @@ function Row({ title, data }) {
         <div className={`scrollbar-hidden ${cx('row__container')}`}>
           {data.map((item, i) => {
             return (
-              <div className={cx('item__wrapper')}>
-                <RowItem key={i} item={item} onClick={() => console.log(data)} />
+              <div key={i} className={cx('item__wrapper')}>
+                <RowItem item={item} onClick={() => {}} />
               </div>
             )
           })}
