@@ -8,11 +8,15 @@ const modalState = atom({
 const modalProps = atom({
   key: 'modalProps',
   default: {
+    videoAlready: false,
     urlVideo: '',
     voteAverage: 0,
     releaseDate: '',
     firstAirDate: '',
     videoQuality: '',
+    title: '',
+    originalTitle: '',
+    popularity: 0,
     overview: '',
     genres: [],
     originalLanguage: '',

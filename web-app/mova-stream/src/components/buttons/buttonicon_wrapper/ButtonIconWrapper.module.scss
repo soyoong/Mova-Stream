@@ -1,0 +1,99 @@
+@import 'src/styles/_variables.scss';
+@import 'src/styles/_anim.scss';
+@import 'src/styles/_mixins.scss';
+
+$duration: 500ms;
+$paddingIcon: 0.4rem;
+
+@mixin textHover($text: 'Thêm vào danh sách của bạn', $size: var(--m-icon-small-size)) {
+  &::after {
+    content: $text;
+    font-size: calc($size / 2);
+    color: black;
+    font-weight: 500;
+    position: absolute;
+    bottom: calc(100% + $paddingIcon + ($paddingIcon * 3));
+    padding: 0.4rem 0.8rem;
+    white-space: nowrap;
+    background-color: white;
+    border-radius: var(--m-button-radius);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + $paddingIcon + ($paddingIcon * 2.5));
+    width: calc($size / 2);
+    height: calc($size / 2);
+    background-color: white;
+    transform: rotate(45deg);
+  }
+}
+
+.wrapper {
+  cursor: pointer;
+  position: relative;
+  @include transition();
+
+  &:hover {
+    @include textHover();
+    @include transition();
+  }
+}
+
+.bordered {
+  padding: 0.4rem;
+  border: 1px solid white;
+  border-radius: 50px;
+}
+
+.small {
+  .fa__icon {
+    width: var(--m-icon-small-size);
+    height: var(--m-icon-small-size);
+  }
+
+  &:hover {
+    @include textHover($size: var(--m-icon-small-size));
+    @include transition();
+  }
+}
+
+.primary {
+  .fa__icon {
+    width: var(--m-icon-primary-size);
+    height: var(--m-icon-primary-size);
+  }
+
+  &:hover {
+    @include textHover($size: var(--m-icon-primary-size));
+    @include transition();
+  }
+}
+
+.medium {
+  .button__icon {
+  }
+
+  .fa__icon {
+    width: var(--m-icon-medium-size);
+    height: var(--m-icon-medium-size);
+  }
+
+  &:hover {
+    @include textHover($size: var(--m-icon-medium-size));
+    @include transition();
+  }
+}
+
+.large {
+  .fa__icon {
+    width: var(--m-icon-large-size);
+    height: var(--m-icon-large-size);
+  }
+
+  &:hover {
+    @include textHover($size: var(--m-icon-large-size));
+    @include transition();
+  }
+}

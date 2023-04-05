@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './MovieModal.module.scss'
-import { ButtonIcon, ButtonModal, ButtonPlay, Modal } from '~/components'
+import { ButtonIcon, ButtonIconWrapper, ButtonPlay, Modal } from '~/components'
 import classNames from 'classnames/bind'
 import ReactPlayer from 'react-player/lazy'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
@@ -21,10 +21,10 @@ function MovieModal() {
         <div className={cx('video-container')}>
           <ReactPlayer url={modalProps.urlVideo} playing muted={muted} width="100%" height="100%" />
           <div className={cx('action-buttons')}>
-            <div className={cx('left-side-buttons')}>
-              <ButtonPlay />
-              <ButtonModal icon={solid('plus')} background bordered />
-              <ButtonModal icon={solid('thumbs-up')} background bordered />
+            <div className={cx('left__side')}>
+              <ButtonPlay medium onClick={() => console.log('Play')} />
+              <ButtonIcon medium icon={solid('plus')} textHover="123" bordered />
+              {/* <ButtonLike medium /> */}
             </div>
             <div className={cx('right-side-buttons')}>
               <ButtonIcon
@@ -35,12 +35,7 @@ function MovieModal() {
           </div>
         </div>
         <div className={cx('close-btn')}>
-          <ButtonModal
-            className={cx('fa-button')}
-            icon={solid('xmark')}
-            background
-            onClick={() => setModalState(false)}
-          />
+          <ButtonIcon className={cx('fa-button')} icon={solid('xmark')} onClick={() => setModalState(false)} />
         </div>
         <div className={cx('overview-container')}>
           <div className={cx('break-0')}>

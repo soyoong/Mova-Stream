@@ -1,105 +1,140 @@
 @import 'src/styles/_variables.scss';
 @import 'src/styles/_mixins.scss';
+@import 'src/styles/_anim.scss';
 
-.wrapper {
-  @include underlineButton(0, 0, -0.4rem, 0);
+$paddingIcon: 0.4rem;
 
-  .primary {
-    width: var(--m-icon-primary-size);
-    height: var(--m-icon-primary-size);
-    position: relative;
-    background-image: none;
-    background: none;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@mixin buttonIconSize($size: var(--m-icon-primary-size)) {
+  button {
+    .fa__icon {
+      width: $size;
+      height: $size;
+    }
+
+    .img__src {
+      width: $size;
+      height: $size;
+    }
+
+    // &::after {
+    //   content: 'Button icon after';
+    //   text-overflow: ellipsis;
+    //   white-space: nowrap;
+    //   overflow: hidden;
+    //   width: fit-content;
+    //   height: auto;
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: center;
+    //   position: absolute;
+    //   // top: 0;
+    //   left: 0;
+    //   right: 0;
+    //   bottom: calc(($size + ($paddingIcon * 2) + 1px) + 1.6rem);
+    //   padding: 0.4rem 0.8rem;
+    //   background-color: white;
+    // }
+  }
+
+  .radius {
     border-radius: var(--m-button-radius);
-
-    .fa-button {
-      cursor: pointer;
-      object-fit: contain;
-      width: var(--m-icon-primary-size);
-      height: var(--m-icon-primary-size);
-      color: white;
-    }
-
-    .img {
-      cursor: pointer;
-      width: var(--m-icon-primary-size);
-      height: var(--m-icon-primary-size);
-      object-fit: contain;
+    .fa__icon {
       border-radius: var(--m-button-radius);
     }
-  }
-
-  .small {
-    width: var(--m-icon-small-size);
-    height: var(--m-icon-small-size);
-
-    .fa-button {
-      cursor: pointer;
-      width: var(--m-icon-small-size);
-      height: var(--m-icon-small-size);
-    }
-
-    .img {
-      cursor: pointer;
-      width: var(--m-icon-small-size);
-      height: var(--m-icon-small-size);
-      object-fit: contain;
-      border-radius: var(--m-button-radius);
-    }
-  }
-
-  .medium {
-    width: var(--m-icon-medium-size);
-    height: var(--m-icon-medium-size);
-
-    .fa-button {
-      cursor: pointer;
-      width: var(--m-icon-medium-size);
-      height: var(--m-icon-medium-size);
-    }
-
-    .img {
-      cursor: pointer;
-      width: var(--m-icon-medium-size);
-      height: var(--m-icon-medium-size);
-      object-fit: contain;
-      border-radius: var(--m-button-radius);
-    }
-  }
-
-  .large {
-    width: var(--m-icon-large-size);
-    height: var(--m-icon-large-size);
-
-    .fa-button {
-      cursor: pointer;
-      width: var(--m-icon-large-size);
-      height: var(--m-icon-large-size);
-    }
-
-    .img {
-      cursor: pointer;
-      width: var(--m-icon-large-size);
-      height: var(--m-icon-large-size);
-      object-fit: contain;
+    .img__src {
       border-radius: var(--m-button-radius);
     }
   }
 
   .bordered {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.2rem;
-    border: 1px solid $grayLight;
+    border: 1px solid white;
     border-radius: 50px;
   }
 
-  .background {
-    background-color: $grayLight025;
+  .text-hover {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    bottom: calc(($size + ($paddingIcon * 2) + 1px) + ($size / 1.5));
+    font-size: calc($size / 2);
+    color: black;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    background-color: white;
+    border-radius: var(--m-button-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: 1;
+    @include transition();
+
+    &::before {
+      content: '';
+      width: calc($size / 2);
+      height: calc($size / 2);
+      position: absolute;
+      bottom: calc($size / -6);
+      // bottom: calc(($size + ($paddingIcon * 2) + 1px) + 1.2rem);
+      background-color: white;
+      rotate: 45deg;
+      z-index: -1;
+    }
   }
+
+  &:hover {
+    .text-hover {
+      opacity: 1;
+      @include transition();
+    }
+  }
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: $paddingIcon;
+
+    .fa__icon {
+      cursor: pointer;
+      width: var(--m-icon-primary-size);
+      height: var(--m-icon-primary-size);
+      object-fit: contain;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      left: -50%;
+      transform: translateX(53%);
+    }
+
+    .img__src {
+      cursor: pointer;
+      width: var(--m-icon-primary-size);
+      height: var(--m-icon-primary-size);
+      object-fit: contain;
+    }
+  }
+}
+
+.small {
+  @include buttonIconSize(var(--m-icon-small-size));
+}
+
+.primary {
+  @include buttonIconSize(var(--m-icon-primary-size));
+}
+
+.medium {
+  @include buttonIconSize(var(--m-icon-medium-size));
+}
+
+.large {
+  @include buttonIconSize(var(--m-icon-large-size));
 }

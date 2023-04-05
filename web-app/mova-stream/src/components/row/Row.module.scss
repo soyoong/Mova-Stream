@@ -1,7 +1,10 @@
 @import 'src/styles/_variables.scss';
+@import 'src/styles/_mixins.scss';
 @import 'src/styles/_anim.scss';
 
 .wrapper {
+  width: 100%;
+
   .row {
     display: flex;
     flex-direction: column;
@@ -9,34 +12,30 @@
 
     h1 {
       position: relative;
-      bottom: -8rem;
       font-size: 2rem;
       padding-left: var(--layout-horizontal-padding);
     }
 
     .row__container {
-      position: relative;
       // top: -20px;
-      overflow: hidden;
-      overflow-x: scroll;
-      padding-left: var(--layout-horizontal-padding);
-      display: flex;
-      flex-direction: row;
-      background-color: $grayLight;
+      height: fit-content;
+      position: relative;
+      // padding-left: var(--layout-horizontal-padding);
+      @include scrollbar-hidden();
+      // background-color: $grayLight;
+      // @include scrollbar-hidden();
 
-      .item__wrapper {
-        margin: calc((var(--row-height) * 0.5) / 1) 0;
-        margin-right: 1rem;
-        @include transition();
+      .row__inner {
+        width: 100%;
+        height: fit-content;
+        overflow: hidden;
 
-        &:hover ~ .item__wrapper {
-          transform: translateX(50%);
+        .row__list {
+          display: flex;
+          flex-direction: row;
+          column-gap: 1rem;
+          // overflow-x: scroll;
         }
-      }
-
-      &:hover .item__wrapper {
-        transform: translateX(-50%);
-        @include transition();
       }
     }
   }

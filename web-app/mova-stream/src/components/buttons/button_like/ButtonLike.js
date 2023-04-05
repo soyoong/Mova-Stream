@@ -7,7 +7,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 const cx = classNames.bind(styles)
 
-function ButtonLike({ onClick }) {
+function ButtonLike({ small, primary, medium, large, onClick }) {
   const [indexState, setIndexState] = useState(-1)
   const [currentIcon, setCurrentIcon] = useState(regular('thumbs-up'))
 
@@ -35,9 +35,16 @@ function ButtonLike({ onClick }) {
   }
 
   return (
-    <div className={cx('wrapper')}>
+    <div
+      className={cx('wrapper', {
+        small: small,
+        primary: primary,
+        medium: medium,
+        large: large,
+      })}
+    >
       <FontAwesomeIcon className={cx('fa__icon')} icon={currentIcon} onClick={onClick} />
-      <div className={cx('popbar_wrapper')}>
+      <div className={cx('popbar__wrapper')}>
         <div className={cx('popbar__over')}>
           <button className={cx('btn__dislike')} onClick={() => handleButtonSelector(0)}>
             <FontAwesomeIcon

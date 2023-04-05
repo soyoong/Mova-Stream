@@ -3,15 +3,18 @@
 @import 'src/styles/_mixins.scss';
 
 $duration: 500ms;
+$paddingIcon: 0.4rem;
 
-@mixin textHover($text: '') {
+@mixin textHover($text: '', $size: var(--m-icon-small-size)) {
   &::after {
     content: $text;
-    color: black;
+    font-size: calc($size * 1.5);
     font-weight: 500;
+    color: black;
     position: absolute;
-    bottom: calc(var(--m-icon-small-size) * 2.3);
+    bottom: calc(100% + $paddingIcon + ($paddingIcon * 3));
     padding: 0.4rem 0.8rem;
+    white-space: nowrap;
     background-color: white;
     border-radius: var(--m-button-radius);
   }
@@ -19,49 +22,49 @@ $duration: 500ms;
   &::before {
     content: '';
     position: absolute;
-    bottom: calc(var(--m-icon-small-size) * 2.2);
-    width: 0.6rem;
-    height: 0.6rem;
+    bottom: calc(100% + $paddingIcon + ($paddingIcon * 2.5));
+    width: calc($size / 2);
+    height: calc($size / 2);
     background-color: white;
     transform: rotate(45deg);
   }
 }
 
 .wrapper {
+  cursor: pointer;
   position: relative;
   width: fit-content;
   height: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid $grayLight;
+  border: 1px solid white;
   padding: 0.4rem;
   border-radius: 50px;
   background-color: $grayLight025;
 
   .fa__icon {
-    width: var(--m-icon-small-size);
-    height: var(--m-icon-small-size);
+    width: calc(var(--m-icon-small-size));
+    height: calc(var(--m-icon-small-size));
     color: white;
   }
 
-  .popbar_wrapper {
+  .popbar__wrapper {
     position: absolute;
 
     .popbar__over {
-      // max-width: calc(var(--m-icon-small-size) + 0.4rem * 2);
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: row;
-      column-gap: 0.4rem;
+      column-gap: $paddingIcon;
       border: 1px solid $grayLight;
-      padding: 0.2rem;
+      padding: 0.4rem;
       border-radius: 50px;
       border: none;
-      width: calc(var(--m-icon-small-size) + 1.2rem);
-      height: calc(var(--m-icon-small-size) + 1.2rem);
+      width: 0;
+      height: 0;
       background: none;
       background-color: $grayDark;
       opacity: 0;
@@ -85,8 +88,8 @@ $duration: 500ms;
 
         .fa__icon {
           position: absolute;
-          width: var(--m-icon-small-size);
-          height: var(--m-icon-small-size);
+          width: calc(var(--m-icon-small-size));
+          height: calc(var(--m-icon-small-size));
           color: white;
         }
 
@@ -100,40 +103,42 @@ $duration: 500ms;
       .btn__dislike {
         position: relative;
         @include translate(100%, 0%);
-        @include transition(300ms);
+        @include transition($duration);
 
         &:hover {
           @include textHover('Dislike');
-          @include transition(300ms);
+          @include transition($duration);
         }
       }
 
       .btn__like {
         position: relative;
-        @include transition(300ms);
+        @include transition($duration);
 
         &:hover {
           @include textHover('Like');
-          @include transition(300ms);
+          @include transition($duration);
         }
       }
 
       .btn__favorite {
         position: relative;
         @include translate(-100%, 0%);
-        @include transition(300ms);
+        @include transition($duration);
 
         &:hover {
           @include textHover('Favorite');
-          @include transition(300ms);
+          @include transition($duration);
         }
       }
     }
+  }
 
-    &:hover {
+  &:hover {
+    .popbar__wrapper {
       .popbar__over {
-        width: fit-content;
-        height: fit-content;
+        width: calc(var(--m-icon-small-size) * 3 + ($paddingIcon * 10));
+        height: calc(var(--m-icon-small-size) + ($paddingIcon * 4));
         opacity: 1;
         @include transition($duration);
 
@@ -148,18 +153,62 @@ $duration: 500ms;
 
         .btn__dislike {
           @include translate(0%, 0%);
+          @include transition($duration);
+        }
+
+        .btn__like {
+          @include transition($duration);
         }
 
         .btn__favorite {
           @include translate(0%, 0%);
+          @include transition($duration);
+        }
+      }
+    }
+  }
+}
+
+@mixin iconSize($size: var(--m-icon-small-size)) {
+  .fa__icon {
+    width: calc($size);
+    height: calc($size);
+  }
+
+  .popbar__wrapper {
+    position: absolute;
+    .popbar__over {
+      button {
+        .fa__icon {
+          width: calc($size);
+          height: calc($size);
         }
       }
     }
   }
 
-  // .active {
-  //   .popbar__over {
-  //     opacity: 0;
-  //   }
-  // }
+  &:hover {
+    .popbar__wrapper {
+      .popbar__over {
+        width: calc($size * 3 + ($paddingIcon * 10));
+        height: calc($size + ($paddingIcon * 4));
+      }
+    }
+  }
+}
+
+.small {
+  @include iconSize(var(--m-icon-small-size));
+}
+
+.primary {
+  @include iconSize(var(--m-icon-primary-size));
+}
+
+.medium {
+  @include iconSize(var(--m-icon-medium-size));
+}
+
+.large {
+  @include iconSize(var(--m-icon-large-size));
 }

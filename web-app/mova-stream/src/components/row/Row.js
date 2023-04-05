@@ -6,17 +6,17 @@ const cx = classNames.bind(styles)
 
 function Row({ title, data }) {
   return (
-    <div className={cx('wrapper')}>
-      <div className={cx('row')}>
+    <div className={`scrollbar-hidden ${cx('wrapper')}`}>
+      <div className={`${cx('row')}`}>
         <h1>{title}</h1>
-        <div className={`scrollbar-hidden ${cx('row__container')}`}>
-          {data.map((item, i) => {
-            return (
-              <div key={i} className={cx('item__wrapper')}>
-                <RowItem item={item} onClick={() => {}} />
-              </div>
-            )
-          })}
+        <div className={`${cx('row__container')}`}>
+          <div className={cx('row__inner')}>
+            <div className={cx('row__list')}>
+              {data.map((item, i) => {
+                return <RowItem key={i} item={item} onClick={() => {}} />
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import styles from './HeaderNav.module.scss'
 import { Link } from 'react-router-dom'
-import { publicRoutes } from '~/routes'
+import { pageRoutes } from '~/routes'
 import classNames from 'classnames/bind'
 import images from '~/assets/images'
 import { ButtonIcon } from '~/components'
@@ -38,7 +38,7 @@ function HeaderNav() {
       <div className={cx('container')}>
         <div className={cx('left-side')}>
           <div className={cx('logo-container')}>
-            <Link to={publicRoutes[0].path}>
+            <Link to={pageRoutes[0].path}>
               <img src={images.logo} alt="logo" />
             </Link>
           </div>
@@ -51,7 +51,7 @@ function HeaderNav() {
             />
           </div>
           <div className={cx('menu-container')}>
-            {publicRoutes.map((item, index) => {
+            {pageRoutes.map((item, index) => {
               const active = indexSelected === index
               return (
                 <HeaderItem
@@ -67,7 +67,7 @@ function HeaderNav() {
           </div>
         </div>
         <div className={cx('right-side')}>
-          <SearchBar index={indexIcon} onClick={() => setIdexIcon(2)} />
+          {/* <SearchBar className={cx('searchbar')} index={indexIcon} onClick={() => setIdexIcon(2)} /> */}
           <ButtonIcon icon={solid('bell')} onClick={() => setIdexIcon(1)} />
           <PopBarUser index={indexIcon} onClick={() => setIdexIcon(0)} />
         </div>

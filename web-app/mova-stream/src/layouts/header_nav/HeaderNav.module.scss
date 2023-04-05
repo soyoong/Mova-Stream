@@ -19,10 +19,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     padding: 0 var(--layout-horizontal-padding);
 
     .left-side {
-      flex-grow: 1;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -57,9 +57,12 @@
     .right-side {
       display: flex;
       flex-direction: row;
-      column-gap: calc(var(--element-padding) * 1);
       align-items: center;
-      justify-content: flex-end;
+      column-gap: var(--element-padding);
+      // justify-content: flex-end;
+
+      .searchbar {
+      }
     }
   }
 }

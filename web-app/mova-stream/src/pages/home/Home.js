@@ -1,26 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Home.module.scss'
-import { Banner } from '~/layouts'
+import { Banner, BannerImage, BannerOverview, WrapperContainer } from '~/layouts'
 import classNames from 'classnames/bind'
 import { Modal, RowItem } from '~/components'
 import tmdbData from '~/data/tmdb'
 import { Row } from '~/components'
+import { useModalProps } from '~/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 
 function Home() {
+  const [modalProps, setModalProps] = useModalProps()
+
   return (
-    <div className={cx('wrapper')}>
-      <div className={cx('container')}>
-        <div className={cx('banner__wrapper')}>
-          <Banner />
+    <WrapperContainer listBanner={tmdbData.netflixOriginals.list}>
+      <div className={cx('wrapper__container')}>
+        <div className={cx('wrapper__banner_overview')}>
+          <BannerOverview />
         </div>
         <div className={cx('list__container')}>
-          <Row title={tmdbData.trendingNow.title} data={tmdbData.trendingNow.list} />
-          <Row title={tmdbData.topRated.title} data={tmdbData.topRated.list} />
+          {/* <Row title={tmdbData.trendingNow.title} data={tmdbData.trendingNow.list} />
+          <Row title={tmdbData.topRated.title} data={tmdbData.topRated.list} /> */}
         </div>
       </div>
-    </div>
+      {/* <div className={cx('wrapper')}>
+        <div className={cx('container')}> */}
+      {/* <Banner /> */}
+
+      {/* </div> */}
+      {/* </div> */}
+    </WrapperContainer>
   )
 }
 

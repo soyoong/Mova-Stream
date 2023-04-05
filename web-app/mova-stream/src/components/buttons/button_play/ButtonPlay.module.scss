@@ -4,7 +4,7 @@
   button {
     display: flex;
     align-items: center;
-    column-gap: 0.5ema;
+    column-gap: 0.5em;
     border-radius: 0.25em;
     padding: 0.5em 1.5em;
     font-size: 1.125em /* 14px */;
@@ -23,4 +23,8 @@
     }
   }
   @include buttonStyle(white);
+}
+
+.small {
+  font-size: 1.2rem;
 }

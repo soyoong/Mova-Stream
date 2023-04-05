@@ -1,6 +1,6 @@
 import { Home, Movies, TVShows, Cinemas, News, MyList, Favorites } from '~/pages'
 
-const publicRoutes = [
+const pageRoutes = [
   {
     name: 'Home',
     path: '/',
@@ -49,4 +49,4 @@ const userMenuRoutes = [
   },
 ]
 
-export { publicRoutes, userMenuRoutes }
+export { pageRoutes, userMenuRoutes }

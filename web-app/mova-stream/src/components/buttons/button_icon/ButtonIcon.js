@@ -1,6 +1,7 @@
 import styles from './ButtonIcon.module.scss'
 import classNames from 'classnames/bind'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useEffect } from 'react'
 
 const cx = classNames.bind(styles)
 
@@ -8,35 +9,55 @@ function ButtonIcon({
   icon,
   src,
   small,
+  primary,
   medium,
   large,
-  bordered,
   color,
-  background,
+  radius,
+  textHover,
+  bordered,
+  backgroundColor,
   opacity,
-  underlineActive,
-  underlineHover,
+  className,
   onClick,
 }) {
+  useEffect(() => {
+    // var buttonIcon = document.getElementById('button__icon')
+    // var buttnIconAfter = window.getComputedStyle(buttonIcon, '::after')
+  }, [])
+
   return (
-    <div className={cx('wrapper')}>
+    <div
+      className={cx('wrapper', {
+        [className]: className,
+        small: small,
+        primary: primary,
+        medium: medium,
+        large: large,
+      })}
+    >
       <button
-        className={cx('primary', {
+        id="button__icon"
+        className={cx({
+          radius: radius,
           bordered: bordered,
-          background: background,
-          opacity: opacity,
-          small: small,
-          medium: medium,
-          large: large,
-          'underline-hover': underlineHover,
-          'underline-active': underlineActive,
         })}
         onClick={onClick}
-        style={{ opacity: opacity }}
+        style={{
+          opacity: `${opacity}`,
+          backgroundColor: `${backgroundColor}`,
+        }}
       >
-        {icon && <FontAwesomeIcon className={cx('fa-button')} icon={icon} color={color} />}
-        {src && <img className={cx('img')} src={src} alt="icon" />}
+        {icon && <FontAwesomeIcon className={cx('fa__icon')} icon={icon} color={color ? color : 'white'} />}
+        {src && <img className={cx('img__src')} src={src} alt="icon" />}
       </button>
+      <div
+        className={cx('fake__layer', {
+          'text-hover': textHover,
+        })}
+      >
+        {textHover}
+      </div>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import styles from './Sidebar.module.scss'
 import classNames from 'classnames/bind'
-import { publicRoutes } from '~/routes'
+import { pageRoutes } from '~/routes'
 import HeaderItem from '../header_nav/header_item/HeaderItem'
 import { useSideBarState } from '~/hooks/useRecoilClient'
 
@@ -13,7 +13,7 @@ function Sidebar({ expanded, onClick }) {
     <div className={cx('wrapper')}>
       <div className={cx('expand-header', expanded ? 'expand-header-active' : 'expand-header-inactive')}>
         <div className={cx('content')}>
-          {publicRoutes.map((item, index) => {
+          {pageRoutes.map((item, index) => {
             const active = sideBarState.currentIndex === index
             return (
               <HeaderItem

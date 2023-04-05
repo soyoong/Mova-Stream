@@ -7,7 +7,7 @@ import { useSearchBarState } from '~/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 
-function SearchBar({ index, onClick }) {
+function SearchBar({ index, onClick, className }) {
   const [searchBarState, setSearchBarState] = useSearchBarState()
   const inputRef = useRef()
   const [showSearch, setShowSearch] = useState(false)
@@ -27,12 +27,13 @@ function SearchBar({ index, onClick }) {
 
   return (
     <div
-      className={cx('default', {
+      className={cx('wrapper', {
+        [className]: className,
         active: showSearch,
         inactive: !showSearch,
       })}
     >
-      <div className={cx('search-input-container')}>
+      <div className={cx('search__input')}>
         <input
           ref={inputRef}
           value={searchText}
@@ -42,17 +43,15 @@ function SearchBar({ index, onClick }) {
           onChange={e => setSearchText(e.target.value)}
         />
       </div>
-      <div className={cx('search-icon-container')}>
-        <ButtonIcon
-          className={cx('fa-button')}
-          icon={showSearch ? solid('xmark') : solid('magnifying-glass')}
-          onClick={() => {
-            onClick()
-            setSearchBarState({ searchBarActive: !showSearch })
-            setShowSearch(!showSearch)
-          }}
-        />
-      </div>
+      <ButtonIcon
+        className={cx('search__button')}
+        icon={showSearch ? solid('xmark') : solid('magnifying-glass')}
+        onClick={() => {
+          onClick()
+          setSearchBarState({ searchBarActive: !showSearch })
+          setShowSearch(!showSearch)
+        }}
+      />
     </div>
   )
 }
