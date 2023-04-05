@@ -39,7 +39,6 @@ function MovieModal() {
           medium
           icon={solid('xmark')}
           className={cx('button__close')}
-          backgroundColor
           grounded
           onClick={() => setModalState(false)}
         />

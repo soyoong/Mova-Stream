@@ -50,7 +50,7 @@ function ButtonIcon({
         onClick={onClick}
         style={{
           opacity: `${opacity}`,
-          border: `${bordered === true ? '2px solid rgba(148,148,148)' : bordered}`,
+          border: `${bordered === true ? `2px solid ${onMouseState ? 'white' : 'rgba(148,148,148)'}` : bordered}`,
           backgroundColor: `${
             backgroundColor === true
               ? 'rgba(48, 48, 48, 1)'

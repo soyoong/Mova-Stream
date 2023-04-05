@@ -30,7 +30,7 @@ $paddingIcon: 1rem;
   }
 
   &:hover {
-    opacity: 0.75;
+    // opacity: 0.75;
     // background-color: $grayLight05;
     @include transition();
   }
