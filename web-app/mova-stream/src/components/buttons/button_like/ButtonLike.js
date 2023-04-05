@@ -78,7 +78,8 @@ function ButtonLike({
           onClick={onClick}
           medium
           grounded
-          textHover="Like"
+          hoverColor
+          textHover="Dislike"
         />
         <ButtonIcon
           className={cx('button__like', 'button__icon')}
@@ -86,7 +87,8 @@ function ButtonLike({
           onClick={onClick}
           medium
           grounded
-          textHover="Dislike"
+          hoverColor
+          textHover="Like"
         />
         <ButtonIcon
           className={cx('button__favorite', 'button__icon')}
@@ -94,6 +96,7 @@ function ButtonLike({
           onClick={onClick}
           medium
           grounded
+          hoverColor
           textHover="Favorite"
         />
       </div>

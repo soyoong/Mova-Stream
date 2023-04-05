@@ -7,8 +7,6 @@ $paddingIcon: 1rem;
 @mixin buttonIconSize($size: var(--m-icon-primary-size)) {
   button {
     .fa__icon {
-      // width: $size;
-      // height: $size;
       width: calc($size - ($paddingIcon * 1));
       height: calc($size - ($paddingIcon * 1));
     }
@@ -30,8 +28,6 @@ $paddingIcon: 1rem;
   }
 
   &:hover {
-    // opacity: 0.75;
-    // background-color: $grayLight05;
     @include transition();
   }
 

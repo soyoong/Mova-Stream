@@ -1,7 +1,7 @@
 import styles from './ButtonIcon.module.scss'
 import classNames from 'classnames/bind'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const cx = classNames.bind(styles)
 
@@ -14,6 +14,7 @@ function ButtonIcon({
   large,
   color,
   textHover,
+  hoverColor,
   bordered,
   grounded,
   borderRadius,
@@ -24,12 +25,45 @@ function ButtonIcon({
 }) {
   const [onMouseState, setOnMouseState] = useState(false)
 
+  // useEffect(() => {
+
+  // }, [])
+
   const handleOnMouse = i => {
     if (i === 0) {
       setOnMouseState(true)
     }
     if (i === -1) {
       setOnMouseState(false)
+    }
+  }
+
+  const renderBackgroundColor = () => {
+    // backgroundColor === true ? hoverColor === true && onMouseState === true ? 'rgba(148, 148, 148, 0.5)' : 'rgba(48, 48, 48, 1)' : onMouseState ? hoverColor === true ? 'rgba(148, 148, 148, 0.5)' : hoverColor : backgroundColor
+    if (backgroundColor && hoverColor === undefined) {
+      if (backgroundColor === true) {
+        return 'rgba(48, 48, 48, 1)'
+      } else {
+        return backgroundColor
+      }
+    }
+    if (backgroundColor === undefined && hoverColor) {
+      if (hoverColor === true) {
+        return onMouseState ? 'rgba(148, 148, 148, 0.5)' : 'transparent'
+      } else {
+        return onMouseState ? hoverColor : 'transparent'
+      }
+    }
+    if (backgroundColor && hoverColor) {
+      if (backgroundColor === true && hoverColor === true) {
+        return onMouseState ? 'rgba(148, 148, 148, 0.5)' : 'rgba(48, 48, 48, 1)'
+      } else if (backgroundColor === true && hoverColor) {
+        return onMouseState ? hoverColor : 'rgba(48, 48, 48, 1)'
+      } else if (backgroundColor && hoverColor === true) {
+        return onMouseState ? 'rgba(148, 148, 148, 0.5)' : backgroundColor
+      } else {
+        return onMouseState ? hoverColor : backgroundColor
+      }
     }
   }
 
@@ -51,14 +85,8 @@ function ButtonIcon({
         style={{
           opacity: `${opacity}`,
           border: `${bordered === true ? `2px solid ${onMouseState ? 'white' : 'rgba(148,148,148)'}` : bordered}`,
-          backgroundColor: `${
-            backgroundColor === true
-              ? 'rgba(48, 48, 48, 1)'
-              : onMouseState
-              ? 'rgba(148, 148, 148, 0.5)'
-              : 'rgba(48, 48, 48, 1)'
-          }`,
-          borderRadius: `${(grounded === undefined ? true : grounded) ? '50px' : borderRadius}`,
+          backgroundColor: `${renderBackgroundColor()}`,
+          borderRadius: `${borderRadius === true ? borderRadius : grounded === true ? '50px' : '0px'}`,
         }}
       >
         {icon && <FontAwesomeIcon className={cx('fa__icon')} icon={icon} color={color ? color : 'white'} />}

@@ -29,6 +29,9 @@ function MovieModal() {
             <div className={cx('right__side')}>
               <ButtonIcon
                 medium
+                backgroundColor
+                hoverColor
+                grounded
                 icon={muted ? solid('volume-xmark') : solid('volume-high')}
                 onClick={() => setMuted(!muted)}
               />
@@ -39,6 +42,8 @@ function MovieModal() {
           medium
           icon={solid('xmark')}
           className={cx('button__close')}
+          backgroundColor
+          hoverColor
           grounded
           onClick={() => setModalState(false)}
         />
