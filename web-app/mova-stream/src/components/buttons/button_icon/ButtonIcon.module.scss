@@ -29,26 +29,17 @@ $paddingIcon: 1rem;
     }
   }
 
-  .bordered {
-    border: 1px solid white;
-    border-radius: 50px;
-  }
-
-  .hover-color {
+  &:hover {
+    opacity: 0.75;
+    // background-color: $grayLight05;
     @include transition();
-
-    &:hover {
-      background-color: $grayLight05;
-      border-radius: 50px;
-      @include transition();
-    }
   }
 
   .text-hover {
     position: absolute;
     width: fit-content;
     height: fit-content;
-    bottom: calc(($size + ($paddingIcon * 2) + 1px) + ($size / 3));
+    bottom: calc(($size + ($paddingIcon * 2) + 2px) + ($size / 3));
     font-size: calc($size / 2);
     color: black;
     font-weight: 500;
@@ -68,7 +59,6 @@ $paddingIcon: 1rem;
       height: calc($size / 2);
       position: absolute;
       bottom: calc($size / -6);
-      // bottom: calc(($size + ($paddingIcon * 2) + 1px) + 1.2rem);
       background-color: white;
       rotate: 45deg;
       z-index: -1;
@@ -93,6 +83,7 @@ $paddingIcon: 1rem;
     padding: $paddingIcon;
     border: none;
     background: none;
+    @include transition();
 
     .fa__icon {
       cursor: pointer;

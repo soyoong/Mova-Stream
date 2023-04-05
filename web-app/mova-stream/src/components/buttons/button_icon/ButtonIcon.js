@@ -1,7 +1,7 @@
 import styles from './ButtonIcon.module.scss'
 import classNames from 'classnames/bind'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useEffect } from 'react'
+import { useState } from 'react'
 
 const cx = classNames.bind(styles)
 
@@ -13,19 +13,25 @@ function ButtonIcon({
   medium,
   large,
   color,
-  radius,
   textHover,
-  hoverColor,
   bordered,
+  grounded,
+  borderRadius,
   backgroundColor,
   opacity,
   className,
   onClick,
 }) {
-  useEffect(() => {
-    var buttonIcon = document.getElementById('button__icon')
-    // var buttnIconAfter = window.getComputedStyle(buttonIcon, '::after')
-  }, [])
+  const [onMouseState, setOnMouseState] = useState(false)
+
+  const handleOnMouse = i => {
+    if (i === 0) {
+      setOnMouseState(true)
+    }
+    if (i === -1) {
+      setOnMouseState(false)
+    }
+  }
 
   return (
     <div
@@ -39,15 +45,20 @@ function ButtonIcon({
     >
       <button
         id="button__icon"
-        className={cx({
-          radius: radius,
-          bordered: bordered,
-          'hover-color': hoverColor,
-        })}
+        onMouseOver={() => handleOnMouse(0)}
+        onMouseLeave={() => handleOnMouse(-1)}
         onClick={onClick}
         style={{
           opacity: `${opacity}`,
-          backgroundColor: `${backgroundColor}`,
+          border: `${bordered === true ? '2px solid rgba(148,148,148)' : bordered}`,
+          backgroundColor: `${
+            backgroundColor === true
+              ? 'rgba(48, 48, 48, 1)'
+              : onMouseState
+              ? 'rgba(148, 148, 148, 0.5)'
+              : 'rgba(48, 48, 48, 1)'
+          }`,
+          borderRadius: `${(grounded === undefined ? true : grounded) ? '50px' : borderRadius}`,
         }}
       >
         {icon && <FontAwesomeIcon className={cx('fa__icon')} icon={icon} color={color ? color : 'white'} />}

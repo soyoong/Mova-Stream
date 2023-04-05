@@ -7,7 +7,22 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 const cx = classNames.bind(styles)
 
-function ButtonLike({ small, primary, medium, large, onClick }) {
+function ButtonLike({
+  icon,
+  src,
+  small,
+  primary,
+  medium,
+  large,
+  color,
+  bordered,
+  grounded,
+  borderRadius,
+  backgroundColor,
+  opacity,
+  className,
+  onClick,
+}) {
   const [indexState, setIndexState] = useState(-1)
   const [currentIcon, setCurrentIcon] = useState(regular('thumbs-up'))
 
@@ -37,20 +52,32 @@ function ButtonLike({ small, primary, medium, large, onClick }) {
   return (
     <div
       className={cx('wrapper', {
+        [className]: className,
         small: small,
         primary: primary,
         medium: medium,
         large: large,
       })}
     >
-      <ButtonIcon icon={currentIcon} onClick={onClick} medium bordered />
+      <ButtonIcon
+        grounded={grounded}
+        bordered={bordered}
+        color={color}
+        icon={icon ? icon : currentIcon}
+        src={src}
+        onClick={onClick}
+        medium
+        borderRadius={borderRadius}
+        backgroundColor={backgroundColor}
+        opacity={opacity}
+      />
       <div className={cx('hover__container')}>
         <ButtonIcon
           className={cx('button__dislike', 'button__icon')}
           icon={regular('thumbs-down')}
           onClick={onClick}
           medium
-          hoverColor
+          grounded
           textHover="Like"
         />
         <ButtonIcon
@@ -58,7 +85,7 @@ function ButtonLike({ small, primary, medium, large, onClick }) {
           icon={regular('thumbs-up')}
           onClick={onClick}
           medium
-          hoverColor
+          grounded
           textHover="Dislike"
         />
         <ButtonIcon
@@ -66,7 +93,7 @@ function ButtonLike({ small, primary, medium, large, onClick }) {
           icon={regular('heart')}
           onClick={onClick}
           medium
-          hoverColor
+          grounded
           textHover="Favorite"
         />
       </div>

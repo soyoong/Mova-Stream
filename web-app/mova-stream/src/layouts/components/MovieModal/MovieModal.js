@@ -23,8 +23,8 @@ function MovieModal() {
           <div className={cx('action__buttons')}>
             <div className={cx('left__side')}>
               <ButtonPlay medium onClick={() => console.log('Play')} />
-              <ButtonIcon medium icon={solid('plus')} textHover="123" bordered />
-              <ButtonLike medium />
+              <ButtonIcon medium backgroundColor bordered grounded icon={solid('plus')} textHover="123" />
+              <ButtonLike medium backgroundColor bordered grounded />
             </div>
             <div className={cx('right__side')}>
               <ButtonIcon
@@ -35,9 +35,14 @@ function MovieModal() {
             </div>
           </div>
         </div>
-        <div className={cx('close-btn')}>
-          <ButtonIcon medium className={cx('fa-button')} icon={solid('xmark')} onClick={() => setModalState(false)} />
-        </div>
+        <ButtonIcon
+          medium
+          icon={solid('xmark')}
+          className={cx('button__close')}
+          backgroundColor
+          grounded
+          onClick={() => setModalState(false)}
+        />
         <div className={cx('overview-container')}>
           <div className={cx('break-0')}>
             <ul className={cx('break-0-content')}>
