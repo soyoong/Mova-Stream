@@ -2,7 +2,6 @@ export { default as ButtonIcon } from '~/components/buttons/button_icon/ButtonIc
 export { default as ButtonPlay } from '~/components/buttons/button_play/ButtonPlay'
 export { default as ButtonInfo } from '~/components/buttons/button_info/ButtonInfo'
 export { default as ButtonLike } from '~/components/buttons/button_like/ButtonLike'
-export { default as ButtonIconWrapper } from '~/components/buttons/buttonicon_wrapper/ButtonIconWrapper'
 export { default as ButtonPlayMini } from '~/components/buttons/button_play_mini/ButtonPlayMini'
 export { default as Modal } from '~/components/modal/Modal'
 export { default as PopBarWrapper } from '~/components/popbar_wrapper/PopbarWrapper'

@@ -15,6 +15,7 @@ function ButtonIcon({
   color,
   radius,
   textHover,
+  hoverColor,
   bordered,
   backgroundColor,
   opacity,
@@ -22,7 +23,7 @@ function ButtonIcon({
   onClick,
 }) {
   useEffect(() => {
-    // var buttonIcon = document.getElementById('button__icon')
+    var buttonIcon = document.getElementById('button__icon')
     // var buttnIconAfter = window.getComputedStyle(buttonIcon, '::after')
   }, [])
 
@@ -41,6 +42,7 @@ function ButtonIcon({
         className={cx({
           radius: radius,
           bordered: bordered,
+          'hover-color': hoverColor,
         })}
         onClick={onClick}
         style={{

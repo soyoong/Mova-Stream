@@ -8,7 +8,7 @@
   transition: all $duration $anim $delay;
 }
 
-@mixin scaler($scale, $x: 0, $y: 0) {
+@mixin scaler($scale, $x: 0%, $y: 0%) {
   -webkit-transform: translate($x, $y) scale($scale);
   -moz-transform: translate($x, $y) scale($scale);
   -ms-transform: translate($x, $y) scale($scale);

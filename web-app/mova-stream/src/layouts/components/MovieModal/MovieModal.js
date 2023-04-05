@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './MovieModal.module.scss'
-import { ButtonIcon, ButtonIconWrapper, ButtonPlay, Modal } from '~/components'
+import { ButtonIcon, ButtonIconWrapper, ButtonLike, ButtonPlay, Modal } from '~/components'
 import classNames from 'classnames/bind'
 import ReactPlayer from 'react-player/lazy'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
@@ -24,7 +24,7 @@ function MovieModal() {
             <div className={cx('left__side')}>
               <ButtonPlay medium onClick={() => console.log('Play')} />
               <ButtonIcon medium icon={solid('plus')} textHover="123" bordered />
-              {/* <ButtonLike medium /> */}
+              <ButtonLike medium />
             </div>
             <div className={cx('right-side-buttons')}>
               <ButtonIcon

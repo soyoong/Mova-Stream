@@ -43,31 +43,32 @@ function ButtonLike({ small, primary, medium, large, onClick }) {
         large: large,
       })}
     >
-      <FontAwesomeIcon className={cx('fa__icon')} icon={currentIcon} onClick={onClick} />
-      <div className={cx('popbar__wrapper')}>
-        <div className={cx('popbar__over')}>
-          <button className={cx('btn__dislike')} onClick={() => handleButtonSelector(0)}>
-            <FontAwesomeIcon
-              className={cx('fa__icon')}
-              color="white"
-              icon={indexState === 0 ? solid('thumbs-down') : regular('thumbs-down')}
-            />
-          </button>
-          <button className={cx('btn__like')} onClick={() => handleButtonSelector(1)}>
-            <FontAwesomeIcon
-              className={cx('fa__icon')}
-              color="white"
-              icon={indexState === 1 ? solid('thumbs-up') : regular('thumbs-up')}
-            />
-          </button>
-          <button className={cx('btn__favorite')} onClick={() => handleButtonSelector(2)}>
-            <FontAwesomeIcon
-              className={cx('fa__icon')}
-              color="white"
-              icon={indexState === 2 ? solid('star') : regular('star')}
-            />
-          </button>
-        </div>
+      <ButtonIcon icon={currentIcon} onClick={onClick} medium bordered />
+      <div className={cx('hover__container')}>
+        <ButtonIcon
+          className={cx('button__dislike', 'button__icon')}
+          icon={regular('thumbs-down')}
+          onClick={onClick}
+          medium
+          hoverColor
+          textHover="Like"
+        />
+        <ButtonIcon
+          className={cx('button__like', 'button__icon')}
+          icon={regular('thumbs-up')}
+          onClick={onClick}
+          medium
+          hoverColor
+          textHover="Dislike"
+        />
+        <ButtonIcon
+          className={cx('button__favorite', 'button__icon')}
+          icon={regular('heart')}
+          onClick={onClick}
+          medium
+          hoverColor
+          textHover="Favorite"
+        />
       </div>
     </div>
   )

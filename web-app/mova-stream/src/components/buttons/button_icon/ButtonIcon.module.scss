@@ -2,38 +2,21 @@
 @import 'src/styles/_mixins.scss';
 @import 'src/styles/_anim.scss';
 
-$paddingIcon: 0.4rem;
+$paddingIcon: 1rem;
 
 @mixin buttonIconSize($size: var(--m-icon-primary-size)) {
   button {
     .fa__icon {
-      width: $size;
-      height: $size;
+      // width: $size;
+      // height: $size;
+      width: calc($size - ($paddingIcon * 1));
+      height: calc($size - ($paddingIcon * 1));
     }
 
     .img__src {
       width: $size;
       height: $size;
     }
-
-    // &::after {
-    //   content: 'Button icon after';
-    //   text-overflow: ellipsis;
-    //   white-space: nowrap;
-    //   overflow: hidden;
-    //   width: fit-content;
-    //   height: auto;
-    //   display: flex;
-    //   align-items: center;
-    //   justify-content: center;
-    //   position: absolute;
-    //   // top: 0;
-    //   left: 0;
-    //   right: 0;
-    //   bottom: calc(($size + ($paddingIcon * 2) + 1px) + 1.6rem);
-    //   padding: 0.4rem 0.8rem;
-    //   background-color: white;
-    // }
   }
 
   .radius {
@@ -51,11 +34,21 @@ $paddingIcon: 0.4rem;
     border-radius: 50px;
   }
 
+  .hover-color {
+    @include transition();
+
+    &:hover {
+      background-color: $grayLight05;
+      border-radius: 50px;
+      @include transition();
+    }
+  }
+
   .text-hover {
     position: absolute;
     width: fit-content;
     height: fit-content;
-    bottom: calc(($size + ($paddingIcon * 2) + 1px) + ($size / 1.5));
+    bottom: calc(($size + ($paddingIcon * 2) + 1px) + ($size / 3));
     font-size: calc($size / 2);
     color: black;
     font-weight: 500;
@@ -97,14 +90,14 @@ $paddingIcon: 0.4rem;
 
   button {
     cursor: pointer;
+    padding: $paddingIcon;
     border: none;
     background: none;
-    padding: $paddingIcon;
 
     .fa__icon {
       cursor: pointer;
-      width: var(--m-icon-primary-size);
-      height: var(--m-icon-primary-size);
+      width: calc(var(--m-icon-primary-size) - ($paddingIcon * 2));
+      height: calc(var(--m-icon-primary-size) - ($paddingIcon * 2));
       object-fit: contain;
       display: flex;
       align-items: center;

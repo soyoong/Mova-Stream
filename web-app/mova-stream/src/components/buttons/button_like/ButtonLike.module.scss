@@ -5,210 +5,90 @@
 $duration: 500ms;
 $paddingIcon: 0.4rem;
 
-@mixin textHover($text: '', $size: var(--m-icon-small-size)) {
-  &::after {
-    content: $text;
-    font-size: calc($size * 1.5);
-    font-weight: 500;
-    color: black;
-    position: absolute;
-    bottom: calc(100% + $paddingIcon + ($paddingIcon * 3));
-    padding: 0.4rem 0.8rem;
-    white-space: nowrap;
-    background-color: white;
-    border-radius: var(--m-button-radius);
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: calc(100% + $paddingIcon + ($paddingIcon * 2.5));
-    width: calc($size / 2);
-    height: calc($size / 2);
-    background-color: white;
-    transform: rotate(45deg);
-  }
-}
-
 .wrapper {
-  cursor: pointer;
   position: relative;
-  width: fit-content;
-  height: fit-content;
   display: flex;
-  align-items: center;
   justify-content: center;
-  border: 1px solid white;
-  padding: 0.4rem;
+  align-items: center;
   border-radius: 50px;
-  background-color: $grayLight025;
 
-  .fa__icon {
-    width: calc(var(--m-icon-small-size));
-    height: calc(var(--m-icon-small-size));
-    color: white;
-  }
-
-  .popbar__wrapper {
+  .hover__container {
     position: absolute;
+    display: flex;
+    max-width: 100%;
+    max-height: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: calc($paddingIcon * 2);
+    padding: calc($paddingIcon * 2);
+    background-color: $grayDark;
+    border-radius: 50px;
+    opacity: 0;
+    @include transition();
 
-    .popbar__over {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-      column-gap: $paddingIcon;
-      border: 1px solid $grayLight;
-      padding: 0.4rem;
-      border-radius: 50px;
-      border: none;
-      width: 0;
-      height: 0;
-      background: none;
-      background-color: $grayDark;
+    .button__icon {
+      width: 100%;
+      height: 100%;
       opacity: 0;
-      z-index: 0;
-      @include boxShadow($blurRadius: 6px, $spread: 6px);
-      @include transition($duration);
-
-      button {
-        width: fit-content;
-        height: fit-content;
-        cursor: pointer;
-        border: none;
-        padding: 0.4rem;
-        background: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        z-index: 10;
-        @include transition($duration);
-
-        .fa__icon {
-          position: absolute;
-          width: calc(var(--m-icon-small-size));
-          height: calc(var(--m-icon-small-size));
-          color: white;
-        }
-
-        &:hover {
-          background-color: $grayLight025;
-          border-radius: 50px;
-          @include transition($duration);
-        }
-      }
-
-      .btn__dislike {
-        position: relative;
-        @include translate(100%, 0%);
-        @include transition($duration);
-
-        &:hover {
-          @include textHover('Dislike');
-          @include transition($duration);
-        }
-      }
-
-      .btn__like {
-        position: relative;
-        @include transition($duration);
-
-        &:hover {
-          @include textHover('Like');
-          @include transition($duration);
-        }
-      }
-
-      .btn__favorite {
-        position: relative;
-        @include translate(-100%, 0%);
-        @include transition($duration);
-
-        &:hover {
-          @include textHover('Favorite');
-          @include transition($duration);
-        }
-      }
     }
-  }
 
-  &:hover {
-    .popbar__wrapper {
-      .popbar__over {
-        width: calc(var(--m-icon-small-size) * 3 + ($paddingIcon * 10));
-        height: calc(var(--m-icon-small-size) + ($paddingIcon * 4));
-        opacity: 1;
-        @include transition($duration);
+    .button__dislike {
+      transform: translateX(100%);
+      @include transition();
+    }
 
-        button {
-          opacity: 1;
-          @include transition($duration);
+    .button__like {
+      @include transition();
+    }
 
-          .fa__icon {
-            position: relative;
-          }
-        }
-
-        .btn__dislike {
-          @include translate(0%, 0%);
-          @include transition($duration);
-        }
-
-        .btn__like {
-          @include transition($duration);
-        }
-
-        .btn__favorite {
-          @include translate(0%, 0%);
-          @include transition($duration);
-        }
-      }
+    .button__favorite {
+      transform: translateX(-100%);
+      @include transition();
     }
   }
 }
 
-@mixin iconSize($size: var(--m-icon-small-size)) {
-  .fa__icon {
-    width: calc($size);
-    height: calc($size);
-  }
+@mixin ButtonLikeComponent($size: var(--m-icon-primary-size)) {
+  .hover__container {
+    &:hover {
+      max-width: fit-content;
+      max-height: fit-content;
+      @include transition();
 
-  .popbar__wrapper {
-    position: absolute;
-    .popbar__over {
-      button {
-        .fa__icon {
-          width: calc($size);
-          height: calc($size);
-        }
+      opacity: 1;
+
+      .button__icon {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
       }
-    }
-  }
 
-  &:hover {
-    .popbar__wrapper {
-      .popbar__over {
-        width: calc($size * 3 + ($paddingIcon * 10));
-        height: calc($size + ($paddingIcon * 4));
+      .button__dislike {
+        transform: translateX(0%);
+        @include transition();
+      }
+
+      .button__favorite {
+        transform: translateX(0%);
+        @include transition();
       }
     }
   }
 }
 
 .small {
-  @include iconSize(var(--m-icon-small-size));
+  @include ButtonLikeComponent(var(--m-icon-small-size));
 }
 
 .primary {
-  @include iconSize(var(--m-icon-primary-size));
+  @include ButtonLikeComponent(var(--m-icon-primary-size));
 }
 
 .medium {
-  @include iconSize(var(--m-icon-medium-size));
+  @include ButtonLikeComponent(var(--m-icon-medium-size));
 }
 
 .large {
-  @include iconSize(var(--m-icon-large-size));
+  @include ButtonLikeComponent(var(--m-icon-large-size));
 }
