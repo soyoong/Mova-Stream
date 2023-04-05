@@ -17,6 +17,7 @@ function BannerOverview() {
         <p>{modalProps.overview}</p>
         <div className={cx('wrapper__buttons')}>
           <ButtonPlay
+            medium
             onClick={() => {
               console.log('Play')
             }}

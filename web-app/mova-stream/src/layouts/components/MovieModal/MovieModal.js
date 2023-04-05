@@ -20,14 +20,15 @@ function MovieModal() {
       <div className={cx('content-wrapper')}>
         <div className={cx('video-container')}>
           <ReactPlayer url={modalProps.urlVideo} playing muted={muted} width="100%" height="100%" />
-          <div className={cx('action-buttons')}>
+          <div className={cx('action__buttons')}>
             <div className={cx('left__side')}>
               <ButtonPlay medium onClick={() => console.log('Play')} />
               <ButtonIcon medium icon={solid('plus')} textHover="123" bordered />
               <ButtonLike medium />
             </div>
-            <div className={cx('right-side-buttons')}>
+            <div className={cx('right__side')}>
               <ButtonIcon
+                medium
                 icon={muted ? solid('volume-xmark') : solid('volume-high')}
                 onClick={() => setMuted(!muted)}
               />
@@ -35,7 +36,7 @@ function MovieModal() {
           </div>
         </div>
         <div className={cx('close-btn')}>
-          <ButtonIcon className={cx('fa-button')} icon={solid('xmark')} onClick={() => setModalState(false)} />
+          <ButtonIcon medium className={cx('fa-button')} icon={solid('xmark')} onClick={() => setModalState(false)} />
         </div>
         <div className={cx('overview-container')}>
           <div className={cx('break-0')}>

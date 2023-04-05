@@ -96,8 +96,8 @@ $paddingIcon: 1rem;
 
     .fa__icon {
       cursor: pointer;
-      width: calc(var(--m-icon-primary-size) - ($paddingIcon * 2));
-      height: calc(var(--m-icon-primary-size) - ($paddingIcon * 2));
+      width: calc(var(--m-icon-small-size));
+      height: calc(var(--m-icon-small-size));
       object-fit: contain;
       display: flex;
       align-items: center;

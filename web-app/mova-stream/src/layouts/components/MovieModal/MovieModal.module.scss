@@ -22,28 +22,24 @@
     left: 0;
     bottom: 0;
 
-    .action-buttons {
+    .action__buttons {
       width: 100%;
+      height: fit-content;
       position: absolute;
-      // top: 0;
       left: 0;
       bottom: 0;
-      // right: 0;
       padding: 2rem;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      // align-content: space-between;
 
-      .left__side {
+      .left__side,
+      .right__side {
         display: flex;
         flex-direction: row;
         column-gap: 1rem;
         align-items: center;
-      }
-
-      .right-side-buttons {
       }
     }
   }
