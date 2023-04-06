@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './MovieModal.module.scss'
-import { ButtonIcon, ButtonIconWrapper, ButtonLike, ButtonPlay, Modal } from '~/components'
+import { ButtonIcon, ButtonLike, ButtonPlay, Modal } from '~/components'
 import classNames from 'classnames/bind'
 import ReactPlayer from 'react-player/lazy'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
@@ -17,7 +17,7 @@ function MovieModal() {
 
   return (
     <Modal>
-      <div className={cx('content-wrapper')}>
+      <div className={cx('wrapper')}>
         <div className={cx('video-container')}>
           <ReactPlayer url={modalProps.urlVideo} playing muted={muted} width="100%" height="100%" />
           <div className={cx('action__buttons')}>
@@ -49,29 +49,26 @@ function MovieModal() {
         />
         <div className={cx('overview-container')}>
           <div className={cx('break-0')}>
-            <ul className={cx('break-0-content')}>
+            <ul className={cx('list__0')}>
               <li className={cx('vote-average')}>{toFixed(modalProps.voteAverage * 10, 2)}% Match</li>
               <li className={cx('release-date')}>{modalProps.releaseDate}</li>
               <li className={cx('video-quality')}>{modalProps.videoQuality}</li>
             </ul>
           </div>
           <div className={cx('break-1')}>
-            <div className={cx('break-1-0')}>
-              <p>{modalProps.overview}</p>
-            </div>
+            <p>{modalProps.overview}</p>
             <div className={cx('break-1-1')}>
-              <div className={cx('genres')}>
-                <span>Genres: </span>
-                {modalProps.genres.map(genres => genres).join(', ')}
-              </div>
-              <div className={cx('language-original')}>
-                <span>Original language: </span>
-                {modalProps.originalLanguage}
-              </div>
-              <div className={cx('vote-count')}>
-                <span>Total votes: </span>
-                {modalProps.voteCount}
-              </div>
+              <ul className={cx('list__1')}>
+                <li className={cx('genres')}>
+                  Genres: <span>{modalProps.genres.map(genres => genres).join(', ')}</span>
+                </li>
+                <li className={cx('language')}>
+                  Original Language: <span>{modalProps.originalLanguage}</span>
+                </li>
+                <li className={cx('vote')}>
+                  Total votes: <span>{modalProps.voteCount}</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
