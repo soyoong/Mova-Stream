@@ -23,6 +23,7 @@ function BannerOverview() {
             }}
           />
           <ButtonInfo
+            medium
             onClick={() => {
               setModalState(!modalState)
             }}

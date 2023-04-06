@@ -1,26 +1,52 @@
-@import 'src/styles/_mixins.scss';
+@import 'src/styles/_variables.scss';
 
 .wrapper {
   button {
+    cursor: pointer;
+    border: none;
+    background: none;
     display: flex;
     align-items: center;
     column-gap: 0.5em;
     border-radius: 0.25em;
-    padding: 0.5em 1.5em;
-    font-size: 1.125em;
-    line-height: 1.75em;
+    // padding: 0.5em 1.5em;
+    // line-height: calc(var(--m-icon-medium-size) / 2); /* 20px */
     font-weight: 600;
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow,
-      transform, filter, backdrop-filter;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
     color: white;
+    background-color: $grayLight;
 
-    .fa-button {
+    .fa__icon {
       color: white;
-      width: 1.75em;
-      height: 1.75em;
+      width: var(--m-icon-medium-size); /* Default size is Medium */
+      height: var(--m-icon-medium-size); /* Default size is Medium */
     }
   }
-  @include buttonStyle(rgba(128, 128, 128, 1));
+}
+
+@mixin buttonStyleSize($size: var(--m-icon-small-size)) {
+  button {
+    font-size: calc($size / 2);
+    padding: calc($size / 4) calc($size / 2);
+
+    .fa__icon {
+      width: $size; /* Default size is Medium */
+      height: $size; /* Default size is Medium */
+    }
+  }
+}
+
+.small {
+  @include buttonStyleSize(var(--m-icon-small-size));
+}
+
+.primary {
+  @include buttonStyleSize(var(--m-icon-primary-size));
+}
+
+.medium {
+  @include buttonStyleSize(var(--m-icon-medium-size));
+}
+
+.large {
+  @include buttonStyleSize(var(--m-icon-large-size));
 }

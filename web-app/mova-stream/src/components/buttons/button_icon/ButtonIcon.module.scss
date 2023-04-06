@@ -27,10 +27,6 @@ $paddingIcon: 1rem;
     }
   }
 
-  &:hover {
-    @include transition();
-  }
-
   .text-hover {
     position: absolute;
     width: fit-content;
@@ -47,7 +43,7 @@ $paddingIcon: 1rem;
     align-items: center;
     opacity: 0;
     z-index: 1;
-    @include transition();
+    // @include transition();
 
     &::before {
       content: '';
@@ -64,7 +60,7 @@ $paddingIcon: 1rem;
   &:hover {
     .text-hover {
       opacity: 1;
-      @include transition();
+      // @include transition();
     }
   }
 }
@@ -79,7 +75,7 @@ $paddingIcon: 1rem;
     padding: $paddingIcon;
     border: none;
     background: none;
-    @include transition();
+    // @include transition();
 
     .fa__icon {
       cursor: pointer;

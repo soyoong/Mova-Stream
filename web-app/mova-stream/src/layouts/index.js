@@ -1,4 +1,3 @@
-export { default as DefaultLayout } from '~/layouts/default_layout/DefaultLayout'
 export { default as HeaderNav } from '~/layouts/header_nav/HeaderNav'
 export { default as Sidebar } from '~/layouts/sidebar/Sidebar'
 export { default as FooterNav } from '~/layouts/footer_nav/FooterNav'

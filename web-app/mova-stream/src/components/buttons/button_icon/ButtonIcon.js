@@ -2,6 +2,7 @@ import styles from './ButtonIcon.module.scss'
 import classNames from 'classnames/bind'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
+import { motion, useMotionValue } from 'framer-motion'
 
 const cx = classNames.bind(styles)
 
@@ -77,8 +78,9 @@ function ButtonIcon({
         large: large,
       })}
     >
-      <button
-        id="button__icon"
+      <motion.button
+        whileHover={{ scale: 1 }}
+        whileTap={{ scale: 0.9 }}
         onMouseOver={() => handleOnMouse(0)}
         onMouseLeave={() => handleOnMouse(-1)}
         onClick={onClick}
@@ -104,7 +106,7 @@ function ButtonIcon({
             }}
           />
         )}
-      </button>
+      </motion.button>
       <div
         className={cx('fake__layer', {
           'text-hover': textHover,
