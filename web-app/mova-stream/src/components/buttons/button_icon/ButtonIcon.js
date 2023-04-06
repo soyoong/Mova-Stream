@@ -86,11 +86,24 @@ function ButtonIcon({
           opacity: `${opacity}`,
           border: `${bordered === true ? `2px solid ${onMouseState ? 'white' : 'rgba(148,148,148)'}` : bordered}`,
           backgroundColor: `${renderBackgroundColor()}`,
-          borderRadius: `${borderRadius === true ? borderRadius : grounded === true ? '50px' : '0px'}`,
+          borderRadius: `${
+            grounded ? '50px' : borderRadius ? (borderRadius === true ? '0.6rem' : borderRadius) : '0px'
+          }`,
         }}
       >
         {icon && <FontAwesomeIcon className={cx('fa__icon')} icon={icon} color={color ? color : 'white'} />}
-        {src && <img className={cx('img__src')} src={src} alt="icon" />}
+        {src && (
+          <img
+            className={cx('img__src')}
+            src={src}
+            alt="icon"
+            style={{
+              borderRadius: `${
+                grounded ? '50px' : borderRadius ? (borderRadius === true ? '0.6rem' : borderRadius) : '0px'
+              }`,
+            }}
+          />
+        )}
       </button>
       <div
         className={cx('fake__layer', {
