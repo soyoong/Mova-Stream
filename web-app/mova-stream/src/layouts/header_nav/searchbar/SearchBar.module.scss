@@ -24,13 +24,13 @@
   }
 
   .search__input {
-    width: 100%;
+    width: 0%;
     height: 100%;
     background-color: $grayDark;
     border-radius: 50px;
     overflow: hidden;
     z-index: 1;
-    animation: 'fadeOutRight' 300ms linear;
+    animation: inWidth 300ms linear;
     @include transition();
 
     input {
@@ -71,7 +71,7 @@
   .search__input {
     width: 100%;
     opacity: 1;
-    animation: 'fadeInRight' 300ms linear;
+    animation: outWidth 300ms linear;
 
     input {
       width: 100%;
