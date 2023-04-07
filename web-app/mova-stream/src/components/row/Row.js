@@ -13,7 +13,7 @@ function Row({ title, data }) {
           <div className={cx('row__inner')}>
             <div className={cx('row__list')}>
               {data.map((item, i) => {
-                return <RowItem key={i} item={item} onClick={() => {}} />
+                return <RowItem className={cx('row__item')} key={i} item={item} onClick={() => console.log(i)} />
               })}
             </div>
           </div>

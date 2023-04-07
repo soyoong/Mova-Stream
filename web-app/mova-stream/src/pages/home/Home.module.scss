@@ -1,9 +1,15 @@
 .wrapper__container {
-  margin-top: 30vh;
+  margin-top: 25vh;
   display: flex;
   flex-direction: column;
-  row-gap: 6.5rem;
+  row-gap: 12rem;
 
   .wrapper__banner_overview {
+  }
+
+  .list__container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8rem;
   }
 }
