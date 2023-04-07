@@ -69,7 +69,7 @@ function HeaderNav() {
         </div>
         <div className={cx('right-side')}>
           <SearchBar className={cx('searchbar')} index={indexIcon} onClick={() => setIdexIcon(2)} />
-          <ButtonIcon medium icon={solid('bell')} onClick={() => setIdexIcon(1)} />
+          <ButtonIcon primary icon={solid('bell')} onClick={() => setIdexIcon(1)} />
           <PopBarUser index={indexIcon} onClick={() => setIdexIcon(0)} />
         </div>
       </div>

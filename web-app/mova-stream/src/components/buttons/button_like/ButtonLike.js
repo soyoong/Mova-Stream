@@ -66,7 +66,10 @@ function ButtonLike({
         icon={icon ? icon : currentIcon}
         src={src}
         onClick={onClick}
-        medium
+        small={small}
+        primary={primary}
+        medium={medium}
+        large={large}
         borderRadius={borderRadius}
         backgroundColor={backgroundColor}
         opacity={opacity}
@@ -76,7 +79,10 @@ function ButtonLike({
           className={cx('button__dislike', 'button__icon')}
           icon={regular('thumbs-down')}
           onClick={onClick}
-          medium
+          small={small}
+          primary={primary}
+          medium={medium}
+          large={large}
           grounded
           hoverColor
           textHover="Dislike"
@@ -85,7 +91,10 @@ function ButtonLike({
           className={cx('button__like', 'button__icon')}
           icon={regular('thumbs-up')}
           onClick={onClick}
-          medium
+          small={small}
+          primary={primary}
+          medium={medium}
+          large={large}
           grounded
           hoverColor
           textHover="Like"
@@ -94,7 +103,10 @@ function ButtonLike({
           className={cx('button__favorite', 'button__icon')}
           icon={regular('heart')}
           onClick={onClick}
-          medium
+          small={small}
+          primary={primary}
+          medium={medium}
+          large={large}
           grounded
           hoverColor
           textHover="Favorite"

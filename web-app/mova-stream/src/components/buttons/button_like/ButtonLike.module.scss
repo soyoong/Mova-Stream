@@ -51,6 +51,7 @@ $paddingIcon: 0.4rem;
 
 @mixin ButtonLikeComponent($size: var(--m-icon-primary-size)) {
   .hover__container {
+    @include boxShadow($blurRadius: 1rem, $spread: 0.4rem);
     &:hover {
       max-width: fit-content;
       max-height: fit-content;

@@ -38,13 +38,19 @@
       background-color: rgb(73, 77, 77);
       opacity: 0;
       animation: 'fadeOut' 200ms linear;
+
+      .action__buttons {
+        display: flex;
+        flex-direction: row;
+        column-gap: 1rem;
+      }
     }
 
     &:hover {
       position: absolute;
       z-index: 1;
       @include scaler($scale: 1.5, $y: -75%);
-      @include transition(300ms, ease, 200ms);
+      @include transition(300ms, ease, 300ms);
       @include boxShadow();
 
       .card__full {

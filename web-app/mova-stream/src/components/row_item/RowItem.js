@@ -1,4 +1,4 @@
-import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
+import { light, regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import styles from './RowItem.module.scss'
 import classNames from 'classnames/bind'
 import { ButtonLike, ButtonAdd, ButtonPlayMini, ButtonIcon } from '~/components'
@@ -21,7 +21,17 @@ function RowItem({ item, className, onClick }) {
 
         <div className={cx('card__full')}>
           <div className={cx('action__buttons')}>
-            {/* <ButtonIcon small icon={solid('play')} color="black" backgroundColor="white" grounded /> */}
+            <ButtonIcon small icon={solid('play')} color="black" backgroundColor="white" grounded />
+            <ButtonIcon
+              small
+              icon={solid('add')}
+              color="white"
+              backgroundColor
+              bordered
+              grounded
+              textHover="Thêm vào danh sáchh của bạn"
+            />
+            <ButtonLike small bordered grounded backgroundColor />
           </div>
         </div>
       </div>

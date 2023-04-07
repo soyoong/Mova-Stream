@@ -4,67 +4,6 @@
 
 $paddingIcon: 1rem;
 
-@mixin buttonIconSize($size: var(--m-icon-primary-size)) {
-  button {
-    .fa__icon {
-      width: calc($size - ($paddingIcon * 1));
-      height: calc($size - ($paddingIcon * 1));
-    }
-
-    .img__src {
-      width: $size;
-      height: $size;
-    }
-  }
-
-  .radius {
-    border-radius: var(--m-button-radius);
-    .fa__icon {
-      border-radius: var(--m-button-radius);
-    }
-    .img__src {
-      border-radius: var(--m-button-radius);
-    }
-  }
-
-  .text-hover {
-    position: absolute;
-    width: fit-content;
-    height: fit-content;
-    bottom: calc(($size + ($paddingIcon * 2) + 2px) + ($size / 3));
-    font-size: calc($size / 2);
-    color: black;
-    font-weight: 500;
-    padding: 0.4rem 0.8rem;
-    background-color: white;
-    border-radius: var(--m-button-radius);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    z-index: 1;
-    // @include transition();
-
-    &::before {
-      content: '';
-      width: calc($size / 2);
-      height: calc($size / 2);
-      position: absolute;
-      bottom: calc($size / -6);
-      background-color: white;
-      rotate: 45deg;
-      z-index: -1;
-    }
-  }
-
-  &:hover {
-    .text-hover {
-      opacity: 1;
-      // @include transition();
-    }
-  }
-}
-
 .wrapper {
   position: relative;
   display: flex;
@@ -72,15 +11,17 @@ $paddingIcon: 1rem;
 
   button {
     cursor: pointer;
-    padding: $paddingIcon;
+    position: relative;
     border: none;
     background: none;
-    // @include transition();
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .fa__icon {
       cursor: pointer;
-      width: calc(var(--m-icon-small-size));
-      height: calc(var(--m-icon-small-size));
+      width: calc(var(--m-icon-primary-size));
+      height: calc(var(--m-icon-primary-size));
       object-fit: contain;
       display: flex;
       align-items: center;
@@ -95,6 +36,77 @@ $paddingIcon: 1rem;
       width: var(--m-icon-primary-size);
       height: var(--m-icon-primary-size);
       object-fit: contain;
+    }
+  }
+}
+
+@mixin buttonIconSize($size: var(--m-icon-primary-size)) {
+  button {
+    width: fit-content;
+    height: fit-content;
+
+    .fa__icon {
+      width: calc($size);
+      height: calc($size);
+    }
+
+    .img__src {
+      width: $size;
+      height: $size;
+    }
+  }
+
+  .text-hover {
+    position: absolute;
+    // bottom: calc($size + (($size / 2) * 2) + 2px + $size);
+    bottom: 130%;
+    width: fit-content;
+    height: fit-content;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: black;
+    font-size: calc($size / 1.5);
+    font-family: NetflixSans-Medium;
+    padding: 0.4rem 0.8rem;
+    background-color: white;
+    border-radius: var(--m-button-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    display: none;
+    z-index: 1;
+    // @include transition();
+
+    &::before {
+      content: '';
+      width: calc($size / 2);
+      height: calc($size / 2);
+      position: absolute;
+      bottom: calc($size / -4);
+      background-color: white;
+      rotate: 45deg;
+      z-index: -1;
+    }
+  }
+
+  .padding-icon {
+    padding: calc($size / 2);
+
+    .text-hover {
+      bottom: 140%;
+    }
+  }
+
+  .bordered {
+    border: calc($size / 10) solid $grayLight;
+  }
+
+  &:hover {
+    .text-hover {
+      display: flex;
+      opacity: 1;
+      // @include transition();
     }
   }
 }

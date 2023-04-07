@@ -84,14 +84,17 @@ function ButtonIcon({
         onMouseOver={() => handleOnMouse(0)}
         onMouseLeave={() => handleOnMouse(-1)}
         onClick={onClick}
+        className={cx({
+          'padding-icon': hoverColor || bordered || backgroundColor,
+          bordered: bordered === true,
+        })}
         style={{
           opacity: `${opacity}`,
-          border: `${bordered === true ? `2px solid ${onMouseState ? 'white' : 'rgba(148,148,148)'}` : bordered}`,
+          border: `${bordered !== true && bordered}`,
           backgroundColor: `${renderBackgroundColor()}`,
           borderRadius: `${
             grounded ? '50px' : borderRadius ? (borderRadius === true ? '0.6rem' : borderRadius) : '0px'
           }`,
-          padding: `${hoverColor || bordered || backgroundColor ? '1rem' : '0px'}`,
         }}
       >
         {icon && <FontAwesomeIcon className={cx('fa__icon')} icon={icon} color={color ? color : 'white'} />}
@@ -107,14 +110,14 @@ function ButtonIcon({
             }}
           />
         )}
+        <div
+          className={cx('fake__layer', {
+            'text-hover': textHover,
+          })}
+        >
+          {textHover}
+        </div>
       </motion.button>
-      <div
-        className={cx('fake__layer', {
-          'text-hover': textHover,
-        })}
-      >
-        {textHover}
-      </div>
     </div>
   )
 }
