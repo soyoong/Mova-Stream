@@ -26,7 +26,7 @@ function PopBarUser({ onClick, index }) {
           setShowMenu(!showMenu)
           onClick()
         }}
-        medium
+        large
         borderRadius
         underlineActive={showMenu}
         underlineHover

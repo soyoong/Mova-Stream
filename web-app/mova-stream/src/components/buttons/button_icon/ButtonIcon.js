@@ -91,6 +91,7 @@ function ButtonIcon({
           borderRadius: `${
             grounded ? '50px' : borderRadius ? (borderRadius === true ? '0.6rem' : borderRadius) : '0px'
           }`,
+          padding: `${hoverColor || bordered || backgroundColor ? '1rem' : '0px'}`,
         }}
       >
         {icon && <FontAwesomeIcon className={cx('fa__icon')} icon={icon} color={color ? color : 'white'} />}

@@ -1,18 +1,21 @@
+@import 'src/styles/_variables.scss';
+@import 'src/styles/_mixins.scss';
+
 .wrapper {
   width: auto;
   height: auto;
-  overflow: hidden;
-  overflow-y: scroll;
   position: absolute;
   top: var(--default-layout-height-header);
   right: 0;
   z-index: 999;
   border-radius: var(--m-modal-radius);
   background-color: var(--m-background-page-modal);
+  @include boxShadow();
 
   .container {
-    // width: 200px;
-    // height: 200px;
+    overflow: hidden;
+    overflow-y: scroll;
+    // @include scrollbar-hidden();
   }
 
   .behind-layout {

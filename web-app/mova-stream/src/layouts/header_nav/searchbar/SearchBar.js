@@ -30,9 +30,9 @@ function SearchBar({ index, onClick, className }) {
       className={cx('wrapper', {
         [className]: className,
         active: showSearch,
-        inactive: !showSearch,
       })}
     >
+      {showSearch && <div className={cx('bg')} onClick={() => setShowSearch(!showSearch)}></div>}
       <div className={cx('search__input')}>
         <input
           ref={inputRef}
@@ -43,6 +43,7 @@ function SearchBar({ index, onClick, className }) {
           onChange={e => setSearchText(e.target.value)}
         />
       </div>
+
       <ButtonIcon
         className={cx('search__button')}
         icon={showSearch ? solid('xmark') : solid('magnifying-glass')}

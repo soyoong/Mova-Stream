@@ -33,10 +33,10 @@
   --m-color-dark-gray: rgb(48, 48, 48);
 
   /* ICON SIZE */
-  --m-icon-small-size: 1.2rem; /* 16px */
-  --m-icon-primary-size: 1.6rem; /* 16px */
-  --m-icon-medium-size: 3.2rem; /* 32px */
-  --m-icon-large-size: 6.4rem; /* 64px */
+  --m-icon-small-size: 2rem; /* 16px */
+  --m-icon-primary-size: 2.4rem; /* 16px */
+  --m-icon-medium-size: 2.8rem; /* 32px */
+  --m-icon-large-size: 3.2rem; /* 64px */
 
   /* BUTTON STYLE */
   --m-button-radius: 0.25rem;
@@ -53,6 +53,17 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  &::-webkit-scrollbar {
+    width: 1px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: darkgrey;
+  }
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
 }
 
 html {
@@ -105,7 +116,7 @@ a {
 
 /** Animations */
 
-@keyframes animEaseWidthIn {
+@keyframes inWidth {
   from {
     width: 0%;
   }
@@ -114,7 +125,7 @@ a {
   }
 }
 
-@keyframes animEaseWidthOut {
+@keyframes outWidth {
   from {
     width: 100%;
   }
@@ -123,7 +134,7 @@ a {
   }
 }
 
-@keyframes animEaseHeightIn {
+@keyframes inHeight {
   from {
     height: 0%;
   }
@@ -132,22 +143,12 @@ a {
   }
 }
 
-@keyframes animEaseHeightOut {
+@keyframes outHeight {
   from {
     height: 100%;
   }
   to {
     height: 0%;
-  }
-}
-
-@keyframes animTranslateX {
-  from {
-    transform: translate(-55px, 0px);
-  }
-
-  to {
-    transform: translate(61px, 0px);
   }
 }
 

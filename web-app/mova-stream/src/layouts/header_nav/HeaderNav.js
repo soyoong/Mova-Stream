@@ -8,7 +8,7 @@ import { ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import HeaderItem from './header_item/HeaderItem'
 import SearchBar from './searchbar/SearchBar'
-import PopBarUser from './searchbar/popbar_user/PopBarUser'
+import PopBarUser from './popbar_user/PopBarUser'
 import Sidebar from '../sidebar/Sidebar'
 
 const cx = classNames.bind(styles)
@@ -45,6 +45,7 @@ function HeaderNav() {
           <div className={cx('sidebar-icon')}>
             <ButtonIcon
               icon={showSidebar ? solid('xmark') : solid('bars')}
+              medium
               onClick={() => setShowSidebar(!showSidebar)}
               underlineActive={showSidebar}
               underlineHover
@@ -67,8 +68,8 @@ function HeaderNav() {
           </div>
         </div>
         <div className={cx('right-side')}>
-          {/* <SearchBar className={cx('searchbar')} index={indexIcon} onClick={() => setIdexIcon(2)} /> */}
-          <ButtonIcon icon={solid('bell')} onClick={() => setIdexIcon(1)} />
+          <SearchBar className={cx('searchbar')} index={indexIcon} onClick={() => setIdexIcon(2)} />
+          <ButtonIcon medium icon={solid('bell')} onClick={() => setIdexIcon(1)} />
           <PopBarUser index={indexIcon} onClick={() => setIdexIcon(0)} />
         </div>
       </div>

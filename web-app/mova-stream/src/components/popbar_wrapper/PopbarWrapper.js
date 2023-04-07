@@ -8,7 +8,7 @@ function PopBarWrapper({ behindOnClick, children }) {
   const [behindState, setBehindState] = useState(false)
 
   return (
-    <div className={`${cx('wrapper')} shadow`}>
+    <div className={`${cx('wrapper')}`}>
       <div
         className={cx('behind-layout')}
         onClick={even => {

@@ -1,3 +1,4 @@
+import 'animate.css'
 import styles from './App.scss'
 import classNames from 'classnames/bind'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'

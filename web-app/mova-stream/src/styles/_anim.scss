@@ -1,5 +1,4 @@
-/* Animations */
-
+/** Animations */
 @mixin transition($duration: 300ms, $anim: ease, $delay: 0ms) {
   -webkit-transition: all $duration $anim $delay;
   -moz-transition: all $duration $anim $delay;

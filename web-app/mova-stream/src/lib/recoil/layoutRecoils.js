@@ -3,7 +3,6 @@ import { atom } from 'recoil'
 /*
 Listen for user events when impacting ui
 */
-
 const searchBarState = atom({
   key: 'searchBarState',
   default: {
