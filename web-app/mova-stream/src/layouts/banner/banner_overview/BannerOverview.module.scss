@@ -2,8 +2,12 @@
 
 .wrapper {
   .wrapper__container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+
     h1 {
-      max-width: 50%;
+      max-width: 75%;
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 2; /* number of lines to show */
@@ -15,7 +19,7 @@
     }
 
     p {
-      max-width: 35%;
+      max-width: 45%;
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 3; /* number of lines to show */
@@ -39,27 +43,27 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .wrapper {
-    font-size: 1rem; /* 10px */
+    font-size: 1.4rem; /* 10px */
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .wrapper {
-    font-size: 1.2rem; /* 12px */
+    font-size: 1.6rem; /* 12px */
   }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .wrapper {
-    font-size: 1.4rem; /* 14px */
+    font-size: 1.8rem; /* 14px */
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .wrapper {
-    font-size: 1.6rem; /* 16px */
+    font-size: 2rem; /* 16px */
   }
 }

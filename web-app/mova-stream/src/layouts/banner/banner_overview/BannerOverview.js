@@ -17,13 +17,13 @@ function BannerOverview() {
         <p>{modalProps.overview}</p>
         <div className={cx('wrapper__buttons')}>
           <ButtonPlay
-            medium
+            large
             onClick={() => {
               console.log('Play')
             }}
           />
           <ButtonInfo
-            medium
+            large
             onClick={() => {
               setModalState(!modalState)
             }}

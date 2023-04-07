@@ -9,7 +9,7 @@
     align-items: center;
     column-gap: 0.5em;
     border-radius: 0.25em;
-    // padding: 0.5em 1.5em;
+    padding: 0.4em 1em;
     // line-height: calc(var(--m-icon-medium-size) / 2); /* 20px */
     font-weight: 600;
     color: white;
@@ -25,12 +25,29 @@
 
 @mixin buttonStyleSize($size: var(--m-icon-small-size)) {
   button {
-    font-size: calc($size / 2);
-    padding: calc($size / 4) calc($size / 2);
-
     .fa__icon {
       width: $size; /* Default size is Medium */
       height: $size; /* Default size is Medium */
+    }
+    /* Responsive */
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+      font-size: calc(1.4rem);
+    }
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+      font-size: calc(1.6rem);
+    }
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+      font-size: calc(1.8rem);
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+      font-size: calc(2rem);
     }
   }
 }
