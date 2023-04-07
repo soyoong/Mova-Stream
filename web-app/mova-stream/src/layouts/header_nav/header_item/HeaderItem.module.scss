@@ -1,20 +1,16 @@
+@import 'src/styles/_variables.scss';
 @import 'src/styles/_mixins.scss';
 
 .wrapper {
   position: relative;
-  --border: 1px solid var(--m-primary-red);
-  --underline-left: 0;
-  --underline-bottom: 0;
-  --underline-radius: 0.6rem;
-  --underline-bg-color: var(--m-primary-red);
 
   .link-button {
     background: none;
     border: none;
 
     .link {
-      font-size: 1.2rem;
-      color: var(--m-color-light-gray);
+      font-size: 1.4rem;
+      color: $grayLight;
     }
 
     .link-active {
