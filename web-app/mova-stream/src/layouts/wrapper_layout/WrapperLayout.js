@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './WrapperLayout.module.scss'
 import classNames from 'classnames/bind'
 import { HeaderNav, FooterNav } from '~/layouts'
-import { useModalState } from '~/hooks/useRecoilClient'
+import { useModalState } from '~/utils/hooks/useRecoilClient'
 import { MovieModal } from '../components'
 
 const cx = classNames.bind(styles)

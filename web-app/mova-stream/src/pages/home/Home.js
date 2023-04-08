@@ -3,9 +3,9 @@ import styles from './Home.module.scss'
 import { Banner, BannerImage, BannerOverview, WrapperContainer } from '~/layouts'
 import classNames from 'classnames/bind'
 import { Modal, RowItem } from '~/components'
-import tmdbData from '~/data/tmdb'
+import tmdbData from '~/utils/data/tmdb'
 import { Row } from '~/components'
-import { useModalProps } from '~/hooks/useRecoilClient'
+import { useModalProps } from '~/utils/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 

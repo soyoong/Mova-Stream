@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './BannerOverview.module.scss'
 import classNames from 'classnames/bind'
 import { ButtonInfo, ButtonPlay } from '~/components'
-import { useModalProps, useModalState } from '~/hooks/useRecoilClient'
+import { useModalProps, useModalState } from '~/utils/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 

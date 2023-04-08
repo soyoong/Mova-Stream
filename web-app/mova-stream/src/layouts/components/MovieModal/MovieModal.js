@@ -4,7 +4,7 @@ import { ButtonIcon, ButtonLike, ButtonPlay, Modal } from '~/components'
 import classNames from 'classnames/bind'
 import ReactPlayer from 'react-player/lazy'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
-import { useModalState, useModalProps } from '~/hooks/useRecoilClient'
+import { useModalState, useModalProps } from '~/utils/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 

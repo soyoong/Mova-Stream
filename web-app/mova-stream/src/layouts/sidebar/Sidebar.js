@@ -2,7 +2,7 @@ import styles from './Sidebar.module.scss'
 import classNames from 'classnames/bind'
 import { pageRoutes } from '~/routes'
 import HeaderItem from '../header_nav/header_item/HeaderItem'
-import { useSideBarState } from '~/hooks/useRecoilClient'
+import { useSideBarState } from '~/utils/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 

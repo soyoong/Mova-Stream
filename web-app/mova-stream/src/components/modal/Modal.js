@@ -1,6 +1,6 @@
 import styles from './Modal.module.scss'
 import classNames from 'classnames/bind'
-import { useModalState } from '~/hooks/useRecoilClient'
+import { useModalState } from '~/utils/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 

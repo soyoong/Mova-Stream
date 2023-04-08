@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import styles from './BannerImage.module.scss'
 import classNames from 'classnames/bind'
-import { useModalProps } from '~/hooks/useRecoilClient'
+import { useModalProps } from '~/utils/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 

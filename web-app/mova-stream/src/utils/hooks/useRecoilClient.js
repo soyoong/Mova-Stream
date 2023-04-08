@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil'
-import { userMenuRecoils, modalRecoils, sidebarRecoils, appRecoils, layoutRecoils } from '~/lib/recoil'
+import { userMenuRecoils, modalRecoils, sidebarRecoils, appRecoils, layoutRecoils } from '~/utils/lib/recoil'
 
 const useUserMenu = () => {
   const [userMenuState, setUserMenuState] = useRecoilState(userMenuRecoils.userMenuState)

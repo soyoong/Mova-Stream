@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 import { ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { useEffect, useRef, useState } from 'react'
-import { useSearchBarState } from '~/hooks/useRecoilClient'
+import { useSearchBarState } from '~/utils/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 
