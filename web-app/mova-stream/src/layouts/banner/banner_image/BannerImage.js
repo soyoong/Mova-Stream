@@ -10,7 +10,7 @@ function BannerImage({ listData }) {
   const [list, setList] = useState([])
   const [item, setItem] = useState({})
   var currentIndex = useRef(0)
-  const initialSeconds = 2
+  const initialSeconds = 15
   const [seconds, setSeconds] = useState(initialSeconds)
 
   useEffect(() => {

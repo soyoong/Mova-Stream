@@ -21,7 +21,7 @@ $paddingIcon: 0.4rem;
     align-items: center;
     justify-content: center;
     column-gap: calc($paddingIcon * 2);
-    padding: calc($paddingIcon * 2);
+    padding: calc($paddingIcon * 1.5);
     background-color: $grayDark;
     border-radius: 50px;
     opacity: 0;

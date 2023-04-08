@@ -99,7 +99,11 @@ $paddingIcon: 1rem;
   }
 
   .bordered {
-    border: calc($size / 10) solid $grayLight;
+    border: calc($size / 8) solid $grayLight;
+
+    &:hover {
+      border-color: white;
+    }
   }
 
   &:hover {

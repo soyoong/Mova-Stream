@@ -13,6 +13,7 @@ function ButtonIcon({
   primary,
   medium,
   large,
+  rotate,
   color,
   textHover,
   hoverColor,
@@ -89,6 +90,7 @@ function ButtonIcon({
           bordered: bordered === true,
         })}
         style={{
+          rotate: rotate,
           opacity: `${opacity}`,
           border: `${bordered !== true && bordered}`,
           backgroundColor: `${renderBackgroundColor()}`,

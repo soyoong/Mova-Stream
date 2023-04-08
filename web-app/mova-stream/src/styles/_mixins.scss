@@ -257,7 +257,7 @@
 }
 
 /* Shadow */
-@mixin boxShadow($horizontal: 0px, $vertical: 0px, $blurRadius: 1.6rem, $spread: 0.8rem, $color: rgba(0, 0, 0, 0.35)) {
+@mixin boxShadow($horizontal: 0px, $vertical: 0px, $blurRadius: 1.6rem, $spread: 0.8rem, $color: rgba(0, 0, 0, 0.5)) {
   box-shadow: $horizontal $vertical $blurRadius $spread $color;
   -webkit-box-shadow: $horizontal $vertical $blurRadius $spread $color;
   -moz-box-shadow: $horizontal $vertical $blurRadius $spread $color;
