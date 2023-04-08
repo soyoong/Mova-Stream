@@ -45,6 +45,7 @@ function SearchBar({ index, onClick, className }) {
       </div>
 
       <ButtonIcon
+        primary
         className={cx('search__button')}
         icon={showSearch ? solid('xmark') : solid('magnifying-glass')}
         onClick={() => {

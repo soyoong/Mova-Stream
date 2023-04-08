@@ -22,7 +22,7 @@ function MovieModal() {
           <ReactPlayer url={modalProps.urlVideo} playing muted={muted} width="100%" height="100%" />
           <div className={cx('action__buttons')}>
             <div className={cx('left__side')}>
-              <ButtonPlay primary onClick={() => console.log('Play')} />
+              <ButtonPlay medium onClick={() => console.log('Play')} />
               <ButtonIcon primary backgroundColor bordered grounded icon={solid('plus')} textHover="123" />
               <ButtonLike primary backgroundColor bordered grounded />
             </div>

@@ -45,7 +45,7 @@ function HeaderNav() {
           <div className={cx('sidebar-icon')}>
             <ButtonIcon
               icon={showSidebar ? solid('xmark') : solid('bars')}
-              medium
+              primary
               onClick={() => setShowSidebar(!showSidebar)}
               underlineActive={showSidebar}
               underlineHover
