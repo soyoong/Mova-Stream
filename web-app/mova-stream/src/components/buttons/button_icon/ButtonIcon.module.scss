@@ -122,14 +122,14 @@
   @media only screen and (max-width: 600px) {
     @include buttonIconSize(var(--m-icon-small-size));
   }
-  @media only screen and (min-width: 601px) {
+  @media only screen and (min-width: 600px) {
     @include buttonIconSize(var(--m-icon-primary-size));
   }
 }
 
 .medium {
   @media only screen and (max-width: 600px) {
-    @include buttonIconSize(var(--m-icon-primary-size));
+    @include buttonIconSize(var(--m-icon-small-size));
   }
 
   /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -146,18 +146,16 @@
 .large {
   /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (max-width: 600px) {
-    @include buttonIconSize(var(--m-icon-primary-size));
+    @include buttonIconSize(var(--m-icon-small-size));
   }
   /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (min-width: 600px) {
     @include buttonIconSize(var(--m-icon-primary-size));
   }
-
   /* Medium devices (landscape tablets, 768px and up) */
   @media only screen and (min-width: 768px) {
     @include buttonIconSize(var(--m-icon-medium-size));
   }
-
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
     @include buttonIconSize(var(--m-icon-large-size));

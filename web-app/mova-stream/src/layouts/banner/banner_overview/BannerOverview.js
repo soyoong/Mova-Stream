@@ -1,8 +1,9 @@
 import React from 'react'
 import styles from './BannerOverview.module.scss'
 import classNames from 'classnames/bind'
-import { ButtonInfo, ButtonPlay } from '~/components'
+import { ButtonIcon, ButtonInfo, ButtonPlay } from '~/components'
 import { useModalProps, useModalState } from '~/utils/hooks/useRecoilClient'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 const cx = classNames.bind(styles)
 

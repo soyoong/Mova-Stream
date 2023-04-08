@@ -39,26 +39,23 @@
 }
 
 .primary {
+  /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (max-width: 600px) {
-    @include buttonStyleSize(var(--m-icon-small-size));
+    @include buttonStyleSize(var(--m-icon-primary-size));
   }
-  @media only screen and (min-width: 601px) {
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
     @include buttonStyleSize(var(--m-icon-primary-size));
   }
 }
 
 .medium {
+  /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (max-width: 600px) {
     @include buttonStyleSize(var(--m-icon-primary-size));
   }
-
   /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (min-width: 600px) {
-    @include buttonStyleSize(var(--m-icon-primary-size));
-  }
-
-  /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px) {
     @include buttonStyleSize(var(--m-icon-medium-size));
   }
 }
@@ -70,14 +67,8 @@
   }
   /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (min-width: 600px) {
-    @include buttonStyleSize(var(--m-icon-primary-size));
-  }
-
-  /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px) {
     @include buttonStyleSize(var(--m-icon-medium-size));
   }
-
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
     @include buttonStyleSize(var(--m-icon-large-size));

@@ -28,8 +28,6 @@ function PopBarUser({ onClick, index }) {
         }}
         large
         borderRadius
-        underlineActive={showMenu}
-        underlineHover
       />
 
       {showMenu && (

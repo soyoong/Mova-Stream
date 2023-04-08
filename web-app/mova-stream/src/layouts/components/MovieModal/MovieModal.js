@@ -9,7 +9,7 @@ import { useModalState, useModalProps } from '~/utils/hooks/useRecoilClient'
 const cx = classNames.bind(styles)
 
 function MovieModal() {
-  const [muted, setMuted] = useState(true)
+  const [muted, setMuted] = useState(false)
   const [modalState, setModalState] = useModalState()
   const [modalProps, setModalProps] = useModalProps()
 
