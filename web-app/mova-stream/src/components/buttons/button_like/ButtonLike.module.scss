@@ -22,7 +22,7 @@ $paddingIcon: 0.4rem;
     justify-content: center;
     column-gap: calc($paddingIcon * 2);
     padding: calc($paddingIcon * 1.5);
-    background-color: $grayDark;
+    background-color: var(--m-color-dark-gray);
     border-radius: 50px;
     opacity: 0;
     @include transition();
