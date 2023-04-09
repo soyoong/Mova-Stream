@@ -65,7 +65,7 @@
         right: 0;
         bottom: 0;
         padding: 1rem;
-        z-index: 1;
+        z-index: 0;
         // animation: 'fadeOut' 300ms linear;
       }
     }
@@ -77,10 +77,9 @@
       right: 0;
       width: calc(var(--row-width) * 1);
       height: calc(var(--row-height) * 1);
-      display: flex;
-      flex-direction: column;
-      opacity: 1;
       display: none;
+      flex-direction: column;
+      opacity: 0;
       // animation: 'fadeOut' 300ms linear;
 
       .overview__container {
@@ -155,30 +154,34 @@
       position: absolute;
       z-index: 1;
       @include boxShadow();
-      // @include scaler($scale: 1.5, $y: -25%);
-      // @include transition(300ms, ease, 000ms);
+      @include scaler($scale: 1.5, $y: -25%);
+      @include transition(300ms, ease, 500ms);
 
       .card__header {
-        .card__thumb {
-          img {
-            border-radius: var(--m-button-radius) var(--m-button-radius) 0 0;
-          }
+        .video__container {
           .mute__button {
-            opacity: 1;
-            // animation: 'fadeIn' 300ms linear;
+            animation: 'fadeIn' 300ms linear;
           }
         }
 
-        .mute__button {
-          // animation: 'fadeIn' 300ms linear;
+        .card__thumb {
+          img {
+            border-radius: var(--m-button-radius);
+          }
+          .mute__button {
+            opacity: 1;
+            animation: 'fadeIn' 300ms linear;
+          }
         }
       }
 
       .card__footer {
         opacity: 1;
-        display: block;
         border-radius: var(--m-button-radius) var(--m-button-radius) 0 0;
-        // animation: 'fadeIn' 500ms linear;
+        // @include transition(300ms, ease, 0.5s);
+        // animation-delay: 500ms;
+        display: flex;
+        animation: inOpac 1s ease;
 
         .overview__container {
           border-radius: 0 0 var(--m-button-radius) var(--m-button-radius);

@@ -71,6 +71,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  border: none;
   height: 100%;
   width: 100%;
 }
@@ -112,6 +113,14 @@ a {
 }
 
 /** Animations */
+@keyframes scaleIn {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}
 
 @keyframes inWidth {
   from {
@@ -146,6 +155,15 @@ a {
   }
   to {
     height: 0%;
+  }
+}
+
+@keyframes inOpac {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

@@ -4,6 +4,7 @@ import classNames from 'classnames/bind'
 import { HeaderNav, FooterNav } from '~/layouts'
 import { useModalState } from '~/utils/hooks/useRecoilClient'
 import { MovieModal } from '../components'
+import { AnimatePresence } from 'framer-motion'
 
 const cx = classNames.bind(styles)
 
@@ -19,7 +20,7 @@ function WrapperLayout({ children }) {
       <div className={cx('wrapper__footer')}>
         <FooterNav />
       </div>
-      {modalState && <MovieModal />}
+      <AnimatePresence>{modalState && <MovieModal />}</AnimatePresence>
     </div>
   )
 }
