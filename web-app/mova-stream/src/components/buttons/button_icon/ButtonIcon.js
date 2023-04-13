@@ -20,16 +20,13 @@ function ButtonIcon({
   bordered,
   grounded,
   borderRadius,
+  disabled,
   backgroundColor,
   opacity,
   className,
   onClick,
 }) {
   const [onMouseState, setOnMouseState] = useState(false)
-
-  // useEffect(() => {
-
-  // }, [])
 
   const handleOnMouse = i => {
     if (i === 0) {
@@ -78,6 +75,10 @@ function ButtonIcon({
         medium: medium,
         large: large,
       })}
+      style={{
+        opacity: `${opacity}`,
+      }}
+      disabled={disabled}
     >
       <motion.button
         whileHover={{ scale: 1 }}
@@ -98,6 +99,7 @@ function ButtonIcon({
             grounded ? '50px' : borderRadius ? (borderRadius === true ? '0.6rem' : borderRadius) : '0px'
           }`,
         }}
+        disabled={disabled}
       >
         {icon && <FontAwesomeIcon className={cx('fa__icon')} icon={icon} color={color ? color : 'white'} />}
         {src && (

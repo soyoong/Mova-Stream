@@ -10,7 +10,7 @@ import { useModalProps, useModalState } from '~/utils/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 
-function RowItem({ item, className, onClick }) {
+function RowItem({ item, className, style, onClick }) {
   const [modalState, setModalState] = useModalState()
   const [modalProps, setModalProps] = useModalProps()
   const [hoverState, setHoverState] = useState(false)
@@ -56,6 +56,7 @@ function RowItem({ item, className, onClick }) {
       className={cx('wrapper', {
         [className]: className,
       })}
+      style={{ ...style }}
     >
       <motion.div
         onHoverStart={() => setHoverState(true)}
@@ -68,7 +69,7 @@ function RowItem({ item, className, onClick }) {
       >
         <div className={cx('card__header')}>
           <AnimatePresence>
-            {playing ? (
+            {/* {playing ? (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{
@@ -96,12 +97,12 @@ function RowItem({ item, className, onClick }) {
                   icon={muted ? solid('volume-xmark') : solid('volume-high')}
                   onClick={() => setMuted(!muted)}
                 />
-              </motion.div>
-            ) : (
-              <div className={cx('card__thumb')}>
-                <img src={item.backdrop_path} alt="" />
-              </div>
-            )}
+              </motion.div> */}
+            {/* ) : ( */}
+            <div className={cx('card__thumb')}>
+              <img src={item.backdrop_path} alt="" />
+            </div>
+            {/* )} */}
           </AnimatePresence>
         </div>
 

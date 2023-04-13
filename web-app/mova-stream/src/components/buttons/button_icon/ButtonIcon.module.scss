@@ -19,8 +19,8 @@
 
     .fa__icon {
       cursor: pointer;
-      width: calc(var(--m-icon-primary-size));
-      height: calc(var(--m-icon-primary-size));
+      width: calc(var(--m-icon-medium-size));
+      height: calc(var(--m-icon-medium-size));
       object-fit: contain;
       display: flex;
       align-items: center;
@@ -32,8 +32,8 @@
 
     .img__src {
       cursor: pointer;
-      width: var(--m-icon-primary-size);
-      height: var(--m-icon-primary-size);
+      width: var(--m-icon-medium-size);
+      height: var(--m-icon-medium-size);
       object-fit: contain;
     }
   }

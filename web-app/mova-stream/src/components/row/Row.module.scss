@@ -13,21 +13,17 @@
     h1 {
       position: relative;
       font-size: 2rem;
+      margin-left: var(--layout-horizontal-padding);
     }
 
     .row__container {
-      // top: -20px;
-      height: fit-content;
       position: relative;
-      // padding-left: var(--layout-horizontal-padding);
+      height: fit-content;
       @include scrollbar-hidden();
-      // background-color: $grayLight;
-      // @include scrollbar-hidden();
 
       .row__inner {
         width: 100%;
         height: fit-content;
-        overflow: hidden;
 
         .row__list {
           display: flex;
@@ -41,6 +37,26 @@
               }
             }
           }
+        }
+      }
+
+      .button__control {
+        .button__prev {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: var(--layout-horizontal-padding);
+          background-image: linear-gradient(to right, rgb(0, 0, 0), transparent);
+        }
+
+        .button__next {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          width: var(--layout-horizontal-padding);
+          background-image: linear-gradient(to left, rgb(0, 0, 0), transparent);
         }
       }
     }
