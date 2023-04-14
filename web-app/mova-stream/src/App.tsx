@@ -1,15 +1,15 @@
 import 'animate.css'
-import styles from './App.scss'
-import classNames from 'classnames/bind'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import './App.scss'
+import { Route, Routes } from 'react-router-dom'
 import { pageRoutes } from './routes'
 import { WrapperLayout } from './layouts'
+import { BrowserRouter } from 'react-router-dom'
 
-const cx = classNames.bind(styles)
+// const cx = classNames.bind(styles)
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         {pageRoutes.map((route, index) => {
           const Page = route.page
@@ -26,7 +26,7 @@ function App() {
           )
         })}
       </Routes>
-    </Router>
+    </BrowserRouter>
   )
 }
 

@@ -1,10 +1,7 @@
 import styles from './ButtonIcon.module.scss'
-import classNames from 'classnames/bind'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 import { motion, useMotionValue } from 'framer-motion'
-
-const cx = classNames.bind(styles)
 
 function ButtonIcon({
   icon,
