@@ -10,7 +10,7 @@ import { useModalProps, useModalState } from '~/utils/hooks/useRecoilClient'
 
 const cx = classNames.bind(styles)
 
-function RowItem({ item, className, style, onClick }) {
+function RowItem({ item, index, className, style, onClick }) {
   const [modalState, setModalState] = useModalState()
   const [modalProps, setModalProps] = useModalProps()
   const [hoverState, setHoverState] = useState(false)
@@ -23,7 +23,6 @@ function RowItem({ item, className, style, onClick }) {
       const timeout = setTimeout(() => {
         setPlaying(true)
       }, 500)
-
       return () => clearTimeout(timeout)
     } else {
       setPlaying(false)
@@ -63,17 +62,24 @@ function RowItem({ item, className, style, onClick }) {
         onHoverEnd={() => setHoverState(false)}
         whileHover={{
           cursor: 'pointer',
+          scale: 1.5,
+          translateY: '-25%',
+          translateX: index === 0 ? '15%' : 0,
         }}
-        className={cx('card')}
+        animate={{}}
+        className={`${cx('card')}`}
         onClick={onClick}
       >
         <div className={cx('card__header')}>
           <AnimatePresence>
-            {/* {playing ? (
+            {playing ? (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: 1,
+                  transition: {
+                    delay: 0.5,
+                  },
                 }}
                 exit={{
                   opacity: 0,
@@ -97,12 +103,12 @@ function RowItem({ item, className, style, onClick }) {
                   icon={muted ? solid('volume-xmark') : solid('volume-high')}
                   onClick={() => setMuted(!muted)}
                 />
-              </motion.div> */}
-            {/* ) : ( */}
-            <div className={cx('card__thumb')}>
-              <img src={item.backdrop_path} alt="" />
-            </div>
-            {/* )} */}
+              </motion.div>
+            ) : (
+              <div className={cx('card__thumb')}>
+                <img src={item.backdrop_path} alt="" />
+              </div>
+            )}
           </AnimatePresence>
         </div>
 

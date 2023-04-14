@@ -69,6 +69,7 @@ function Row({ title, data }) {
                     className={cx('row__item')}
                     key={i}
                     item={item}
+                    index={i}
                     onClick={() => console.log(i)}
                   />
                 )
