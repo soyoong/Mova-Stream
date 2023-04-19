@@ -1,6 +1,7 @@
 @import 'normalize.css';
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&display=swap');
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
 :root {
   --default-layout-height-header: 4.5rem; /* 45px */
@@ -24,7 +25,7 @@
   /* COLOR STYLE */
   --m-primary-red: #e50f1e;
   --m-white: #ffffff;
-  --m-background-page: rgb(20, 20, 20);
+  --m-background-page: #141414;
   --m-background-page-modal: rgb(24, 24, 24);
   --m-color-light-gray: rgb(148, 148, 148);
   --m-color-dark-gray: rgb(24, 24, 24);

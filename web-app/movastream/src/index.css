@@ -1,12 +1,55 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  /* Colors */
+  --primary-red: #e21221;
+  --grey-light: rgb(148, 148, 148);
+  --grey-light-075: rgb(148, 148, 148, 0.75);
+  --grey-light-05: rgb(148, 148, 148, 0.5);
+  --grey-light-025: rgb(148, 148, 148, 0.25);
+  --grey-dark: rgb(24, 24, 24);
+  --grey-dark-075: rgb(24, 24, 24, 0.75);
+  --grey-dark-05: rgb(24, 24, 24, 0.5);
+  --grey-dark-025: rgb(24, 24, 24, 0.25);
+
+  /* Padding */
+  --padding-container: 2.5rem; /* 20px */
+  --padding-element: 1.25rem; /* px */
+
+  /* Size icon */
+  --icon-small: 0.875rem; /* 14px */
+  --icon-primary: 1.25rem; /* 20px */
+  --icon-medium: 1.75rem; /* 28px */
+  --icon-large: 2.25rem; /* 36px */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import-normalize;
+
+@layer components {
+  .underlineIn {
+    @apply before:content-[""] before:w-full before:h-[2px] before:bg-[var(--primary-red)] before:rounded-md before:animate-scaleXIn before:absolute before:bottom-0 before:left-0;
+  }
+
+  .rowButtonController {
+    @apply hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300;
+  }
+}
+
+@keyframes scaleXIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes scaleXOut {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
 }

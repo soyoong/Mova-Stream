@@ -65,7 +65,7 @@ function ButtonIcon({
 
   return (
     <div
-      className={cx('wrapper', {
+      className={className('wrapper', {
         [className]: className,
         small: small,
         primary: primary,
@@ -83,7 +83,7 @@ function ButtonIcon({
         onMouseOver={() => handleOnMouse(0)}
         onMouseLeave={() => handleOnMouse(-1)}
         onClick={onClick}
-        className={cx({
+        className={className({
           'padding-icon': hoverColor || bordered || backgroundColor,
           bordered: bordered === true,
         })}
@@ -98,10 +98,10 @@ function ButtonIcon({
         }}
         disabled={disabled}
       >
-        {icon && <FontAwesomeIcon className={cx('fa__icon')} icon={icon} color={color ? color : 'white'} />}
+        {icon && <FontAwesomeIcon className={className('fa__icon')} icon={icon} color={color ? color : 'white'} />}
         {src && (
           <img
-            className={cx('img__src')}
+            className={className('img__src')}
             src={src}
             alt="icon"
             style={{
@@ -112,7 +112,7 @@ function ButtonIcon({
           />
         )}
         <div
-          className={cx('fake__layer', {
+          className={className('fake__layer', {
             'text-hover': textHover,
           })}
         >
