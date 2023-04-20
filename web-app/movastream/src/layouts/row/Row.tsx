@@ -14,10 +14,15 @@ function Row({ data }: Props) {
   const carousel = useRef<HTMLDivElement>(null)
   const maxCount = useRef(0)
   const [index, setIndex] = useState(0)
+  const [hoverState, setHoverState] = useState(false)
 
   useEffect(() => {
     maxCount.current = Number(((carousel.current?.scrollWidth || 0) / window.innerWidth).toFixed(0))
   }, [])
+
+  useEffect(() => {
+    console.log(hoverState)
+  }, [hoverState])
 
   useEffect(() => {
     if (index > maxCount.current) {
@@ -70,7 +75,7 @@ function Row({ data }: Props) {
           className='flex flex-row gap-x-2 pl-[var(--padding-container)] scrollbar-hide scroll-smooth snap-x snap-mandatory touch-pan-x z-0'
         >
           {data.map((movie, index) => {
-            return <RowItem key={index} movie={movie} />
+            return <RowItem key={index} movie={movie} hoverState={hoverState} />
           })}
         </motion.div>
         <div className='flex justify-between w-full h-full'>
