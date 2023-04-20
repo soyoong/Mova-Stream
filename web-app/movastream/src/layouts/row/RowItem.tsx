@@ -6,23 +6,18 @@ import ReactPlayer from 'react-player/file'
 
 interface RowItemProps {
   movie: Movie
-  hoverState?: boolean | null
+  index?: number | null
+  limit?: number | null
   className?: string | null
 }
 
-function RowItem({ movie, hoverState, className }: RowItemProps) {
+function RowItem({ movie, index, limit, className }: RowItemProps) {
   const [playing, setPlaying] = useState(false)
   const [muted, setMuted] = useState(true)
 
   return (
-    <div className={classNames('cursor-pointer w-[240px] h-[140px] snap-start', ...[className])}>
+    <div className={classNames('cursor-pointer w-[240px] h-[140px] snap-end', ...[className])}>
       <motion.div
-        onHoverStart={() => {
-          hoverState = true
-        }}
-        onHoverEnd={() => {
-          hoverState = false
-        }}
         whileHover={{
           scale: 1.5,
           transition: {

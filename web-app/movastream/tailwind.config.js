@@ -6,6 +6,12 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      padding: {
+        content: 'var(--padding-container)',
+      },
+      margin: {
+        content: 'var(--padding-container)',
+      },
       textColor: {
         primaryRed: 'var(--primary-red)',
       },

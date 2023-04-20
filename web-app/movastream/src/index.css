@@ -11,8 +11,8 @@
   --grey-dark-025: rgb(24, 24, 24, 0.25);
 
   /* Padding */
-  --padding-container: 2.5rem; /* 20px */
-  --padding-element: 1.25rem; /* px */
+  --padding-container: 2.5rem; /* 40px */
+  --padding-element: 1.25rem; /* 20px */
 
   /* Size icon */
   --icon-small: 0.875rem; /* 14px */

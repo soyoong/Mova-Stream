@@ -50,7 +50,7 @@ function CarouselBanner({ data }: Props) {
   return (
     <div className='relative w-full h-[100vh] overflow-hidden'>
       <Slider
-        className='w-screen h-full before:content-["999"] before:absolute before:bottom-0 before:left-0 before:right-0 before:bg-gradient-to-b before:from-gray-900/10 before:to-[#000000] before:lg:h-[140vh] before:z-10'
+        className='w-screen h-full before:content-["999"] before:absolute before:bottom-0 before:left-0 before:right-0 before:bg-gradient-to-b before:from-gray-900/10 before:to-[#141414] before:lg:h-[140vh] before:z-10'
         {...settings}
       >
         <div className=''>
