@@ -50,7 +50,7 @@ function HeaderNavigation() {
               />
             </div>
             <div className='h-[70px] flex lg:hidden flex-row items-center gap-x-item'>
-              <ButtonIcon className='text-white' medium icon={BiSearch} />
+              <SearchInput />
               <ButtonIcon className='text-white' medium icon={TbBellFilled} />
               <div className='avatar'>
                 <div className='w-10 h-10 rounded'>
