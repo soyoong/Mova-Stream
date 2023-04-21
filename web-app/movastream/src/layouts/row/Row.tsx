@@ -1,7 +1,7 @@
 import React, { MutableRefObject, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Movie } from '~/utils/mockup/model/Model'
 import RowItem from './RowItem'
-import { ButtonIcon } from '~/components/buttons'
+import { ButtonIcon } from '~/components'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import classNames from 'classnames'
 import { motion } from 'framer-motion'

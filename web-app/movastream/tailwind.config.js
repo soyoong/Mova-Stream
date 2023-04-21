@@ -29,6 +29,22 @@ module.exports = {
       },
       backgroundColor: {
         page: '#141414',
+        light: 'var(--grey-light)',
+        dark: 'var(--grey-dark)',
+      },
+      caretColor: {
+        red: 'var(--primary-red)',
+        light: 'var(--grey-light)',
+        dark: 'var(--grey-dark)',
+      },
+      borderColor: {
+        red: 'var(--primary-red)',
+        light: 'var(--grey-light)',
+        dark: 'var(--grey-dark)',
+      },
+      placeholderColor: {
+        light: 'var(--grey-light)',
+        dark: 'var(--grey-dark)',
       },
       backgroundImage: {
         'gradient-to-b':
@@ -52,10 +68,10 @@ module.exports = {
       animation: {
         scaleXIn: 'scaleXIn 0.3s ease-in-out',
         scaleXOut: 'scaleXOut 0.3s ease-in-out',
-        easeInWidth: 'inWidth 0.5s ease-in-out',
-        easeOutWidth: 'outWidth 0.5s ease-in-out',
-        easeInHeight: 'inHeight 0.5s ease-in-out',
-        easeOutHeight: 'outHeight 0.5s ease-in-out',
+        easeInWidth: 'inWidth 0.5s ease-in',
+        easeOutWidth: 'outWidth 0.5s ease-out',
+        easeInHeight: 'inHeight 0.5s ease-in',
+        easeOutHeight: 'outHeight 0.5s ease-out',
       },
     },
   },

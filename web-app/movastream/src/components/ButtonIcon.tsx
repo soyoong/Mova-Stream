@@ -1,10 +1,10 @@
 import classNames from 'classnames'
-import React, { MouseEventHandler } from 'react'
+import React, { HTMLAttributes, MouseEventHandler } from 'react'
 import { IconType } from 'react-icons'
 import { motion } from 'framer-motion'
 
 interface Props {
-  icon: IconType
+  icon?: IconType | undefined
   small?: boolean | undefined
   primary?: boolean | undefined
   medium?: boolean | undefined
@@ -14,6 +14,7 @@ interface Props {
   title?: string
   className?: string | undefined
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined
+  tabIndex?: number | undefined
 }
 
 function ButtonIcon({
@@ -27,6 +28,7 @@ function ButtonIcon({
   title,
   className,
   onClick,
+  tabIndex,
 }: Props) {
   const Icon = icon as IconType
   const size = {
@@ -37,14 +39,17 @@ function ButtonIcon({
   }
   return (
     <motion.button
+      tabIndex={tabIndex}
       whileHover={{ scale: 1 }}
       whileTap={{ scale: 0.9 }}
       className={classNames('flex items-center justify-center', size, ...[className])}
       onClick={onClick}
     >
-      <Icon color={color} title={title} className={classNames(size, ...[className])}>
-        {children}
-      </Icon>
+      {children ? (
+        children
+      ) : (
+        <Icon color={color} title={title} className={classNames(size, ...[className])} />
+      )}
     </motion.button>
   )
 }

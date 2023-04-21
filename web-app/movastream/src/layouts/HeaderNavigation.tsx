@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import logo from '~/assets/imgs/logo-mova.svg'
 import { Link } from 'react-router-dom'
-import { ButtonIcon } from '~/components/buttons'
+import { ButtonIcon } from '~/components'
 import { IoMdMenu } from 'react-icons/io'
 import { TbBellFilled } from 'react-icons/tb'
 import { BiSearch } from 'react-icons/bi'
 import { pageRoutes } from '~/utils/route/routes'
 import classNames from 'classnames'
+import { SearchInput } from '~/layouts'
 
 function HeaderNavigation() {
   const indexPage = useRef(0)
@@ -89,16 +90,18 @@ function HeaderNavigation() {
           </div>
         </div>
         <div className='h-[70px] lg:flex hidden flex-row items-center gap-x-item'>
-          <ButtonIcon className='text-white' medium icon={BiSearch} />
+          <SearchInput />
           <ButtonIcon className='text-white' medium icon={TbBellFilled} />
-          <div className='avatar'>
-            <div className='w-10 h-10 rounded'>
-              <img
-                src='https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.6435-9/117100276_2654196668230424_8985351350698507025_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kYCy60cL0vsAX-LZuV0&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfCLl2uoP-WDE8New0s0zlK7mX4sn29IfE5B48TuXCzeig&oe=6469ADDB'
-                alt='Tailwind-CSS-Avatar-component'
-              />
+          <ButtonIcon>
+            <div className='avatar'>
+              <div className='w-10 h-10 rounded'>
+                <img
+                  src='https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.6435-9/117100276_2654196668230424_8985351350698507025_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kYCy60cL0vsAX-LZuV0&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfCLl2uoP-WDE8New0s0zlK7mX4sn29IfE5B48TuXCzeig&oe=6469ADDB'
+                  alt='Tailwind-CSS-Avatar-component'
+                />
+              </div>
             </div>
-          </div>
+          </ButtonIcon>
         </div>
       </div>
     </div>
