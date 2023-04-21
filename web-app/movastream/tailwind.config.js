@@ -12,11 +12,27 @@ module.exports = {
       margin: {
         content: 'var(--padding-container)',
       },
+      gap: {
+        content: 'var(--padding-container)',
+        item: 'var(--padding-element)',
+      },
       textColor: {
         primaryRed: 'var(--primary-red)',
+        'grey-light': 'var(--grey-light)',
+        'grey-light-025': 'var(--grey-light-025)',
+        'grey-light-05': 'var(--grey-light-05)',
+        'grey-light-075': 'var(--grey-light-075)',
+        'grey-dark': 'var(--grey-dark)',
+        'grey-dark-025': 'var(--grey-dark-025)',
+        'grey-dark-05': 'var(--grey-dark-05)',
+        'grey-dark-075': 'var(--grey-dark-075)',
       },
       backgroundColor: {
         page: '#141414',
+      },
+      backgroundImage: {
+        'gradient-to-b':
+          'linear-gradient(to bottom,rgba(20,20,20,0) 0,rgba(20,20,20,.10) 15%,rgba(20,20,20,.30) 29%,rgba(20,20,20,.48) 44%,rgba(20,20,20,.78) 68%,rgba(20,20,20) 100%);',
       },
       dropShadow: {
         card: '0px 0px 8px 0px rgba(20, 20, 20, 1)',
@@ -36,9 +52,13 @@ module.exports = {
       animation: {
         scaleXIn: 'scaleXIn 0.3s ease-in-out',
         scaleXOut: 'scaleXOut 0.3s ease-in-out',
+        easeInWidth: 'inWidth 0.5s ease-in-out',
+        easeOutWidth: 'outWidth 0.5s ease-in-out',
+        easeInHeight: 'inHeight 0.5s ease-in-out',
+        easeOutHeight: 'outHeight 0.5s ease-in-out',
       },
     },
   },
 
-  plugins: [require('tailwind-scrollbar'), require('tailwind-scrollbar-hide')],
+  plugins: [require('tailwind-scrollbar'), require('tailwind-scrollbar-hide'), require('daisyui')],
 }

@@ -1,14 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import logo from '~/assets/imgs/logo-mova.svg'
 import { Link } from 'react-router-dom'
 import { ButtonIcon } from '~/components/buttons'
 import { IoMdMenu } from 'react-icons/io'
+import { TbBellFilled } from 'react-icons/tb'
+import { BiSearch } from 'react-icons/bi'
 import { pageRoutes } from '~/utils/route/routes'
 import classNames from 'classnames'
 
 function HeaderNavigation() {
+  const indexPage = useRef(0)
   const [scrolled, setScrolled] = useState(false)
-  const [indexPage, setIndexPage] = useState(0)
+  const [expand, setExpand] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,36 +26,79 @@ function HeaderNavigation() {
   return (
     <div
       className={classNames(
-        'w-100 h-[70px] fixed top-0 left-0 right-0 flex items-center px-[var(--padding-container)] ease-in-out duration-300 z-[999]',
+        'w-100 h-auto fixed top-0 left-0 right-0 flex items-center px-[var(--padding-container)] ease-in-out duration-300 z-[999]',
         {
           'backdrop-blur-md bg-[rgba(20,20,20,0.75)] transition-all ease-in-out duration-300':
             scrolled,
         },
       )}
     >
-      <div className='flex items-end gap-x-5'>
-        <Link to={'/'}>
-          <img className='w-[128px] h-auto object-contain' src={logo} alt='logo' />
-        </Link>
-        <ButtonIcon className='lg:hidden' icon={IoMdMenu} primary color='white' />
-        <div className='flex flex-row gap-x-[var(--padding-element)] sm:hidden lg:flex'>
-          {pageRoutes.map((route, index) => {
-            const active = indexPage === index
-            return (
-              <Link
-                className={`relative ${
-                  active
-                    ? 'text-[var(--primary-red)] underlineIn'
-                    : 'text-[var(--grey-light)] hover:text-[var(--primary-red)] hover:transition-all'
-                }`}
-                key={index}
-                to={route.path}
-                onClick={() => setIndexPage(index)}
-              >
-                {route.name}
+      <div className='w-full flex flex-row justify-between'>
+        <div className='w-full h-auto flex flex-col lg:flex-row justify-start items-start lg:items-center gap-x-item'>
+          <div className='w-full lg:w-fit h-[70px] flex flex-row items-center justify-between gap-x-5'>
+            <div className='w-fil flex flex-row items-center gap-x-item'>
+              <Link className='block' to={'/'}>
+                <img className='w-24 h-auto object-fill' src={logo} alt='logo' />
               </Link>
-            )
-          })}
+              <ButtonIcon
+                className='lg:hidden'
+                icon={IoMdMenu}
+                medium
+                color='white'
+                onClick={() => setExpand(!expand)}
+              />
+            </div>
+            <div className='h-[70px] flex lg:hidden flex-row items-center gap-x-item'>
+              <ButtonIcon className='text-white' medium icon={BiSearch} />
+              <ButtonIcon className='text-white' medium icon={TbBellFilled} />
+              <div className='avatar'>
+                <div className='w-10 h-10 rounded'>
+                  <img
+                    src='https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.6435-9/117100276_2654196668230424_8985351350698507025_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kYCy60cL0vsAX-LZuV0&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfCLl2uoP-WDE8New0s0zlK7mX4sn29IfE5B48TuXCzeig&oe=6469ADDB'
+                    alt='Tailwind-CSS-Avatar-component'
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className={classNames('w-full lg:w-fit h-fit lg:block pb-5 lg:pb-0', {
+              hidden: !expand,
+            })}
+          >
+            <div className='flex flex-row items-start justify-around gap-x-item'>
+              {pageRoutes.map((route, index) => {
+                return (
+                  <Link
+                    className={`relative line-clamp-2 flex text-center ${
+                      indexPage.current === index
+                        ? 'text-[var(--primary-red)] font-semibold underlineIn'
+                        : 'text-[var(--grey-light)] hover:text-[var(--primary-red)] hover:transition-all'
+                    }`}
+                    key={index}
+                    to={route.path}
+                    onClick={() => {
+                      indexPage.current = index
+                    }}
+                  >
+                    {route.name}
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+        <div className='h-[70px] lg:flex hidden flex-row items-center gap-x-item'>
+          <ButtonIcon className='text-white' medium icon={BiSearch} />
+          <ButtonIcon className='text-white' medium icon={TbBellFilled} />
+          <div className='avatar'>
+            <div className='w-10 h-10 rounded'>
+              <img
+                src='https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.6435-9/117100276_2654196668230424_8985351350698507025_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kYCy60cL0vsAX-LZuV0&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfCLl2uoP-WDE8New0s0zlK7mX4sn29IfE5B48TuXCzeig&oe=6469ADDB'
+                alt='Tailwind-CSS-Avatar-component'
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

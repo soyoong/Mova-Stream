@@ -16,7 +16,12 @@ function RowItem({ movie, index, limit, className }: RowItemProps) {
   const [muted, setMuted] = useState(true)
 
   return (
-    <div className={classNames('cursor-pointer w-[240px] h-[140px] snap-end', ...[className])}>
+    <div
+      className={classNames(
+        'h-28 min-w-[180px] md:h-36 md:min-w-[260px] cursor-pointer snap-end',
+        ...[className],
+      )}
+    >
       <motion.div
         whileHover={{
           scale: 1.5,

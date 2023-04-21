@@ -34,12 +34,12 @@ function Row({ title, data }: Props) {
   }
 
   return (
-    <div className='flex-1 flex flex-col gap-y-2 w-screen mx-auto'>
-      <h2 className='text-xl font-semibold text-white relative pl-content top-10'>{title}</h2>
+    <div className='flex flex-col gap-y-2 w-screen mx-auto'>
+      <h2 className='text-xl font-semibold text-white relative pl-content'>{title}</h2>
       <div className='relative'>
         <div
           ref={carousel}
-          className='w-full flex flex-row pl-content gap-x-2 py-10 overflow-x-scroll overflow-y-hidden scrollbar-hide scroll-smooth snap-x snap-mandatory touch-pan-x z-0'
+          className='w-full flex flex-row pl-content gap-x-2 overflow-x-scroll overflow-y-hidden scrollbar-hide scroll-smooth snap-x snap-mandatory touch-pan-x z-0'
         >
           {data.map((movie, index) => {
             return <RowItem key={index} movie={movie} index={index} limit={data.length - 1} />

@@ -1,5 +1,5 @@
 export { default as Wrapper } from '~/layouts/Wrapper'
 export { default as WrapperPage } from '~/layouts/WrapperPage'
-export { default as CarouselBanner } from '~/layouts/CarouselBanner'
+export { default as Banner } from '~/layouts/Banner'
 export { default as Row } from '~/layouts/row/Row'
 export { default as HeaderNavigation } from '~/layouts/HeaderNavigation'

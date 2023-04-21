@@ -3,16 +3,16 @@ import tmdbData from '~/utils/data/tmdb'
 // import { Row } from '~/components'
 // import { useModalProps } from '~/utils/hooks/useRecoilClient'
 import { Movie } from '~/utils/mockup/model/Model'
-import { CarouselBanner, Row, WrapperPage } from '~/layouts'
+import { Banner, Row } from '~/layouts'
 
 function Home() {
   // useEffect(() => {
   // }, [])
 
   return (
-    <div className='min-h-[1500px]'>
-      <CarouselBanner data={tmdbData.props.pageProps.netflixOriginals as Movie[]} />
-      <div className='relative flex flex-col top-[-18rem] z-20'>
+    <div className='relative'>
+      <Banner data={tmdbData.props.pageProps.netflixOriginals as Movie[]} />
+      <section className='relative top-[20vh] sm:top-[30vh] md:top-[35vh] lg:top-[50vh] flex flex-col gap-y-10'>
         <Row
           title='Netflix Originals'
           data={tmdbData.props.pageProps.netflixOriginals as Movie[]}
@@ -24,7 +24,7 @@ function Home() {
         <Row title='Horror Movies' data={tmdbData.props.pageProps.horrorMovies as Movie[]} />
         <Row title='Comedy Movies' data={tmdbData.props.pageProps.comedyMovies as Movie[]} />
         <Row title='Documentaries' data={tmdbData.props.pageProps.documentaries as Movie[]} />
-      </div>
+      </section>
     </div>
   )
 }

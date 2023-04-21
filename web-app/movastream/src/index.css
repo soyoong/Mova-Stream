@@ -2,13 +2,13 @@
   /* Colors */
   --primary-red: #e21221;
   --grey-light: rgb(148, 148, 148);
-  --grey-light-075: rgb(148, 148, 148, 0.75);
-  --grey-light-05: rgb(148, 148, 148, 0.5);
   --grey-light-025: rgb(148, 148, 148, 0.25);
+  --grey-light-05: rgb(148, 148, 148, 0.5);
+  --grey-light-075: rgb(148, 148, 148, 0.75);
   --grey-dark: rgb(24, 24, 24);
-  --grey-dark-075: rgb(24, 24, 24, 0.75);
-  --grey-dark-05: rgb(24, 24, 24, 0.5);
   --grey-dark-025: rgb(24, 24, 24, 0.25);
+  --grey-dark-05: rgb(24, 24, 24, 0.5);
+  --grey-dark-075: rgb(24, 24, 24, 0.75);
 
   /* Padding */
   --padding-container: 2.5rem; /* 40px */
@@ -51,5 +51,41 @@
   }
   to {
     transform: scaleX(0);
+  }
+}
+
+@keyframes inWidth {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes outWidth {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+@keyframes inHeight {
+  from {
+    height: 0%;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+@keyframes outHeight {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 0%;
   }
 }
