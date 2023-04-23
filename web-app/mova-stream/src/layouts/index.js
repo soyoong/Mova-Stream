@@ -1,6 +1,0 @@
-export { default as HeaderNav } from '~/layouts/header_nav/HeaderNav'
-export { default as Sidebar } from '~/layouts/sidebar/Sidebar'
-export { default as FooterNav } from '~/layouts/footer_nav/FooterNav'
-export { BannerImage, BannerOverview } from '~/layouts/banner'
-export { default as WrapperLayout } from '~/layouts/wrapper_layout/WrapperLayout'
-export { default as WrapperContainer } from '~/layouts/wrapper_container/WrapperContainer'

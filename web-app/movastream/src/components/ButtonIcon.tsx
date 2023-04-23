@@ -1,7 +1,7 @@
 import classNames from 'classnames'
-import React, { HTMLAttributes, MouseEventHandler, useEffect } from 'react'
+import React, { HTMLAttributes, MouseEventHandler, useEffect, useState } from 'react'
 import { IconType } from 'react-icons'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 enum ButtonStyle {
   normal,
@@ -44,6 +44,7 @@ function ButtonIcon({
   onClick,
   tabIndex,
 }: Props) {
+  const [hovered, setHovered] = useState(false)
   const Icon = icon as IconType
   const style = ButtonStyle[buttonStyle || 'normal']
   const size = {
@@ -74,6 +75,8 @@ function ButtonIcon({
   return (
     <motion.button
       tabIndex={tabIndex}
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
       whileHover={{ scale: 1 }}
       whileTap={{ scale: 0.9 }}
       className={classNames(
@@ -85,32 +88,48 @@ function ButtonIcon({
       )}
       onClick={onClick}
     >
-      {tooltip && (
-        <div
-          className={classNames(
-            'absolute top-0 flex items-center justify-center',
-
-            'after:content-[""] after:absolute after:rotate-45 after:bg-light',
-            {
-              'after:bottom-[9px] after:w-[13px] after:h-[13px]': small,
-              'after:bottom-[10px] after:w-[14px] after:h-[14px]': primary,
-              'after:bottom-[11px] after:w-[15px] after:h-[15px]': medium,
-              'after:bottom-[12px] after:w-[16px] after:h-[16px]': large,
-            },
-          )}
-        >
-          <span
-            className={classNames('absolute text-white line-clamp-1 bg-light rounded z-10', {
-              'bottom-[10px] text-[12px] p-[1px] px-[5px]': small,
-              'bottom-[11px] text-[13px] p-[2px] px-[6px]': primary,
-              'bottom-[12px] text-[15px] p-[3px] px-[7px]': medium,
-              'bottom-[13px] text-base p-[4px] px-[8px]': large,
-            })}
+      <AnimatePresence>
+        {tooltip && hovered && (
+          <motion.div
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+              transition: {
+                duration: 0,
+              },
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            className={classNames(
+              'absolute w-full top-0 flex items-center justify-center',
+              'after:content-[""] after:absolute after:rotate-45 after:bg-white',
+              {
+                'after:bottom-[9px] after:w-[13px] after:h-[13px]': small,
+                'after:bottom-[10px] after:w-[14px] after:h-[14px]': primary,
+                'after:bottom-[11px] after:w-[15px] after:h-[15px]': medium,
+                'after:bottom-[12px] after:w-[16px] after:h-[16px]': large,
+              },
+            )}
           >
-            {tooltip}
-          </span>
-        </div>
-      )}
+            <span
+              className={classNames(
+                'absolute w-max text-black font-medium line-clamp-1 bg-white rounded z-10',
+                {
+                  'bottom-[10px] text-[12px] p-[1px] px-[5px]': small,
+                  'bottom-[11px] text-[13px] p-[2px] px-[6px]': primary,
+                  'bottom-[12px] text-[15px] p-[3px] px-[7px]': medium,
+                  'bottom-[13px] text-base p-[4px] px-[8px]': large,
+                },
+              )}
+            >
+              {tooltip}
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {children ? (
         children
       ) : (

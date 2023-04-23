@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ReactPlayer from 'react-player/file'
 import { Movie } from '~/utils/mockup/model/Model'
-import { ButtonIcon, ButtonModal } from '~/components'
+import { ButtonIcon, ButtonLike, ButtonModal } from '~/components'
 import { FaPlay } from 'react-icons/fa'
 import { IoClose } from 'react-icons/io5'
 import { HiVolumeOff, HiVolumeUp, HiPlus } from 'react-icons/hi'
@@ -20,50 +20,32 @@ function MovieModal({ movie }: Props) {
 
   return (
     <Modal>
-      <div className='relative w-[75vw] h-[90vh] bg-dark'>
+      <div className='w-3/5 h-[95%] overflow-x-hidden overflow-y-scroll m-auto bg-grey rounded'>
         <div className='relative'>
-          <ReactPlayer
-            url='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
-            playing
-            muted={muted}
-            width='100%'
-            height='100%'
-          />
+          <div className='w-full h-[32.5rem] bg-slate-600'>
+            <ReactPlayer
+              url='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+              playing
+              muted={muted}
+              width='100%'
+              height='100%'
+              style={{
+                objectFit: 'cover',
+              }}
+            />
+          </div>
           <div className='absolute left-0 bottom-0 right-0 flex flex-row items-center justify-between p-5'>
-            <div className='flex flex-row gap-x-item items-center'>
+            <div className='flex flex-row gap-x-2 items-center'>
               <ButtonModal medium icon={FaPlay} title='Play' className='bg-white text-black' />
-              <ButtonIcon
-                buttonStyle={'outline'}
-                small
-                bordered
-                tooltip='Hovered'
-                icon={HiPlus}
-                className='bg-dark rounded-full text-white'
-              />
-              <ButtonIcon
-                buttonStyle={'outline'}
-                primary
-                bordered
-                tooltip='Hovered'
-                icon={HiPlus}
-                className='bg-dark rounded-full text-white'
-              />
               <ButtonIcon
                 buttonStyle={'outline'}
                 medium
                 bordered
-                tooltip='Hovered'
+                tooltip='Add to My list'
                 icon={HiPlus}
-                className='bg-dark rounded-full text-white'
+                className='bg-dark p-1 rounded-full text-white'
               />
-              <ButtonIcon
-                buttonStyle={'outline'}
-                large
-                bordered
-                tooltip='Hovered'
-                icon={HiPlus}
-                className='bg-dark rounded-full text-white'
-              />
+              <ButtonLike />
             </div>
             <ButtonIcon
               medium
@@ -88,6 +70,15 @@ function MovieModal({ movie }: Props) {
             </ul>
           </div>
           <div className=''>
+            <p>{movie?.overview}</p>
+            <p>{movie?.overview}</p>
+            <p>{movie?.overview}</p>
+            <p>{movie?.overview}</p>
+            <p>{movie?.overview}</p>
+            <p>{movie?.overview}</p>
+            <p>{movie?.overview}</p>
+            <p>{movie?.overview}</p>
+            <p>{movie?.overview}</p>
             <p>{movie?.overview}</p>
             <div className=''>
               <ul className=''>

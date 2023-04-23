@@ -1,8 +1,0 @@
-export { default as ButtonIcon } from '~/components/buttons/button_icon/ButtonIcon'
-export { default as ButtonPlay } from '~/components/buttons/button_play/ButtonPlay'
-export { default as ButtonInfo } from '~/components/buttons/button_info/ButtonInfo'
-export { default as ButtonLike } from '~/components/buttons/button_like/ButtonLike'
-export { default as Modal } from '~/components/modal/Modal'
-export { default as PopBarWrapper } from '~/components/popbar_wrapper/PopbarWrapper'
-export { default as Row } from '~/components/row/Row'
-export { default as RowItem } from '~/components/row_item/RowItem'

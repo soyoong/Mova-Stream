@@ -1,5 +1,33 @@
 /** @type {import('tailwindcss').Config} */
 
+const colors = {
+  red: 'var(--primary-red)',
+  // Grey Light
+  'light-025': 'var(--grey-light-025)',
+  'light-05': 'var(--grey-light-05)',
+  'light-075': 'var(--grey-light-075)',
+  light: 'var(--grey-light)',
+  // Grey
+  'grey-025': 'var(--grey-025)',
+  'grey-05': 'var(--grey-05)',
+  'grey-075': 'var(--grey-075)',
+  grey: 'var(--grey)',
+  // Grey Dark
+  'dark-025': 'var(--grey-dark-025)',
+  'dark-05': 'var(--grey-dark-05)',
+  'dark-075': 'var(--grey-dark-075)',
+  dark: 'var(--grey-dark)',
+  // Page
+  page: 'var(--background-page)',
+}
+
+const size = {
+  small: 'var(--icon-small)',
+  primary: 'var(--icon-primary)',
+  medium: 'var(--icon-medium)',
+  large: 'var(--icon-large)',
+}
+
 module.exports = {
   mode: 'jit',
   purge: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
@@ -17,37 +45,19 @@ module.exports = {
         item: 'var(--padding-element)',
       },
       textColor: {
-        red: 'var(--primary-red)',
-        light: 'var(--grey-light)',
-        'light-025': 'var(--grey-light-025)',
-        'light-05': 'var(--grey-light-05)',
-        'light-075': 'var(--grey-light-075)',
-        dark: 'var(--grey-dark)',
-        'dark-025': 'var(--grey-dark-025)',
-        'dark-05': 'var(--grey-dark-05)',
-        'dark-075': 'var(--grey-dark-075)',
+        ...colors,
       },
       backgroundColor: {
-        page: 'rgb(20,20,20)',
-        'page-025': 'rgb(20,20,20, 0.25)',
-        'page-05': 'rgb(20,20,20, 0.5)',
-        'page-075': 'rgb(20,20,20, 0.75)',
-        light: 'var(--grey-light)',
-        dark: 'var(--grey-dark)',
+        ...colors,
       },
       caretColor: {
-        red: 'var(--primary-red)',
-        light: 'var(--grey-light)',
-        dark: 'var(--grey-dark)',
+        ...colors,
       },
       borderColor: {
-        red: 'var(--primary-red)',
-        light: 'var(--grey-light)',
-        dark: 'var(--grey-dark)',
+        ...colors,
       },
       placeholderColor: {
-        light: 'var(--grey-light)',
-        dark: 'var(--grey-dark)',
+        ...colors,
       },
       backgroundImage: {
         'gradient-to-b':
@@ -58,16 +68,10 @@ module.exports = {
         box: '0px 0px 24px 0px rgba(20, 20, 20, 1)',
       },
       width: {
-        small: 'var(--icon-small)',
-        primary: 'var(--icon-primary)',
-        medium: 'var(--icon-medium)',
-        large: 'var(--icon-large)',
+        ...size,
       },
       height: {
-        small: 'var(--icon-small)',
-        primary: 'var(--icon-primary)',
-        medium: 'var(--icon-medium)',
-        large: 'var(--icon-large)',
+        ...size,
       },
       animation: {
         scaleXIn: 'scaleXIn 0.3s ease-in-out',

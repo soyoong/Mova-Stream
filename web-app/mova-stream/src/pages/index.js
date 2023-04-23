@@ -1,7 +1,0 @@
-export { default as Home } from './Home'
-export { default as Movies } from './Movies'
-export { default as TVShows } from './TVShows'
-export { default as Cinemas } from './Cinemas'
-export { default as News } from './News'
-export { default as MyList } from './MyList'
-export { default as Favorites } from './Favorites'

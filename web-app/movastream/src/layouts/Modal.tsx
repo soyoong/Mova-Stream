@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { useSetModalState } from '~/utils/hooks/recoils/useSetRecoilClient'
 import { motion } from 'framer-motion'
+import classNames from 'classnames'
 
 interface Props {
   children: React.ReactNode
@@ -24,15 +25,13 @@ function Modal({ children }: Props) {
       exit={{
         scale: 0,
       }}
-      className='fixed top-0 left-0 bottom-0 right-0 flex items-center justify-center z-[999]'
+      className='fixed top-0 left-0 bottom-0 right-0 z-[999]'
     >
       <div
-        className='absolute top-0 left-0 bottom-0 right-0 bg-page-05 -z-10'
+        className='absolute top-0 left-0 bottom-0 right-0 bg-dark-025 -z-10'
         onClick={() => setModalState(false)}
       />
-      <div className='w-fit h-fit m-auto border-none outline-none overflow-x-hidden overflow-y-scroll bg-dark rounded drop-shadow-box'>
-        {children}
-      </div>
+      <div className='w-full h-full flex items-center justify-center '>{children}</div>
     </motion.div>
   )
 }
