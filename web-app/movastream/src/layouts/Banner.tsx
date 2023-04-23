@@ -1,17 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Movie } from '~/utils/mockup/model/Model'
 import Slider from 'react-slick'
-import { useMovieState } from '~/utils/hooks/useRecoilClient'
 import { ButtonModal } from '~/components'
 import { FaPlay } from 'react-icons/fa'
+import { BsFillInfoCircleFill } from 'react-icons/bs'
+import { useSetModalState, useSetMovieState } from '~/utils/hooks/recoils/useSetRecoilClient'
 
 interface Props {
   data: Movie[]
 }
 
 function Banner({ data }: Props) {
-  const [movie, setMovie] = useState<Movie | null>(null)
-  // const [movieState, setMovieState] = useMovieState()
+  const setMovie = useSetMovieState()
+  const setModalState = useSetModalState()
 
   const settings = {
     infinite: true,
@@ -37,7 +38,7 @@ function Banner({ data }: Props) {
                   item?.backdrop_path || item?.poster_path
                 }`}
               />
-              <div className='absolute -top-[60%] sm:top-[-50%] left-0 bottom-0 flex flex-col items-start justify-center gap-y-2 px-content z-50'>
+              <div className='absolute -top-[60%] sm:top-[-50%] md:top-[-40%] lg:top-[-30%] left-0 bottom-0 flex flex-col items-start justify-center gap-y-item px-content z-50'>
                 <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold line-clamp-2 max-w-3xl text-white'>
                   {item.title || item.name}
                 </h1>
@@ -45,10 +46,18 @@ function Banner({ data }: Props) {
                   {item.overview}
                 </p>
                 <div className='flex flex-row gap-x-2'>
-                  <ButtonModal small icon={FaPlay} title='Play' className='' />
-                  <ButtonModal primary icon={FaPlay} title='Play' className='' />
-                  <ButtonModal medium icon={FaPlay} title='Play' className='' />
-                  <ButtonModal large icon={FaPlay} title='Play' className='' />
+                  <ButtonModal large icon={FaPlay} title='Play' className='bg-white text-black' />
+                  <ButtonModal
+                    dir='title-icon'
+                    large
+                    icon={BsFillInfoCircleFill}
+                    title='More Info'
+                    className='bg-light text-white'
+                    onClick={() => {
+                      setMovie(item)
+                      setModalState(true)
+                    }}
+                  />
                 </div>
               </div>
             </div>

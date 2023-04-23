@@ -28,7 +28,10 @@ module.exports = {
         'dark-075': 'var(--grey-dark-075)',
       },
       backgroundColor: {
-        page: '#141414',
+        page: 'rgb(20,20,20)',
+        'page-025': 'rgb(20,20,20, 0.25)',
+        'page-05': 'rgb(20,20,20, 0.5)',
+        'page-075': 'rgb(20,20,20, 0.75)',
         light: 'var(--grey-light)',
         dark: 'var(--grey-dark)',
       },
@@ -52,6 +55,7 @@ module.exports = {
       },
       dropShadow: {
         card: '0px 0px 8px 0px rgba(20, 20, 20, 1)',
+        box: '0px 0px 24px 0px rgba(20, 20, 20, 1)',
       },
       width: {
         small: 'var(--icon-small)',

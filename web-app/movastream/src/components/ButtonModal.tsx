@@ -34,6 +34,12 @@ function ButtonModal({
     'w-6 h-6': medium,
     'w-7 h-7': large,
   }
+
+  const gapX = {
+    'gap-x-1': small,
+    'gap-x-2': primary || medium || large,
+  }
+
   const Icon = icon as IconType
 
   return (
@@ -41,23 +47,24 @@ function ButtonModal({
       whileHover={{ scale: 1 }}
       whileTap={{ scale: 0.9 }}
       className={classNames(
-        ' w-fit h-fit bg-white outline-none text-black rounded font-semibold',
+        ' w-fit h-fit outline-none rounded font-semibold',
         {
-          'py-[10px] px-[20px] text-base': small,
-          'py-[12px] px-[24px] text-lg': primary,
-          'py-[14px] px-[28px] text-xl': medium,
-          'py-[16px] px-[32px] text-2xl': large,
+          'py-[0px] px-[8px] text-base': small,
+          'py-[4px] px-[18px] text-lg': primary,
+          'py-[8px] px-[22px] text-xl': medium,
+          'py-[12px] px-[26px] text-2xl': large,
         },
         ...[className],
       )}
+      onClick={onClick}
     >
       {dir === 'title-icon' ? (
-        <div className='w-fit h-fit flex flex-row items-center gap-x-2'>
+        <div className={classNames('w-fit h-fit flex flex-row items-center', gapX)}>
           {title}
           <Icon color={color} title={title} className={classNames(size, ...[className])} />
         </div>
       ) : (
-        <div className='w-fit h-fit flex flex-row items-center gap-x-2'>
+        <div className={classNames('w-fit h-fit flex flex-row items-center gap-x-1', gapX)}>
           <Icon color={color} title={title} className={classNames(size, ...[className])} />
           {title}
         </div>

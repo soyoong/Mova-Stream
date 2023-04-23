@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import tmdbData from '~/utils/data/tmdb'
 // import { Row } from '~/components'
-// import { useModalProps } from '~/utils/hooks/useRecoilClient'
 import { Movie } from '~/utils/mockup/model/Model'
 import { Banner, Row } from '~/layouts'
 

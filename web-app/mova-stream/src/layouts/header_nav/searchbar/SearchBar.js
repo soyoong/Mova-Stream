@@ -1,5 +1,5 @@
 import styles from './SearchBar.module.scss'
-import classNames from 'classnames/bind'
+import classNames from 'classnames/bi nd'
 import { ButtonIcon } from '~/components'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { useEffect, useRef, useState } from 'react'
