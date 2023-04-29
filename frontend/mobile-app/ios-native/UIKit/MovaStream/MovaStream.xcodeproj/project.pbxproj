@@ -22,6 +22,7 @@
 		B2983B6B29FA7221002ADC30 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2983B6A29FA7221002ADC30 /* Movie.swift */; };
 		B2983B6F29FA7E63002ADC30 /* RowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2983B6E29FA7E63002ADC30 /* RowTableViewCell.swift */; };
 		B2983B7129FA7FA3002ADC30 /* RowItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2983B7029FA7FA3002ADC30 /* RowItemCollectionViewCell.swift */; };
+		B2C8860E29FD9E050003B1B7 /* MasterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C8860D29FD9E050003B1B7 /* MasterLabel.swift */; };
 		B2CA011829F97D980072E11F /* PreviewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CA011729F97D980072E11F /* PreviewUI.swift */; };
 		B2CA013429F9A2F70072E11F /* StretchyTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CA013329F9A2F70072E11F /* StretchyTableHeaderView.swift */; };
 		B2CA013629F9A4DD0072E11F /* ThumbMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CA013529F9A4DD0072E11F /* ThumbMovieCollectionViewCell.swift */; };
@@ -92,6 +93,7 @@
 		B2983B6A29FA7221002ADC30 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		B2983B6E29FA7E63002ADC30 /* RowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowTableViewCell.swift; sourceTree = "<group>"; };
 		B2983B7029FA7FA3002ADC30 /* RowItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		B2C8860D29FD9E050003B1B7 /* MasterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterLabel.swift; sourceTree = "<group>"; };
 		B2CA011729F97D980072E11F /* PreviewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewUI.swift; sourceTree = "<group>"; };
 		B2CA013329F9A2F70072E11F /* StretchyTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyTableHeaderView.swift; sourceTree = "<group>"; };
 		B2CA013529F9A4DD0072E11F /* ThumbMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbMovieCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -210,13 +212,21 @@
 			path = UICollectionViewCell;
 			sourceTree = "<group>";
 		};
-		B2CA010D29F9273A0072E11F /* buttons */ = {
+		B2C8860C29FD9DDA0003B1B7 /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				B2C8860D29FD9E050003B1B7 /* MasterLabel.swift */,
+			);
+			path = UILabel;
+			sourceTree = "<group>";
+		};
+		B2CA010D29F9273A0072E11F /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
 				B2CA013E29F9B5800072E11F /* MasterButton.swift */,
 				B2CA014029F9BD970072E11F /* MButton.swift */,
 			);
-			path = buttons;
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		B2CBB63429F9149400527AB5 = {
@@ -347,9 +357,10 @@
 		B2CBB6A229F91DF600527AB5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B2C8860C29FD9DDA0003B1B7 /* UILabel */,
 				B2983B6D29FA7E26002ADC30 /* UICollectionViewCell */,
 				B2983B6C29FA7E18002ADC30 /* UITableViewCell */,
-				B2CA010D29F9273A0072E11F /* buttons */,
+				B2CA010D29F9273A0072E11F /* Buttons */,
 				B2CBB6A329F91E2300527AB5 /* MasterViewController.swift */,
 				B2CBB6A529F91EC800527AB5 /* MasterView.swift */,
 				B2CA011729F97D980072E11F /* PreviewUI.swift */,
@@ -505,6 +516,7 @@
 				B2CBB69F29F91DCA00527AB5 /* ExploreViewController.swift in Sources */,
 				B2CBB67D29F918F000527AB5 /* Extension+CGRect.swift in Sources */,
 				B2CBB68829F918F000527AB5 /* Extension+NSObject.swift in Sources */,
+				B2C8860E29FD9E050003B1B7 /* MasterLabel.swift in Sources */,
 				B2CBB68E29F918F000527AB5 /* Extension+UIColor.swift in Sources */,
 				B2CA013629F9A4DD0072E11F /* ThumbMovieCollectionViewCell.swift in Sources */,
 				B2CBB6A429F91E2300527AB5 /* MasterViewController.swift in Sources */,

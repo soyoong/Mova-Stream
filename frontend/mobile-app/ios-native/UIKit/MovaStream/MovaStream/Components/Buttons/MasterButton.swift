@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Custom button
 class MasterButton: UIButton {
     
     func setIcon(_ icon: UIImage?, color: UIColor? = nil, size: CGFloat? = nil, for state: UIControl.State) {
@@ -19,4 +20,9 @@ class MasterButton: UIButton {
         }
     }
     
+    func setTitle(_ title: String?, font: UIFont? = nil, textColor: UIColor? = .blue, for state: UIControl.State) {
+        self.titleLabel?.font = font
+        self.setTitle(title, for: state)
+        self.setTitleColor(textColor, for: state)
+    }
 }

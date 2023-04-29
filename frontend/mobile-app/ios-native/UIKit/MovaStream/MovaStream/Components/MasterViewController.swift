@@ -32,9 +32,8 @@ public class MasterViewController: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Make sure the top constraint of the TableView is equal to Superview and not Safe Area
-        
         // Hide the navigation bar completely
-        self.navigationController?.navigationBar.backgroundColor = .greyDark
+        self.navigationController?.navigationBar.backgroundColor = .grey
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.isNavigationBarHidden = true

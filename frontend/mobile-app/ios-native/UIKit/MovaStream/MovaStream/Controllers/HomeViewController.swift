@@ -12,6 +12,9 @@ import SwiftUI
 class HomeViewController: MasterViewController {
     
     // MARK: - Variables
+    private let rowData: [RowTableViewCellModel] = {
+        return tmdbs
+    }()
     
     // Navbar
     private let navBarHeader: NavBarHeader = {
@@ -20,8 +23,26 @@ class HomeViewController: MasterViewController {
     
     // TableView
     private var homeTableView: UITableView = {
-        return UITableView(frame: .zero, style: .grouped)
+        let table = UITableView(frame: .zero, style: .grouped)
+        table.backgroundColor = .greyDark
+        return table
     }()
+    
+    // Section row
+    private func sectionRowHeaderView(name: String) -> UIView {
+        let view = UIView()
+        let titleLabel = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 44)))
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        titleLabel.text = name
+        let seeAllBtn = MButton(type: .custom)
+        seeAllBtn.setTitle("See all", font: .medium(size: 14), textColor: .primaryRed, for: .normal)
+        view.insertSubview(titleLabel, at: 0)
+        view.insertSubview(seeAllBtn, at: 1)
+        titleLabel.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, constant: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0))
+        seeAllBtn.anchor(top: view.topAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, constant: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -20))
+        return view
+    }
     
     // Home view header
     private var homeViewHeader: HomeViewHeader = {
@@ -47,43 +68,22 @@ class HomeViewController: MasterViewController {
         self.homeTableView.dataSource = self
         self.view.insertSubview(self.homeTableView, at: 0)
         self.view.insertSubview(self.navBarHeader, at: 1)
-        
         self.homeTableView.register(RowTableViewCell.self, forCellReuseIdentifier: RowTableViewCell.identifier)
-        
         self.homeViewHeader = HomeViewHeader(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height/2))
         self.homeTableView.tableHeaderView = self.homeViewHeader
-        
         self.homeTableView.refreshControl?.addTarget(self, action: #selector(self.reloadData), for: .valueChanged)
-        
         self.reloadData()
     }
     
     // Setup layouts
     private func setupLayouts() {
         homeTableView.fillSuperview(superview: self.view)
-        navBarHeader.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, constant: UIEdgeInsets(top: view.safeAreaTop, left: 0, bottom: 0, right: 0))
+        navBarHeader.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
     }
     
     // Reload data or call api..
     @objc private func reloadData() {
         print("Data loading...")
-       let props = loadJson(filename: "tmdb")
-        print(props)
-    }
-    
-    func loadJson(filename fileName: String) -> [String: AnyObject]? {
-        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                if let dictionary = object as? [String: AnyObject] {
-                    return dictionary
-                }
-            } catch {
-                print("Error!! Unable to parse  \(fileName).json")
-            }
-        }
-        return nil
     }
 }
 
@@ -101,13 +101,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     // numberOfSections
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 20
+        return rowData.count
     }
     
     // titleForHeaderInSection
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "<<\(section)>>"
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return rowData[section].rowName
+//    }
     
     // numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -119,12 +119,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RowTableViewCell.identifier, for: indexPath) as? RowTableViewCell else {
             return UITableViewCell()
         }
+        cell.updateCellWith(with: tmdbs[indexPath.row].movies)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        return sectionRowHeaderView(name: rowData[section].rowName)
     }
     
     // heightForHeaderInSection
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 44
     }
     
     // heightForRowAt

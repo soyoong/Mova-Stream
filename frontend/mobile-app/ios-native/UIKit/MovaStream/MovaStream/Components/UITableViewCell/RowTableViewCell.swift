@@ -8,7 +8,20 @@
 import UIKit
 
 protocol RowTableViewCellDelegate: AnyObject {
-    func rowTableViewCellDidTapCell(_ cell: RowTableViewCell, cellForRowAt indexPath: IndexPath)
+    func rowTableViewCellDidTapCell(_ cell: RowTableViewCell, model movie: Movie)
+}
+
+struct RowTableViewCellModel: Codable {
+    init() {
+        self.rowName = ""
+        self.movies = [Movie]()
+    }
+    init(rowName: String, movies: [Movie]) {
+        self.rowName = rowName
+        self.movies = movies
+    }
+    let rowName: String
+    let movies: [Movie]
 }
 
 class RowTableViewCell: UITableViewCell {
@@ -17,14 +30,15 @@ class RowTableViewCell: UITableViewCell {
     
     weak var delegate: RowTableViewCellDelegate?
     
+    private var movies = [Movie]()
+    
     private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 140, height: 260)
-        layout.scrollDirection = .horizontal
-//        layout.minimumInteritemSpacing = 10
-//        layout.minimumLineSpacing = 10
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 140, height: 200)
+        flowLayout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.register(RowItemCollectionViewCell.self, forCellWithReuseIdentifier: RowItemCollectionViewCell.identifier)
+        collectionView.backgroundColor = .greyDark
         return collectionView
     }()
 
@@ -41,8 +55,7 @@ class RowTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(collectionView)
-        
+        contentView.insertSubview(collectionView, at: 0)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -59,27 +72,37 @@ class RowTableViewCell: UITableViewCell {
     private func downloadTitleAt(indexPath: IndexPath) {
         print("Item index at: " + indexPath.description)
     }
+    
+    public func updateCellWith(with movies: [Movie]) {
+        self.movies = movies
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
 }
 
 
 extension RowTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RowItemCollectionViewCell.identifier, for: indexPath) as? RowItemCollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        cell.configure(with: "qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg")
+        cell.updateCellWith(model: movies[indexPath.row])
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.rowTableViewCellDidTapCell(self, cellForRowAt: indexPath)
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let movie = self.movies[indexPath.row]
+        self.delegate?.rowTableViewCellDidTapCell(self, model: movie)
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
@@ -93,5 +116,14 @@ extension RowTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource
             }
         
         return config
+    }
+}
+
+
+import SwiftUI
+
+struct RowTableViewCellDelegate_Previews: PreviewProvider {
+    static var previews: some View {
+        PreviewUIViewController(viewController: HomeViewController())
     }
 }
