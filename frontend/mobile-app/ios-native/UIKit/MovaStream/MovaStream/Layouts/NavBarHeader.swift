@@ -18,17 +18,16 @@ class NavBarHeader: MasterView {
         return imageView
     }()
     
-    private let searchButtonIcon: MasterButton = {
-        var filled = MasterButton(configuration: .filled())
-        filled.setIcon(UIImage(named: "search"), for: .normal)
-        return filled
+    private let searchButtonIcon: MButton = {
+        var button = MButton()
+        button.setImage(UIImage(named: "search"), color: .white, size: 20, for: .normal)
+        return button
     }()
     
-    private let ringButtonIcon: MasterButton = {
-        var filled = MasterButton(configuration: .filled())
-        filled.setIcon(UIImage(named: "bell"), for: .normal)
-        filled.setIcon(UIImage(named: "search"), for: .highlighted)
-        return filled
+    private let ringButtonIcon: MButton = {
+        var button = MButton()
+        button.setImage(UIImage(named: "bell"), color: .white, size: 20, for: .normal)
+        return button
     }()
 
     override func setupViews() {

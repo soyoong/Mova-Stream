@@ -29,7 +29,7 @@ class MasterLabel: UILabel {
     }
     
     public func setEdgeInsets(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
-        edgesInset = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
+        self.edgesInset = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
     }
 
 }

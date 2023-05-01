@@ -28,13 +28,13 @@ class HomeViewController: MasterViewController {
         return table
     }()
     
-    // Section row
-    private func sectionRowHeaderView(name: String) -> UIView {
+    // Section view
+    private func rowSectionHeader(_ sectionTitle: String) -> UIView {
         let view = UIView()
-        let titleLabel = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 44)))
+        let titleLabel = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 80)))
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        titleLabel.text = name
+        titleLabel.text = sectionTitle
         let seeAllBtn = MButton(type: .custom)
         seeAllBtn.setTitle("See all", font: .medium(size: 14), textColor: .primaryRed, for: .normal)
         view.insertSubview(titleLabel, at: 0)
@@ -125,7 +125,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        return sectionRowHeaderView(name: rowData[section].rowName)
+        return rowSectionHeader(rowData[section].rowName)
     }
     
     // heightForHeaderInSection

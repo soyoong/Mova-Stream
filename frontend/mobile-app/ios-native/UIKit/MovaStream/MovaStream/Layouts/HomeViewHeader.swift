@@ -17,24 +17,21 @@ class HomeViewHeader: MasterView {
         return header
     }()
     
-    private let buttonPlay: UIButton = {
-        var button = UIButton(configuration: .filled())
-        button.setTitle("Play", for: .normal)
-        button.configuration?.image = UIImage(named: "play")?.resize(to: 20)?.withTintColor(.black)
-        button.configuration?.imagePadding = 10
-        button.configuration?.baseForegroundColor = .black
-        button.configuration?.baseBackgroundColor = .white
+    private let buttonPlay: MButton = {
+        var button = MButton(configuration: .filled())
+        button.setImage(UIImage(named: "play-fill"), imagePlace: .leading, color: .white, size: 20, imagePadding: 8, for: .normal)
+        button.setTitle("Play", textColor: .white, for: .normal)
+        button.setTitle("Play", textColor: .white, for: .highlighted)
+        button.setBackground(.primaryRed, cornerRadius: 30, for: .normal)
         return button
     }()
     
-    private let buttonList: UIButton = {
-        var button = UIButton(configuration: .filled())
-        button.configuration?.title = "More info"
-        button.configuration?.image = UIImage(named: "info")?.resize(to: 20)?.withTintColor(.white)
-        button.configuration?.imagePadding = 10
-        button.configuration?.imagePlacement = .trailing
-        button.configuration?.baseForegroundColor = .white
-        button.configuration?.baseBackgroundColor = .greyLight
+    private let buttonList: MButton = {
+        var button = MButton(configuration: .borderless())
+        button.setImage(UIImage(named: "plus"), imagePlace: .leading, color: .white, size: 20, imagePadding: 8, for: .normal)
+        button.setTitle("Add to list", textColor: .white, for: .normal)
+        button.setTitle("Add to list", textColor: .white, for: .highlighted)
+        button.setBackground(strokeColor: .white, cornerRadius: 30, for: .normal)
         return button
     }()
     
@@ -97,14 +94,12 @@ class HomeViewHeader: MasterView {
             bottom: self.containerView.bottomAnchor,
             constant: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         )
-        self.buttonPlay.layer.cornerRadius = self.buttonPlay.bounds.size.height/2
         
         self.buttonList.anchor(
             leading: self.buttonPlay.trailingAnchor,
             bottom: self.containerView.bottomAnchor,
             constant: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0)
         )
-        self.buttonList.layer.cornerRadius = self.buttonList.bounds.size.height/2
     }
 
 }
