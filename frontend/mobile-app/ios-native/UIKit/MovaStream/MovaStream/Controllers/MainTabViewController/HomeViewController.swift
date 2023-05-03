@@ -149,12 +149,3 @@ extension HomeViewController {
     }
     
 }
-
-
-import SwiftUI
-
-struct HomeViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        PreviewUIViewController(viewController: HomeViewController())
-    }
-}

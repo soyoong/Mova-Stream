@@ -56,7 +56,7 @@ class MainTabBarViewController: UITabBarController {
         
         self.setViewControllers([homeVC, exploreVC, myListVC, downloadVC, profileVC], animated: true)
         self.selectedIndex = 0
-        self.selectedViewController = homeVC
+        self.selectedViewController = exploreVC
     }
     
     

@@ -97,10 +97,14 @@ extension UIView {
         
     }
     
-    func dimension(width: CGFloat, height: CGFloat) {
+    func dimension(width: CGFloat? = 0, height: CGFloat? = 0) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.widthAnchor.constraint(equalToConstant: width).isActive = true
-        self.heightAnchor.constraint(equalToConstant: height).isActive = true
+        if let _width = width {
+            self.widthAnchor.constraint(equalToConstant: _width).isActive = true
+        }
+        if let _height = height {
+            self.heightAnchor.constraint(equalToConstant: _height).isActive = true
+        }
     }
     
     func fillSuperview(superview view: UIView, constant: UIEdgeInsets? = .zero) {

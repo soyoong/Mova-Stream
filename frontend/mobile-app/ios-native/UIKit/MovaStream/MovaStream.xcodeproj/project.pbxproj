@@ -19,6 +19,11 @@
 		B204485C29FA686700AF95FF /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B204485029FA686700AF95FF /* Roboto-Bold.ttf */; };
 		B204485D29FA686700AF95FF /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B204485129FA686700AF95FF /* Roboto-Thin.ttf */; };
 		B204485E29FA686700AF95FF /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B204485229FA686700AF95FF /* Roboto-Black.ttf */; };
+		B2787DBC2A003A6800AAD64B /* UIScrollTabBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2787DBB2A003A6800AAD64B /* UIScrollTabBarPage.swift */; };
+		B2787DC12A024E6100AAD64B /* AllCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2787DC02A024E6100AAD64B /* AllCategoryViewController.swift */; };
+		B2787DC32A024E7900AAD64B /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2787DC22A024E7900AAD64B /* MoviesViewController.swift */; };
+		B2787DC52A024E8800AAD64B /* TVSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2787DC42A024E8800AAD64B /* TVSeriesViewController.swift */; };
+		B2787DC72A024EC000AAD64B /* CinemasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2787DC62A024EC000AAD64B /* CinemasViewController.swift */; };
 		B2983B6B29FA7221002ADC30 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2983B6A29FA7221002ADC30 /* Movie.swift */; };
 		B2983B6F29FA7E63002ADC30 /* RowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2983B6E29FA7E63002ADC30 /* RowTableViewCell.swift */; };
 		B2983B7129FA7FA3002ADC30 /* RowItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2983B7029FA7FA3002ADC30 /* RowItemCollectionViewCell.swift */; };
@@ -90,6 +95,11 @@
 		B204485029FA686700AF95FF /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		B204485129FA686700AF95FF /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		B204485229FA686700AF95FF /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		B2787DBB2A003A6800AAD64B /* UIScrollTabBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollTabBarPage.swift; sourceTree = "<group>"; };
+		B2787DC02A024E6100AAD64B /* AllCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoryViewController.swift; sourceTree = "<group>"; };
+		B2787DC22A024E7900AAD64B /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
+		B2787DC42A024E8800AAD64B /* TVSeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesViewController.swift; sourceTree = "<group>"; };
+		B2787DC62A024EC000AAD64B /* CinemasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemasViewController.swift; sourceTree = "<group>"; };
 		B2983B6A29FA7221002ADC30 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		B2983B6E29FA7E63002ADC30 /* RowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowTableViewCell.swift; sourceTree = "<group>"; };
 		B2983B7029FA7FA3002ADC30 /* RowItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -196,6 +206,27 @@
 			path = Roboto;
 			sourceTree = "<group>";
 		};
+		B2787DBA2A003A2F00AAD64B /* ScrollTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B2787DBB2A003A6800AAD64B /* UIScrollTabBarPage.swift */,
+			);
+			path = ScrollTabBar;
+			sourceTree = "<group>";
+		};
+		B2787DBF2A024DF900AAD64B /* MainTabViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B2CBB69829F91DCA00527AB5 /* DownloadViewController.swift */,
+				B2CBB69A29F91DCA00527AB5 /* ExploreViewController.swift */,
+				B2CBB69B29F91DCA00527AB5 /* HomeViewController.swift */,
+				B2CBB69929F91DCA00527AB5 /* MyListViewController.swift */,
+				B2CBB69C29F91DCA00527AB5 /* ProfileViewController.swift */,
+				B2CBB65B29F9164A00527AB5 /* MainTabBarViewController.swift */,
+			);
+			path = MainTabViewController;
+			sourceTree = "<group>";
+		};
 		B2983B6C29FA7E18002ADC30 /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,12 +315,11 @@
 		B2CBB65629F9151A00527AB5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B2CBB69829F91DCA00527AB5 /* DownloadViewController.swift */,
-				B2CBB69A29F91DCA00527AB5 /* ExploreViewController.swift */,
-				B2CBB69B29F91DCA00527AB5 /* HomeViewController.swift */,
-				B2CBB69929F91DCA00527AB5 /* MyListViewController.swift */,
-				B2CBB69C29F91DCA00527AB5 /* ProfileViewController.swift */,
-				B2CBB65B29F9164A00527AB5 /* MainTabBarViewController.swift */,
+				B2787DBF2A024DF900AAD64B /* MainTabViewController */,
+				B2787DC02A024E6100AAD64B /* AllCategoryViewController.swift */,
+				B2787DC22A024E7900AAD64B /* MoviesViewController.swift */,
+				B2787DC42A024E8800AAD64B /* TVSeriesViewController.swift */,
+				B2787DC62A024EC000AAD64B /* CinemasViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -357,6 +387,7 @@
 		B2CBB6A229F91DF600527AB5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B2787DBA2A003A2F00AAD64B /* ScrollTabBar */,
 				B2C8860C29FD9DDA0003B1B7 /* UILabel */,
 				B2983B6D29FA7E26002ADC30 /* UICollectionViewCell */,
 				B2983B6C29FA7E18002ADC30 /* UITableViewCell */,
@@ -479,6 +510,7 @@
 				B2CA013429F9A2F70072E11F /* StretchyTableHeaderView.swift in Sources */,
 				B2CBB68729F918F000527AB5 /* Extension+String.swift in Sources */,
 				B2CBB64129F9149400527AB5 /* AppDelegate.swift in Sources */,
+				B2787DC32A024E7900AAD64B /* MoviesViewController.swift in Sources */,
 				B2CBB69729F918F000527AB5 /* Extension+UIStackView.swift in Sources */,
 				B2983B6F29FA7E63002ADC30 /* RowTableViewCell.swift in Sources */,
 				B2CBB67E29F918F000527AB5 /* Extension+UIImageView.swift in Sources */,
@@ -496,6 +528,8 @@
 				B2CBB6A929F91F5D00527AB5 /* NavBarHeader.swift in Sources */,
 				B2CBB68929F918F000527AB5 /* Extension+UIEdgeInsets.swift in Sources */,
 				B2CBB6A629F91EC800527AB5 /* MasterView.swift in Sources */,
+				B2787DC12A024E6100AAD64B /* AllCategoryViewController.swift in Sources */,
+				B2787DBC2A003A6800AAD64B /* UIScrollTabBarPage.swift in Sources */,
 				B2CBB69029F918F000527AB5 /* Extension+UIButton.swift in Sources */,
 				B2CBB67F29F918F000527AB5 /* Extension+UIViewController.swift in Sources */,
 				B2CBB68129F918F000527AB5 /* Extension+CGPoint.swift in Sources */,
@@ -506,8 +540,10 @@
 				B2CBB69129F918F000527AB5 /* Extension+NSCoding.swift in Sources */,
 				B2CBB69229F918F000527AB5 /* Extension+Data.swift in Sources */,
 				B2CBB68329F918F000527AB5 /* Extension+UINavigationController.swift in Sources */,
+				B2787DC72A024EC000AAD64B /* CinemasViewController.swift in Sources */,
 				B2CBB68C29F918F000527AB5 /* Extension+Float.swift in Sources */,
 				B2CBB6A129F91DCA00527AB5 /* ProfileViewController.swift in Sources */,
+				B2787DC52A024E8800AAD64B /* TVSeriesViewController.swift in Sources */,
 				B2CBB68F29F918F000527AB5 /* Extension+CGSize.swift in Sources */,
 				B2CBB67B29F918F000527AB5 /* Extension+Double.swift in Sources */,
 				B2CBB68A29F918F000527AB5 /* Extension+UILabel.swift in Sources */,
