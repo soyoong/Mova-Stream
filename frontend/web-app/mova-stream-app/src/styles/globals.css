@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Colors */
+  --primary-red: #e21221;
+  --grey-light: #909090;
+  --grey: #303030;
+  --grey-dark: #1d1d1d;
+  --background-page: #141414;
+}
+
+body {
+  color: white;
+  background: var(--background-page);
+}
+
+@layer components {
+  .button {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50;
+  }
+  .bannerButton {
+    @apply flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition hover:opacity-75 md:px-8 md:py-2.5 md:text-xl;
+  }
+  .icon-sm {
+    @apply h-4 w-4;
+  }
+  .icon-primary {
+    @apply h-6 w-6;
+  }
+  .icon-md {
+    @apply h-8 w-8;
+  }
+  .icon-lg {
+    @apply h-10 w-10;
+  }
+}

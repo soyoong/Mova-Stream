@@ -1,7 +1,6 @@
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import { AuthProvider } from "../hooks/useAuth";
-import { RecoilRoot } from "recoil";
+import '~/styles/globals.css'
+import type { AppProps } from 'next/app'
+import { RecoilRoot } from 'recoil'
 // import { RecoilRoot } from "recoil";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -9,10 +8,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     // HOOKS
     <RecoilRoot>
       {/* Higher Oder Component */}
-      <AuthProvider>
-        <Component {...pageProps} />
-      </AuthProvider>
+      {/* <AuthProvider></AuthProvider> */}
+      <Component {...pageProps} />
     </RecoilRoot>
-  );
+  )
 }
-export default MyApp;
+export default MyApp
