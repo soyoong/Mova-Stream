@@ -1,25 +1,26 @@
 'use client'
-import { Button } from '@components/ui/Button'
-import cn from '@lib/cn'
-import { pageRoutes } from '@utils/routes'
+import { cn } from '~/utils/lib'
+import { pageRoutes } from '~/utils/routes'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { TbBellFilled } from 'react-icons/tb'
 import { BiSearch } from 'react-icons/bi'
-import { DropDown } from '@components/ui'
+import { MdArrowRight } from 'react-icons/md'
+import { ButtonIcon } from '../ui'
 
-function NavBarHeader() {
+function NavbarHeader() {
   const indexPage = useRef(-1)
   const [scrolled, setScrolled] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
-  const [show, setShow] = useState(false)
+  const [activeSearch, setActiveSearch] = useState(false)
+  const [activeUser, setActiveUser] = useState(false)
 
   useEffect(() => {
-    if (show) {
+    if (activeSearch) {
       inputRef.current?.focus()
     }
-  }, [show])
+  }, [activeSearch])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,12 +47,12 @@ function NavBarHeader() {
           <div className='flex gap-x-5'>
             <div className='w-fil flex-shrink-0'>
               <Link className='block' href={'/'}>
-                <Image src='./mova.svg' width={32} height={32} alt='logo' />
+                <Image priority src='./mova.svg' width={32} height={32} alt='logo' />
               </Link>
             </div>
             <div
               className={cn('flex items-center justify-around gap-x-2', {
-                'hidden md:flex': show,
+                'hidden md:flex': activeSearch,
               })}
             >
               {pageRoutes.map((route, index) => {
@@ -74,43 +75,43 @@ function NavBarHeader() {
               })}
             </div>
           </div>
-          <div className='flex items-center gap-x-4'>
+          <div className='flex items-center gap-x-5'>
             <div className='relative flex flex-row items-center'>
               <input
                 ref={inputRef}
                 type='text'
-                onFocus={() => setShow(true)}
-                onBlur={() => setShow(false)}
+                onFocus={() => setActiveSearch(true)}
+                onBlur={() => setActiveSearch(false)}
                 placeholder='Search..'
                 className={cn(
                   'absolute right-0 h-10 rounded-full border-grey-light bg-grey-dark p-4 text-white placeholder-grey-light outline-none transition-all',
                   {
-                    'z-10 w-[calc(0.5*100vw)] md:w-[calc(0.4*100vw)] lg:w-[calc(0.3*100vw)]': show,
-                    '-z-10 w-0 opacity-0': !show,
+                    'z-10 w-[calc(0.5*100vw)] md:w-[calc(0.4*100vw)] lg:w-[calc(0.3*100vw)]':
+                      activeSearch,
+                    '-z-10 w-0 opacity-0': !activeSearch,
                   },
                 )}
               />
-              <Button className='text-white' onClick={() => setShow(!show)}>
-                <BiSearch className='icon-primary' />
-              </Button>
+              <ButtonIcon
+                className='p-0'
+                variant={'transparent'}
+                onClick={() => setActiveSearch(true)}
+              >
+                <BiSearch className='h-5 w-5' />
+              </ButtonIcon>
             </div>
-            <Button className='text-white'>
-              <TbBellFilled className='icon-primary' />
-            </Button>
-            <div className='relative'>
-              <Button>
-                <div className='icon-md flex-shrink-0'>
-                  <img
-                    className='h-full w-full rounded-md object-contain'
-                    src='https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.6435-9/117100276_2654196668230424_8985351350698507025_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kYCy60cL0vsAX-LZuV0&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfCLl2uoP-WDE8New0s0zlK7mX4sn29IfE5B48TuXCzeig&oe=6469ADDB'
-                    alt='avatar-image'
-                  />
-                </div>
-              </Button>
-              <DropDown>
-                <div>hello</div>
-              </DropDown>
-            </div>
+            <ButtonIcon className='p-0' variant={'transparent'}>
+              <TbBellFilled className='h-5 w-5' />
+            </ButtonIcon>
+            <ButtonIcon className='m-0 h-fit w-fit p-0'>
+              <Image
+                className='rounded-md object-fill'
+                alt='user'
+                width={40}
+                height={40}
+                src='https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.6435-9/117100276_2654196668230424_8985351350698507025_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kYCy60cL0vsAX-LZuV0&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfCLl2uoP-WDE8New0s0zlK7mX4sn29IfE5B48TuXCzeig&oe=6469ADDB'
+              />
+            </ButtonIcon>
           </div>
         </div>
       </div>
@@ -118,4 +119,4 @@ function NavBarHeader() {
   )
 }
 
-export default NavBarHeader
+export default NavbarHeader

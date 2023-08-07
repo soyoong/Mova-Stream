@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import NavBarHeader from './NavBarHeader'
+import NavBarHeader from './NavbarHeader'
 
 interface WrapperPageProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode

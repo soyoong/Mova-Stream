@@ -2,37 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* Colors */
-  --primary-red: #e21221;
-  --grey-light: #909090;
-  --grey: #303030;
-  --grey-dark: #1d1d1d;
-  --background-page: #141414;
+@layer base {
+  :root {
+    --background: hsl(0 0% 7.8%);
+    --foreground: hsl(0 0% 100%);
+
+    --grey: hsl(0, 0%, 19%);
+    --grey-dark: hsl(0, 0%, 11%);
+    --grey-light: hsl(0, 0%, 56%);
+    --primary-red: hsl(356, 85%, 48%);
+
+    --muted: hsl(210 40% 96.1%);
+    --muted-foreground: hsl(215.4 16.3% 46.9%);
+
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(222.2 47.4% 11.2%);
+
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(222.2 47.4% 11.2%);
+
+    --border: hsl(214.3 31.8% 91.4%);
+    --input: hsl(214.3 31.8% 91.4%);
+
+    --primary: hsl(222.2 47.4% 11.2%);
+    --primary-foreground: hsl(210 40% 98%);
+
+    --secondary: hsl(210 40% 96.1%);
+    --secondary-foreground: hsl(222.2 47.4% 11.2%);
+
+    --accent: hsl(210 40% 96.1%);
+    --accent-foreground: hsl(222.2 47.4% 11.2%);
+
+    --destructive: hsl(0 100% 50%);
+    --destructive-foreground: hsl(210 40% 98%);
+
+    --ring: hsl(215 20.2% 65.1%);
+
+    --radius: 0.5rem;
+
+    --space-item: 2.5rem;
+  }
 }
 
-body {
-  color: white;
-  background: var(--background-page);
-}
-
-@layer components {
-  .button {
-    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-50;
+@layer base {
+  * {
+    @apply border-border;
   }
-  .bannerButton {
-    @apply flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition hover:opacity-75 md:px-8 md:py-2.5 md:text-xl;
-  }
-  .icon-sm {
-    @apply h-4 w-4;
-  }
-  .icon-primary {
-    @apply h-6 w-6;
-  }
-  .icon-md {
-    @apply h-8 w-8;
-  }
-  .icon-lg {
-    @apply h-10 w-10;
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 }

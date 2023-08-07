@@ -1,5 +1,5 @@
 import React from 'react'
 
-export default function Cinemas() {
+export default function CinemasPage() {
   return <div>Cinemas</div>
 }

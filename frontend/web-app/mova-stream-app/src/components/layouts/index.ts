@@ -1,2 +1,6 @@
+export { default as WrapperPage } from './WrapperPage'
 export { default as Banner } from './Banner'
-export { default as NavBarHeader } from './NavBarHeader'
+export { default as NavbarHeader } from './NavbarHeader'
+export { default as Modal } from './Modal'
+export { default as Row } from './Row'
+export { default as RowItem } from './RowItem'

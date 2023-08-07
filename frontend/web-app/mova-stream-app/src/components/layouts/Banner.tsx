@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import React, { useEffect, useState } from 'react'
-import { Movie } from '@utils/typings'
+import { Movie } from '~/utils/typings'
 import { FaPlay } from 'react-icons/fa'
 import { BsFillInfoCircleFill } from 'react-icons/bs'
 import Image from 'next/image'
-import { Button } from '@components/ui/Button'
-import { useModalState } from '@hooks/useUI'
+import { Button } from '~/components/ui'
 
 interface Props {
   movies: Movie[]
@@ -14,15 +13,10 @@ interface Props {
 
 function Banner({ movies }: Props) {
   const [movie, setMovie] = useState<Movie | null>(null)
-  const modalState = useModalState()
 
   useEffect(() => {
     setMovie(movies[Math.floor(Math.random() * movies.length)])
   }, [movies])
-
-  useEffect(() => {
-    console.log('first', modalState.isShow)
-  }, [modalState.isShow])
 
   return (
     <div className='flex flex-col space-y-2 py-16 md:py-14 lg:h-[65vh] lg:justify-end lg:pb-14'>
@@ -42,15 +36,16 @@ function Banner({ movies }: Props) {
         </p>
 
         <div className='mt-2 flex flex-row space-x-3'>
-          <button className='button bannerButton bg-white text-black'>
-            <FaPlay className='h-4 w-4 text-black md:h-7 md:w-7' /> Play
-          </button>
-          <button
-            className='button bannerButton bg-grey-light text-white'
-            onClick={() => modalState.setModal(movie!)}
-          >
-            More Info <BsFillInfoCircleFill className='h-4 w-4 md:h-7 md:w-7' />{' '}
-          </button>
+          <Button className='bg-white' size={'lg'}>
+            <div className='flex items-center gap-x-2 text-base font-semibold text-black md:text-lg'>
+              <FaPlay className='h-4 w-4 text-black md:h-7 md:w-7' /> Play
+            </div>
+          </Button>
+          <Button size={'lg'} className='bg-grey-light'>
+            <div className='flex items-center gap-x-2 text-base font-semibold text-white md:text-lg'>
+              More Info <BsFillInfoCircleFill className='h-4 w-4 md:h-7 md:w-7' />{' '}
+            </div>
+          </Button>
         </div>
       </div>
     </div>

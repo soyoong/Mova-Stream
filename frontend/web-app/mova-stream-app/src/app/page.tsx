@@ -1,7 +1,7 @@
 'use client'
-import Modal from '@components/layouts/Modal'
-import { useModalState } from '@hooks/useUI'
-import HomePage from '@pages/HomePage'
+import Modal from '~/components/layouts/Modal'
+import { useModalState } from '~/hooks/useUI'
+import HomePage from '~/pages/home'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })

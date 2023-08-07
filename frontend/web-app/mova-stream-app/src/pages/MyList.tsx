@@ -1,7 +1,5 @@
 import React from 'react'
 
-function MyList() {
-  return <div>MyList</div>
+export default function MyListPage() {
+  return <div>mylist</div>
 }
-
-export default MyList

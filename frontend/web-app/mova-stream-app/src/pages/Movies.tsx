@@ -1,7 +1,5 @@
 import React from 'react'
 
-function Movies() {
-  return <div>Movies</div>
+export default function MoviesPage() {
+  return <div>movies</div>
 }
-
-export default Movies
